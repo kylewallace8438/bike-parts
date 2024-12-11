@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bike_models', function (Blueprint $table) {
+        Schema::create('bike_parts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('categories_id');
+            $table->integer('number');
             $table->string('name');
-            $table->string('slug');
-            $table->integer('year');
-            $table->unsignedBigInteger('brand_id');
-            $table->text('description')->nullable();
-            $table->string('image_url')->nullable();
+            $table->string('part');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bike_models');
+        Schema::dropIfExists('bike_parts');
     }
 };

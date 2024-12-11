@@ -3,13 +3,14 @@
 namespace App\Models\Crawl;
 
 use GuzzleHttp\Exception\RequestException;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 use Spatie\Crawler\CrawlObservers\CrawlObserver;
 use Symfony\Component\DomCrawler\Crawler;
 
-class ScrapeObserver extends CrawlObserver
+class KTMCategoryScrape extends CrawlObserver
 {
     private $content;
     public function __construct()
@@ -17,7 +18,7 @@ class ScrapeObserver extends CrawlObserver
         $this->content = null;
     }
 
-    public function getContent()
+    public function getContent(): array|null
     {
         return $this->content;
     }
@@ -55,18 +56,17 @@ class ScrapeObserver extends CrawlObserver
         ?string $linkText = null,
     ): void {
         $crawler = new Crawler((string) $response->getBody());
-        $parts = $crawler->filter('div.card_parts_table')->first()->filter('tbody')->first();
-        $partData = collect($parts->filter('tr')->each(
-            function (Crawler $tr, $i) {
+        $parts = $crawler->filter('div.card-body')->first()->filter('.row')->first();
+        $partData = collect($parts->filter('div.col')->each(
+            function (Crawler $div, $i) {
                 $data = [
-                    'number' => $tr->filter('td')->eq(0)->text(),
-                    'part' => $tr->filter('td')->eq(1)->filter('a')->first()->filter('p')->first()->filter('span')->first()->text(),
-                    'description' => $tr->filter('td')->eq(2)->text()
+                    'name' => $div->filter('.fw-bold')->text(),
+                    'url' => $div->filter('a')->first()->attr('href')
                 ];
-                return (object) $data;
+                return $data;
             }
         ))->filter()->values();
-        $this->setContent($partData);
+        $this->setContent($partData->toArray());
     }
 
     /**

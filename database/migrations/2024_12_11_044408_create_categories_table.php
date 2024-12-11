@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->unsignedBigInteger('brand_id');
-            $table->string('image_url');
+            $table->unsignedBigInteger('bike_model_id');
+            $table->string('image_url')->nullable();
+            $table->string('crawl_url')->nullable();
             $table->timestamps();
         });
     }
