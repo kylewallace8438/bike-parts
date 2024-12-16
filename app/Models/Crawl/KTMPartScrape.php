@@ -62,13 +62,13 @@ class KTMPartScrape extends CrawlObserver
             function (Crawler $tr, $i) {
                 $data = [
                     'number' => $tr->filter('td')->eq(0)->text(),
-                    'part' => $tr->filter('td')->eq(1)->filter('a')->first()->filter('p')->first()->filter('span')->first()->text(),
+                    'part' => $tr->filter('td')->eq(1)->filter('.JS_ref_link')->first()->text(),
                     'description' => $tr->filter('td')->eq(2)->text()
                 ];
-                return (object) $data;
+                return $data;
             }
         ))->filter()->values();
-        $this->setContent($partData);
+        $this->setContent($partData->toArray());
     }
 
     /**
