@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('bike_parts', function (Blueprint $table) {
-            $table->renameColumn('categories_id', 'category_id');
+        Schema::table('bike_models', function (Blueprint $table) {
+            $table->index(['slug', 'year', 'brand_id']);
         });
     }
 
@@ -21,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('bike_models', function (Blueprint $table) {
+            $table->dropIndex(['slug', 'year', 'brand_id']);
+        });
     }
 };

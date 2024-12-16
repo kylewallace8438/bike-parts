@@ -17,7 +17,7 @@ class CategoryScrape extends Command
      *
      * @var string
      */
-    protected $signature = 'app:category-scrape';
+    protected $signature = 'app:ktm-category-scrape';
 
     /**
      * The console command description.

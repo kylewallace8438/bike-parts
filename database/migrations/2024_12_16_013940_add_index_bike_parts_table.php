@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('bike_parts', function (Blueprint $table) {
-            $table->string('number')->change();
+            $table->index(['category_id']);
         });
     }
 
@@ -21,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('bike_parts', function (Blueprint $table) {
+            $table->index(['category_id']);
+        });
     }
 };

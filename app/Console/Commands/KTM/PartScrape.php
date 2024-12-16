@@ -16,7 +16,7 @@ class PartScrape extends Command
      *
      * @var string
      */
-    protected $signature = 'app:part-scrape';
+    protected $signature = 'app:ktm-part-scrape';
 
     /**
      * The console command description.
