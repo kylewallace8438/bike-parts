@@ -1,8 +1,8 @@
 import React from 'react'
 import jobs from '../../data/jobs.json'
 import Job from './Job'
-const JobListing = () => {
-    const recentJobs = jobs.slice(0, 3)
+const JobListing = ({limit}) => {
+    const recentJobs = limit ? jobs.slice(0, limit) : jobs
     return (
         <>
             <section className="bg-blue-50 px-4 py-10">
