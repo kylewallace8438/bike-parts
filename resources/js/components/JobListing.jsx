@@ -1,8 +1,24 @@
-import React from 'react'
-import jobs from '../../data/jobs.json'
+import React, { useEffect, useState } from 'react'
 import Job from './Job'
-const JobListing = ({limit}) => {
-    const recentJobs = limit ? jobs.slice(0, limit) : jobs
+const JobListing = ({ limit }) => {
+    const [jobs, setJobs] = useState([])
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        const fetchJobs = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/jobs')
+                const data = await response.json()
+                setJobs(data)
+            } catch (error) {
+                console.error(error)
+            } finally {
+                setTimeout(() => {
+                    setLoading(false)
+                }, 1000)
+            }
+        }
+        fetchJobs()
+    }, [])
     return (
         <>
             <section className="bg-blue-50 px-4 py-10">
@@ -10,17 +26,20 @@ const JobListing = ({limit}) => {
                     <h2 className="text-3xl font-bold text-indigo-500 mb-6 text-center">
                         Browse Jobs
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {recentJobs.map((job, index) => {
-                            return (
-                                <Job job={job} key={index}></Job>
-                            )
-                        })}
+                    {loading ? <h2>Loading</h2> : (
+                        <>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                {jobs.map((job, index) => {
+                                    return (
+                                        <Job job={job} key={index}></Job>
+                                    )
+                                })}
 
-                    </div>
+                            </div>
+                        </>
+                    )}
                 </div>
             </section>
-
         </>
     )
 }

@@ -7,8 +7,8 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Crawl\KTMCategoryScrape;
 use Illuminate\Console\Command;
-use Spatie\Crawler\Crawler;
 use Illuminate\Support\Str;
+use Spatie\Crawler\Crawler;
 
 class CategoryScrape extends Command
 {
