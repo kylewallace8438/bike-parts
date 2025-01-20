@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Console\Commands\KTM;
 
 use App\Models\BikePart;
@@ -31,29 +30,31 @@ class PartScrape extends Command
     public function handle()
     {
         $ktm_brand = Brand::where('slug', 'ktm')->first();
-        Category::where('brand_id', $ktm_brand->id)->chunk(5, function ($categories) {
-            foreach ($categories as $category) {
-                $ktmPartScrape = new KTMPartScrape();
-                Crawler::create()
-                    ->setMaximumDepth(0)
-                    ->setTotalCrawlLimit(1)
-                    ->setCrawlObserver($ktmPartScrape)
-                    ->startCrawling($category->crawl_url);
-                $ktm390PartCategories = $ktmPartScrape->getContent();
-                if (is_array($ktm390PartCategories)) {
-                    foreach ($ktm390PartCategories as $c) {
-                        BikePart::updateOrCreate([
-                            'category_id' => $category->id,
-                            'part' => $c['part'],
-                        ], [
-                            'category_id' => $category->id,
-                            'number' => $c['number'],
-                            'name' => $c['description'],
-                            'part' => $c['part'],
-                        ]);
+        Category::where('brand_id', $ktm_brand->id)->where('id', '>', 80)
+            ->chunk(5, function ($categories) {
+                foreach ($categories as $category) {
+                    $ktmPartScrape = new KTMPartScrape();
+                    Crawler::create()
+                        ->setMaximumDepth(0)
+                        ->setTotalCrawlLimit(1)
+                        ->setCrawlObserver($ktmPartScrape)
+                        ->startCrawling($category->crawl_url);
+                    $ktm390PartCategories = $ktmPartScrape->getContent();
+                    if (is_array($ktm390PartCategories)) {
+                        foreach ($ktm390PartCategories as $c) {
+                            BikePart::updateOrCreate([
+                                'category_id' => $category->id,
+                                'part'        => $c['part'],
+                            ], [
+                                'category_id'     => $category->id,
+                                'number'          => $c['number'],
+                                'name'            => $c['name'],
+                                'part'            => $c['part'],
+                                'reference_price' => $c['price'],
+                            ]);
+                        }
                     }
                 }
-            }
-        });
+            });
     }
 }

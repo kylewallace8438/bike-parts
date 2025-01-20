@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Console\Commands\KTM;
 
 use App\Models\BikeModel;
@@ -7,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Crawl\KTMCategoryScrape;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Spatie\Crawler\Crawler;
 
@@ -33,68 +33,68 @@ class CategoryScrape extends Command
     {
         $data = [
             [
-                'name' => 'Duke 200 2014',
-                'year' => 2014,
+                'name'      => 'Duke 200 2014',
+                'year'      => 2014,
                 'crawl_url' => 'https://www.bike-parts-ktm.com/ktm-motorcycle/200_MOTO/2014/DUKE/200-DUKE-ORANGE-ABS/849',
             ],
             [
-                'name' => 'Duke 200 2016',
-                'year' => 2016,
+                'name'      => 'Duke 200 2016',
+                'year'      => 2016,
                 'crawl_url' => 'https://www.bike-parts-ktm.com/ktm-motorcycle/200_MOTO/2016/DUKE/200-DUKE-ORANGE-NON-ABS/806',
             ],
             [
-                'name' => 'Duke 200 2022',
-                'year' => 2022,
+                'name'      => 'Duke 200 2022',
+                'year'      => 2022,
                 'crawl_url' => 'https://www.bike-parts-ktm.com/ktm-motorcycle/200_MOTO/2022/DUKE/200-DUKE-orange-ABS/4526',
             ],
             [
-                'name' => 'Duke 250 2016',
-                'year' => 2016,
+                'name'      => 'Duke 250 2016',
+                'year'      => 2016,
                 'crawl_url' => 'https://www.bike-parts-ktm.com/ktm-motorcycle/250_MOTO/2016/DUKE/250-DUKE-BLACK-ABS/756',
             ],
             [
-                'name' => 'Duke 390 2014',
-                'year' => 2014,
+                'name'      => 'Duke 390 2014',
+                'year'      => 2014,
                 'crawl_url' => 'https://www.bike-parts-ktm.com/ktm-motorcycle/390_MOTO/2014/DUKE/390-DUKE-WHITE-ABS/720',
             ],
             [
-                'name' => 'Duke 390 2016',
-                'year' => 2016,
+                'name'      => 'Duke 390 2016',
+                'year'      => 2016,
                 'crawl_url' => 'https://www.bike-parts-ktm.com/ktm-motorcycle/390_MOTO/2016/DUKE/390-DUKE-WHITE-ABS/670',
             ],
             [
-                'name' => 'Duke 390 2018',
-                'year' => 2018,
+                'name'      => 'Duke 390 2018',
+                'year'      => 2018,
                 'crawl_url' => 'https://www.bike-parts-ktm.com/ktm-motorcycle/390_MOTO/2018/DUKE/390-DUKE-ORANGE/630',
             ],
             [
-                'name' => 'Duke 390 2024',
-                'year' => 2024,
+                'name'      => 'Duke 390 2024',
+                'year'      => 2024,
                 'crawl_url' => 'https://www.bike-parts-ktm.com/ktm-motorcycle/390_Moto/2024/Duke/390-DUKE-blue/5090',
             ],
             [
-                'name' => 'RC 200 2016',
-                'year' => 2016,
+                'name'      => 'RC 200 2016',
+                'year'      => 2016,
                 'crawl_url' => 'https://www.bike-parts-ktm.com/ktm-motorcycle/200_MOTO/2016/RC/RC-200-WHITE-NON-ABS/248',
             ],
             [
-                'name' => 'RC 250 2016',
-                'year' => 2016,
+                'name'      => 'RC 250 2016',
+                'year'      => 2016,
                 'crawl_url' => 'https://www.bike-parts-ktm.com/ktm-motorcycle/250_MOTO/2016/RC/RC-250-WHITE-ABS/232',
             ],
             [
-                'name' => 'RC 390 2016',
-                'year' => 2016,
+                'name'      => 'RC 390 2016',
+                'year'      => 2016,
                 'crawl_url' => 'https://www.bike-parts-ktm.com/ktm-motorcycle/390_MOTO/2015/RC/RC-390-WHITE-ABS/210',
             ],
             [
-                'name' => 'RC 390 2018',
-                'year' => 2018,
+                'name'      => 'RC 390 2018',
+                'year'      => 2018,
                 'crawl_url' => 'https://www.bike-parts-ktm.com/ktm-motorcycle/390_MOTO/2016/RC/RC-390-WHITE-ABS/198',
             ],
             [
-                'name' => 'RC 390 2022',
-                'year' => 2022,
+                'name'      => 'RC 390 2022',
+                'year'      => 2022,
                 'crawl_url' => 'https://www.bike-parts-ktm.com/ktm-motorcycle/390_MOTO/2022/RC/RC-390-blue/4628',
             ],
         ];
@@ -104,7 +104,7 @@ class CategoryScrape extends Command
         $brand = Brand::where('slug', 'ktm')->first();
 
         foreach ($data as $item) {
-            $bikeModel = BikeModel::where('slug', Str::slug($item['name']))->first();
+            $bikeModel           = BikeModel::where('slug', Str::slug($item['name']))->first();
             $ktmCategoryObserver = new KTMCategoryScrape();
             Crawler::create()
                 ->setMaximumDepth(0)
@@ -114,16 +114,19 @@ class CategoryScrape extends Command
             $ktmCategoryCategories = $ktmCategoryObserver->getContent();
             if (is_array($ktmCategoryCategories)) {
                 foreach ($ktmCategoryCategories as $c) {
-                    $string = substr($c['name'], strpos($c['name'], 'for'), strlen($c['name']));
+                    $string    = substr($c['name'], strpos($c['name'], 'for'), strlen($c['name']));
                     $c['name'] = str_replace($string, '', $c['name']);
+                    $contents = file_get_contents($c['img']);
+                    $name = substr($c['img'], strrpos($c['img'], '/') + 1);
+                    Storage::put($name, $contents);
                     Category::updateOrCreate([
-                        'brand_id' => $brand->id,
+                        'brand_id'      => $brand->id,
                         'bike_model_id' => $bikeModel->id,
-                        'name' => $c['name'],
+                        'name'          => $c['name'],
                     ], [
-                        'brand_id' => $brand->id,
-                        'name' => $c['name'],
-                        'crawl_url' => 'https://www.bike-parts-ktm.com' . $c['url'],
+                        'brand_id'      => $brand->id,
+                        'name'          => $c['name'],
+                        'crawl_url'     => 'https://www.bike-parts-ktm.com' . $c['url'],
                         'bike_model_id' => $bikeModel->id,
                     ]);
                 }

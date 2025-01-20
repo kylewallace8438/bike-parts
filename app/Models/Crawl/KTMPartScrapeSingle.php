@@ -12,7 +12,7 @@ use Psr\Http\Message\UriInterface;
 use Spatie\Crawler\CrawlObservers\CrawlObserver;
 use Symfony\Component\DomCrawler\Crawler;
 
-class KTMPartScrape extends CrawlObserver
+class KTMPartScrapeSingle extends CrawlObserver
 {
     private $content;
     public function __construct()
@@ -61,14 +61,6 @@ class KTMPartScrape extends CrawlObserver
         $parts = $crawler->filter('div.card_parts_table')->first()->filter('div.card-body')->first();
         $partData = collect($parts->filter('div.d-flex.flex-row.flex-wrap')->each(
             function (Crawler $div, $i) {
-                // $data = [
-                //     'number' => $div->filter('span.ref-libelle')->first()->text(),
-                //     'name' => $div->filter('div.text-start.col-10.col-md-8.p-2')->first()->filter('div.row.align-items-center')->first()->filter('span.fw-600')->first()->text(),
-                //     'part' => $div->filter('div.text-start.col-10.col-md-8.p-2')->first()->filter('div.row.align-items-center')->first()->filter('.JS_ref_link')->first()->text(),
-                //     'price' => $div->filter('div.text-start.col-10.col-md-8.p-2')->first()->filter('div.buy-section-etape7')->filter('div.prix-etape7')->first()->filter('label[itemprop="offers"]')->first()->filter('span[itemprop="price"]')->text(),
-                // ];
-
-                // return $data;
                 $data = [];
                 try {
                     $data = [
