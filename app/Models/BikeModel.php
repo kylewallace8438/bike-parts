@@ -19,4 +19,9 @@ class BikeModel extends Model
             $model->slug = Str::slug($model->name);
         });
     }
+
+    public function categories()
+    {
+        return $this->belongsTo(Category::class, 'bike_model_id', 'id');
+    }
 }

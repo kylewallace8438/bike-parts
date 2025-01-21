@@ -7,14 +7,10 @@
                     <div class="main-menu_area position-relative">
                         <nav class="main-nav">
                             <ul>
-                                <li class="dropdown-holder active"><a href="index.html">Home</a>
-                                    <ul class="hm-dropdown">
-                                        <li><a href="index.html">Home One</a></li>
-                                        <li><a href="index-2.html">Home Two</a></li>
-                                        <li><a href="index-3.html">Home Three</a></li>
-                                    </ul>
-                                </li>
-                                <li class="megamenu-holder "><a href="shop-left-sidebar.html">Shop <i class="ion-ios-arrow-down"></i></a>
+                                <li class=""><a href="#">Trang chủ</a></li>
+                                <li class=""><a href="#">Phụ tùng</a></li>
+                                <li class=""><a href="#">Liên hệ</a></li>
+                                {{-- <li class="megamenu-holder "><a href="shop-left-sidebar.html">Shop <i class="ion-ios-arrow-down"></i></a>
                                     <ul class="hm-megamenu">
                                         <li><span class="megamenu-title">Shop Page Layout</span>
                                             <ul>
@@ -105,13 +101,13 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> --}}
                             </ul>
                         </nav>
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-4">
-                    <div class="ht-right_area">
+                    {{-- <div class="ht-right_area">
                         <div class="ht-menu">
                             <ul>
                                 <li><a href="javascript:void(0)">Currency<i class="fa fa-chevron-down"></i></a>
@@ -136,7 +132,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -148,7 +144,11 @@
                     <div class="main-menu_area position-relative">
                         <nav class="main-nav">
                             <ul>
-                                <li class="dropdown-holder active"><a href="index.html">Home</a>
+                                <li><a href="javascript:void(0)">Trang chủ</a></li>
+                                <li><a href="javascript:void(0)">Phụ tùng</a></li>
+                                <li><a href="javascript:void(0)">Liên hệ</a></li>
+
+                                {{-- <li class="dropdown-holder active"><a href="index.html">Home</a>
                                     <ul class="hm-dropdown">
                                         <li><a href="index.html">Home One</a></li>
                                         <li><a href="index-2.html">Home Two</a></li>
@@ -263,7 +263,7 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> --}}
                             </ul>
                         </nav>
                     </div>
@@ -271,19 +271,20 @@
                 <div class="col-sm-3 d-block d-lg-none">
                     <div class="header-logo_area header-sticky_logo">
                         <a href="index.html">
-                            <img src="assets/images/menu/logo/1.png" alt="Uren's Logo">
+                            <img src="{{ asset('assets/images/menu/logo/1.png') }}" alt="Uren's Logo">
                         </a>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-5 col-sm-9">
                     <div class="header-right_area">
-                        <ul>
+                        <ul style="justify-content: end">
                             <li class="mobile-menu_wrap d-flex d-lg-none">
                                 <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn color--white">
                                     <i class="ion-navicon"></i>
                                 </a>
                             </li>
-                            <li class="minicart-wrap">
+                            {{-- Cart pending --}}
+                            {{-- <li class="minicart-wrap">
                                 <a href="#miniCart" class="minicart-btn toolbar-btn">
                                     <div class="minicart-count_area">
                                         <span class="item-count">3</span>
@@ -294,9 +295,9 @@
                                         <span class="total-price">462.4</span>
                                     </div>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="contact-us_wrap">
-                                <a href="tel://+123123321345"><i class="ion-android-call"></i>+123 321 345</a>
+                                <a href="tel://+84946305096"><i class="ion-android-call"></i>(+84) 946 305 096</a>
                             </li>
                         </ul>
                     </div>
@@ -310,7 +311,7 @@
                 <div class="custom-logo_col col-12">
                     <div class="header-logo_area">
                         <a href="index.html">
-                            <img src="assets/images/menu/logo/1.png" alt="Uren's Logo">
+                            <img src="{{ asset('assets/images/menu/logo/1.png') }}" alt="Uren's Logo">
                         </a>
                     </div>
                 </div>
@@ -318,23 +319,24 @@
                     <div class="category-menu category-menu-hidden">
                         <div class="category-heading">
                             <h2 class="categories-toggle">
-                                <span>Shop By</span>
-                                <span>Department</span>
+                                <span>Danh mục hàng</span>
                             </h2>
                         </div>
                         <div id="cate-toggle" class="category-menu-list">
                             <ul>
-                                <li class="right-menu"><a href="shop-left-sidebar.html">Car Parts</a>
-                                    <ul class="cat-mega-menu">
-                                        <li class="right-menu cat-mega-title">
-                                            <a href="shop-left-sidebar.html">Active body control</a>
-                                            <ul>
-                                                <li><a href="shop-left-sidebar.html">Aluminum Nonstick</a></li>
-                                                <li><a href="shop-left-sidebar.html">Calphalon</a></li>
-                                                <li><a href="shop-left-sidebar.html">Contemporary</a></li>
-                                                <li><a href="shop-left-sidebar.html">Hard-Anodized</a></li>
-                                            </ul>
+                                <li class="right-menu"><a href="#">Theo hãng</a>
+                                    <ul class="cat-dropdown">
+                                        <li>
+                                            <a href="#">BMW</a>
+                                            <a href="#">HONDA</a>
+                                            <a href="#">KAWASAKI</a>
+                                            <a href="#">KTM/HUSQVARNA</a>
+                                            <a href="#">YAMAHA</a>
+                                            <a href="#">TRIUMP</a>
+                                            <a href="#">HARLEY DAVIDSON</a>
                                         </li>
+                                    </ul>
+                                    {{-- <ul class="cat-mega-menu">
                                         <li class="right-menu cat-mega-title">
                                             <a href="shop-left-sidebar.html">Battery Indicator</a>
                                             <ul>
@@ -353,134 +355,58 @@
                                                 <li><a href="shop-left-sidebar.html">Heat Shield</a></li>
                                             </ul>
                                         </li>
-                                    </ul>
+                                    </ul> --}}
                                 </li>
-                                <li class="right-menu"><a href="shop-left-sidebar.html">Tools &amp; Accessories</a>
+                                <li class="right-menu"><a href="#">Đồ bảo hộ</a>
                                     <ul class="cat-mega-menu cat-mega-menu-2">
                                         <li class="right-menu cat-mega-title">
-                                            <a href="shop-left-sidebar.html">Drills</a>
+                                            <a href="#">Áo & Quần</a>
                                             <ul>
-                                                <li><a href="shop-left-sidebar.html">Angle Drills</a></li>
-                                                <li><a href="shop-left-sidebar.html">Combi Drills</a></li>
-                                                <li><a href="shop-left-sidebar.html">Drill Drivers</a></li>
-                                                <li><a href="shop-left-sidebar.html">PercussionDrills</a></li>
+                                                <li><a href="#">Chạy phố</a></li>
+                                                <li><a href="#">Chạy rừng</a></li>
                                             </ul>
                                         </li>
                                         <li class="right-menu cat-mega-title">
-                                            <a href="shop-left-sidebar.html">Nail Guns</a>
+                                            <a href="#">Giày & Găng tay</a>
                                             <ul>
-                                                <li><a href="shop-left-sidebar.html">Air Nail Guns</a></li>
-                                                <li><a href="shop-left-sidebar.html">Cordless Nail Guns</a></li>
-                                                <li><a href="shop-left-sidebar.html">Electric Nail Guns</a></li>
-                                                <li><a href="shop-left-sidebar.html">Gas Nail Guns</a></li>
+                                                <li><a href="#">Chạy phố</a></li>
+                                                <li><a href="#">Chạy rừng</a></li>
                                             </ul>
                                         </li>
                                         <li class="right-menu cat-mega-title">
-                                            <a href="shop-left-sidebar.html">Sanders</a>
+                                            <a href="#">Mũ bảo hiểm</a>
                                             <ul>
-                                                <li><a href="shop-left-sidebar.html">1/2 Sheet Sanders</a></li>
-                                                <li><a href="shop-left-sidebar.html">1/4 Sheet Sanders</a></li>
-                                                <li><a href="shop-left-sidebar.html">Belt Sanders</a></li>
-                                                <li><a href="shop-left-sidebar.html">Drywall Sanders</a></li>
+                                                <li><a href="#">Full-face</a></li>
+                                                <li><a href="#">3/4</a></li>
+                                                <li><a href="#">Cross</a></li>
+                                                <li><a href="#">ADV</a></li>
                                             </ul>
                                         </li>
                                         <li class="right-menu cat-mega-title">
-                                            <a href="shop-left-sidebar.html">Saws</a>
+                                            <a href="#">Khác</a>
                                             <ul>
-                                                <li><a href="shop-left-sidebar.html">Circular Saws</a></li>
-                                                <li><a href="shop-left-sidebar.html">Jigsaws</a></li>
-                                                <li><a href="shop-left-sidebar.html">Mitre Saws</a></li>
-                                                <li><a href="shop-left-sidebar.html">Reciprocating Saws</a></li>
+                                                <li><a href="#">Giáp ngực</a></li>
+                                                <li><a href="#">Giáp lưng</a></li>
+                                                <li><a href="#">Giáp gối</a></li>
+                                                <li><a href="#">Giáp tay</a></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="right-menu"><a href="shop-left-sidebar.html">Suspension Systems</a>
+                                <li class="right-menu"><a href="#">Phụ kiện thêm</a>
                                     <ul class="cat-mega-menu cat-mega-menu-3">
                                         <li class="right-menu cat-mega-title">
-                                            <a href="shop-left-sidebar.html">Clothing</a>
+                                            <a href="#">Phụ kiện</a>
                                             <ul>
-                                                <li><a href="shop-left-sidebar.html">Cuisinart</a></li>
-                                                <li><a href="shop-left-sidebar.html">Homeinart</a></li>
-                                                <li><a href="shop-left-sidebar.html">Kettle Stainless</a></li>
-                                                <li><a href="shop-left-sidebar.html">Steel Stovetop</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="right-menu cat-mega-title">
-                                            <a href="shop-left-sidebar.html">Jewelry</a>
-                                            <ul>
-                                                <li><a href="shop-left-sidebar.html">Hard Anodized</a></li>
-                                                <li><a href="shop-left-sidebar.html">Scratch Resistant</a></li>
-                                                <li><a href="shop-left-sidebar.html">Thermo-Spot</a></li>
-                                                <li><a href="shop-left-sidebar.html">Ultimate</a></li>
+                                                <li><a href="#">Giá đỡ điện thoại</a></li>
+                                                <li><a href="#">Thùng</a></li>
+                                                <li><a href="#">Sạc</a></li>
+                                                <li><a href="#">Cảm biến</a></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="right-menu"><a href="shop-left-sidebar.html">Turbo System</a>
-                                    <ul class="cat-mega-menu">
-                                        <li class="right-menu cat-mega-title">
-                                            <a href="shop-left-sidebar.html">BMW</a>
-                                            <ul>
-                                                <li><a href="shop-left-sidebar.html">Dining Chairs</a></li>
-                                                <li><a href="shop-left-sidebar.html">Dining Tables</a></li>
-                                                <li><a href="shop-left-sidebar.html">Gramophone</a></li>
-                                                <li><a href="shop-left-sidebar.html">Sideboards</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="right-menu cat-mega-title">
-                                            <a href="shop-left-sidebar.html">FORD</a>
-                                            <ul>
-                                                <li><a href="shop-left-sidebar.html">Chairs & Sofas</a></li>
-                                                <li><a href="shop-left-sidebar.html">Chest</a></li>
-                                                <li><a href="shop-left-sidebar.html">Loungers</a></li>
-                                                <li><a href="shop-left-sidebar.html">Sets</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="right-menu cat-mega-title">
-                                            <a href="shop-left-sidebar.html">POSCHER</a>
-                                            <ul>
-                                                <li><a href="shop-left-sidebar.html">Bed</a></li>
-                                                <li><a href="shop-left-sidebar.html">Daybed</a></li>
-                                                <li><a href="shop-left-sidebar.html">Futon</a></li>
-                                                <li><a href="shop-left-sidebar.html">Hammock</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="right-menu"><a href="shop-left-sidebar.html">Oils & Fluids</a>
-                                    <ul class="cat-dropdown">
-                                        <li>
-                                            <a href="shop-left-sidebar.html">Daylesford</a>
-                                            <a href="shop-left-sidebar.html">Delaware</a>
-                                            <a href="shop-left-sidebar.html">Fayence</a>
-                                            <a href="shop-left-sidebar.html">Franzea</a>
-                                            <a href="shop-left-sidebar.html">Mable</a>
-                                            <a href="shop-left-sidebar.html">Mobo</a>
-                                            <a href="shop-left-sidebar.html">Pippins</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="right-menu"><a href="shop-left-sidebar.html">Exterior</a>
-                                    <ul class="cat-dropdown cat-dropdown-2">
-                                        <li>
-                                            <a href="shop-left-sidebar.html">Coffee & side tables</a>
-                                            <a href="shop-left-sidebar.html">Living room lighting</a>
-                                            <a href="shop-left-sidebar.html">Living room storage</a>
-                                            <a href="shop-left-sidebar.html">Living room textiles & rugs</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="shop-left-sidebar.html">Body Parts</a></li>
-                                <li><a href="shop-left-sidebar.html">Interior</a></li>
-                                <li><a href="shop-left-sidebar.html">Audio</a></li>
-                                <li><a href="shop-left-sidebar.html">End Tables</a></li>
-                                <li class="rx-child"><a href="shop-left-sidebar.html">Uncategorized</a></li>
-                                <li class="rx-child"><a href="shop-left-sidebar.html">Appliances</a></li>
-                                <li class="rx-parent">
-                                    <a class="rx-default">More Categories</a>
-                                    <a class="rx-show">Collapse</a>
-                                </li>
+                                <li><a href="#">Ống xả</a></li>
                             </ul>
                         </div>
                     </div>
@@ -488,7 +414,7 @@
                 <div class="custom-search_col col-12">
                     <div class="hm-form_area">
                         <form action="#" class="hm-searchbox">
-                            <select class="nice-select select-search-category">
+                            {{-- <select class="nice-select select-search-category">
                                 <option value="0">All Categories</option>
                                 <option value="10">Laptops</option>
                                 <option value="17">Prime Video</option>
@@ -559,22 +485,22 @@
                                 <option value="14">headphone</option>
                                 <option value="15">Smartwatch</option>
                                 <option value="16">Accessories</option>
-                            </select>
-                            <input type="text" placeholder="Enter your search key ...">
+                            </select> --}}
+                            <input type="text" placeholder="Nhập từ khoá cần tìm ...">
                             <button class="header-search_btn" type="submit"><i
-                                class="ion-ios-search-strong"><span>Search</span></i></button>
+                                class="ion-ios-search-strong"><span>Tìm kiếm</span></i></button>
                         </form>
                     </div>
                 </div>
                 <div class="custom-cart_col col-12">
                     <div class="header-right_area">
-                        <ul>
+                        <ul style="justify-content: end">
                             <li class="mobile-menu_wrap d-flex d-lg-none">
                                 <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn color--white">
                                     <i class="ion-navicon"></i>
                                 </a>
                             </li>
-                            <li class="minicart-wrap">
+                            {{-- <li class="minicart-wrap">
                                 <a href="#miniCart" class="minicart-btn toolbar-btn">
                                     <div class="minicart-count_area">
                                         <span class="item-count">3</span>
@@ -585,9 +511,9 @@
                                         <span class="total-price">462.4</span>
                                     </div>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="contact-us_wrap">
-                                <a href="tel://+123123321345"><i class="ion-android-call"></i>+123 321 345</a>
+                                <a href="tel://+84946305096"><i class="ion-android-call"></i>(+84) 946 305 096</a>
                             </li>
                         </ul>
                     </div>
@@ -682,7 +608,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="menu-item-has-children">
+                        {{-- <li class="menu-item-has-children">
                             <a href="shop-left-sidebar.html">
                                 <span class="mm-text">Shop</span>
                             </a>
@@ -811,8 +737,8 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="menu-item-has-children">
+                        </li> --}}
+                        {{-- <li class="menu-item-has-children">
                             <a href="blog-left-sidebar.html">
                                 <span class="mm-text">Blog</span>
                             </a>
@@ -906,8 +832,8 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="menu-item-has-children">
+                        </li> --}}
+                        {{-- <li class="menu-item-has-children">
                             <a href="index.html">
                                 <span class="mm-text">Pages</span>
                             </a>
@@ -953,7 +879,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                     </ul>
                 </nav>
                 <nav class="offcanvas-navigation user-setting_area">
@@ -974,7 +900,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="menu-item-has-children"><a href="javascript:void(0)"><span
+                        {{-- <li class="menu-item-has-children"><a href="javascript:void(0)"><span
                                 class="mm-text">Currency</span></a>
                             <ul class="sub-menu">
                                 <li>
@@ -988,8 +914,8 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="menu-item-has-children"><a href="javascript:void(0)"><span
+                        </li> --}}
+                        {{-- <li class="menu-item-has-children"><a href="javascript:void(0)"><span
                                 class="mm-text">Language</span></a>
                             <ul class="sub-menu">
                                 <li>
@@ -1013,7 +939,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                     </ul>
                 </nav>
             </div>

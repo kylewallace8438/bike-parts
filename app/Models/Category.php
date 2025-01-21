@@ -20,4 +20,9 @@ class Category extends Model
         });
     }
 
+    public function bike()
+    {
+        return $this->hasOne(BikeModel::class, 'id', 'bike_model_id');
+    }
+
 }

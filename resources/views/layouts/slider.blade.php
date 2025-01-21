@@ -6,11 +6,11 @@
                     <!-- Begin Single Slide Area -->
                     <div class="single-slide animation-style-01 bg-1">
                         <div class="slider-content">
-                            <span>New thinking new possibilities</span>
-                            <h3>Car interior</h3>
-                            <h4>Starting at <span>$99.00</span></h4>
+                            <span>Trải dài các phân khúc</span>
+                            <h3>Phụ tùng KTM </h3>
+                            {{-- <h4>Starting at <span>$99.00</span></h4> --}}
                             <div class="uren-btn-ps_left slide-btn">
-                                <a class="uren-btn" href="shop-left-sidebar.html">Read More</a>
+                                <a class="uren-btn" href="shop-left-sidebar.html">Tìm hiểu</a>
                             </div>
                         </div>
                     </div>
@@ -18,11 +18,11 @@
                     <!-- Begin Single Slide Area -->
                     <div class="single-slide animation-style-02 bg-2">
                         <div class="slider-content slider-content-2">
-                            <span class="primary-text_color">Car, Truck, CUV &amp; SUV Tires</span>
-                            <h3>Wheels &amp; Tires</h3>
-                            <h4>Sale up to 20% off</h4>
+                            <span>Dịch vụ cứu hộ và sửa chữa</span>
+                            <h3>Các ngày trong tuần</h3>
+                            {{-- <h4>Sale up to 20% off</h4> --}}
                             <div class="uren-btn-ps_left slide-btn">
-                                <a class="uren-btn" href="shop-left-sidebar.html">Read More</a>
+                                <a class="uren-btn" href="shop-left-sidebar.html">Tìm hiểu</a>
                             </div>
                         </div>
                     </div>

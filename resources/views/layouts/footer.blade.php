@@ -34,7 +34,7 @@
                     <div class="footer-widgets_info">
                         <div class="footer-widgets_logo">
                             <a href="#">
-                                <img src="assets/images/menu/logo/1.png" alt="Uren's Footer Logo">
+                                <img src="{{ asset('assets/images/menu/logo/1.png') }}" alt="Uren's Footer Logo">
                             </a>
                         </div>
                         <div class="widget-short_desc">
