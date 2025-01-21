@@ -62,7 +62,6 @@ class KTMCategoryScrape extends CrawlObserver
                 $data = [
                     'name' => $div->filter('.fw-bold')->text(),
                     'url' => $div->filter('a')->first()->attr('href'),
-                    'img' => $div->filter('img#img_microfiche_img')->first()->attr('src')
                 ];
                 return $data;
             }

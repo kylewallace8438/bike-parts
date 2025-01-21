@@ -116,9 +116,6 @@ class CategoryScrape extends Command
                 foreach ($ktmCategoryCategories as $c) {
                     $string    = substr($c['name'], strpos($c['name'], 'for'), strlen($c['name']));
                     $c['name'] = str_replace($string, '', $c['name']);
-                    $contents = file_get_contents($c['img']);
-                    $name = substr($c['img'], strrpos($c['img'], '/') + 1);
-                    Storage::put($name, $contents);
                     Category::updateOrCreate([
                         'brand_id'      => $brand->id,
                         'bike_model_id' => $bikeModel->id,

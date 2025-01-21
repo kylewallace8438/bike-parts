@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class Category extends Model
 {
     public $fillable = [
-        'name', 'slug', 'brand_id', 'image_url', 'crawl_url', 'bike_model_id'
+        'name', 'slug', 'brand_id', 'image_url', 'crawl_url', 'bike_model_id', 'translate'
     ];
 
     protected static function boot()

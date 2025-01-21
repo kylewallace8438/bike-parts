@@ -30,7 +30,7 @@ class PartScrape extends Command
     public function handle()
     {
         $ktm_brand = Brand::where('slug', 'ktm')->first();
-        Category::where('brand_id', $ktm_brand->id)->where('id', '>', 80)
+        Category::where('brand_id', $ktm_brand->id)
             ->chunk(5, function ($categories) {
                 foreach ($categories as $category) {
                     $ktmPartScrape = new KTMPartScrape();

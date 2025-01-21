@@ -58,26 +58,10 @@ class KTMPartScrapeSingle extends CrawlObserver
         ?string $linkText = null,
     ): void {
         $crawler = new Crawler((string) $response->getBody());
-        $parts = $crawler->filter('div.card_parts_table')->first()->filter('div.card-body')->first();
-        $partData = collect($parts->filter('div.d-flex.flex-row.flex-wrap')->each(
-            function (Crawler $div, $i) {
-                $data = [];
-                try {
-                    $data = [
-                        'number' => $div->filter('span.ref-libelle')->first()->text(),
-                        'name' => $div->filter('div.text-start.col-10.col-md-8.p-2')->first()->filter('div.row.align-items-center')->first()->filter('span.fw-600')->first()->text(),
-                        'part' => $div->filter('div.text-start.col-10.col-md-8.p-2')->first()->filter('div.row.align-items-center')->first()->filter('a')->first()->text(),
-                        'price' => $div->filter('div.text-start.col-10.col-md-8.p-2')->first()->filter('div.buy-section-etape7')->filter('div.prix-etape7')->first()->filter('label.fw-bold')->first()->filter('span.text-nowrap')->text(),
-                    ];
-
-                } catch (Exception $e) {
-                    Log::error($e);
-                } finally {
-                    return $data;
-                }
-            }
-        ))->filter()->values();
-        $this->setContent($partData->toArray());
+        $image = $crawler->filter('#img_microfiche_img')->first()->attr('src');
+        $this->setContent([
+            'image' => $image
+        ]);
     }
 
     /**
