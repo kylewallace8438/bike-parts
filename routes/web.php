@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 // Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('search/ktm', [App\Http\Controllers\SearchController::class, 'searchKTM'])->name('search.ktm');
-Route::get('search/ktm/{category_id}', [App\Http\Controllers\SearchController::class, 'searchKTMCategory'])->name('search.ktm.category');
-Route::post('search/ktm', [App\Http\Controllers\SearchController::class, 'handleSearchKTM'] )->name('search.handle.ktm');
+Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->where('any', '^(?!backend|js|api|app|tool).*$');
+// Route::get('search/ktm', [App\Http\Controllers\SearchController::class, 'searchKTM'])->name('search.ktm');
+// Route::get('search/ktm/{category_id}', [App\Http\Controllers\SearchController::class, 'searchKTMCategory'])->name('search.ktm.category');
+// Route::post('search/ktm', [App\Http\Controllers\SearchController::class, 'handleSearchKTM'] )->name('search.handle.ktm');

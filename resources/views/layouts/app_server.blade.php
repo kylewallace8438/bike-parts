@@ -43,11 +43,36 @@
     <!-- Main Style CSS (Please use minify version for better website load performance) -->
     <link rel="stylesheet" href="{{ asset('assets/css/style_new.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('app/index.css') }}"> --}}
 </head>
 
 <body class="template-color-1">
-    <div id="app" class="main-wrapper"></div>
+    <div class="main-wrapper">
+        <!-- Begin Uren's Newsletter Popup Area -->
+        {{-- <div class="popup_wrapper">
+            <div class="test">
+                <span class="popup_off"><i class="ion-android-close"></i></span>
+                <div class="subscribe_area">
+                    <h2>Sign Up Newsletter</h2>
+                    <p>Subscribe to the our store mailing list to receive updates on new arrivals, special offers and other discount information.</p>
+                    <div class="subscribe-form-group">
+                        <form class="subscribe-form" action="#">
+                            <input autocomplete="off" type="text" name="message" id="message" placeholder="Enter your email address">
+                            <button type="submit">subscribe</button>
+                        </form>
+                    </div>
+                    <div class="subscribe-bottom">
+                        <input type="checkbox" id="newsletter-permission">
+                        <label for="newsletter-permission">Don't show this popup again</label>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+        <!-- Uren's Newsletter Popup Area Here -->
+        @include('layouts.header')
+        @yield('content')
+        @include('layouts.footer')
+    </div>
+
     <!-- JS
 ============================================ -->
 
@@ -89,7 +114,6 @@
 <script src="assets/js/vendor/vendor.min.js"></script>
 <script src="assets/js/plugins/plugins.min.js"></script>
 -->
-    <script src="{{ asset('app/app.js') }}"></script>
 
     <!-- Main JS -->
     <script src="{{ asset('assets/js/main.js') }}"></script>

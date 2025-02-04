@@ -1,5 +1,5 @@
  <!-- Begin Uren's Header Main Area -->
- <header class="header-main_area bg--sapphire">
+<header class="header-main_area bg--sapphire">
     <div class="header-top_area d-lg-block d-none">
         <div class="container-fluid">
             <div class="row">
