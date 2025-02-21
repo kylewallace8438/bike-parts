@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class CrawlCategoryBrand extends Model
 {
     public $fillable = [
-        'url', 'name', 'brand_id'
+        'url', 'name', 'brand_id',
     ];
 }

@@ -1,11 +1,17 @@
 <?php
+
 readonly class BikePartDto
 {
     public readonly string $category_id;
+
     public readonly string $number;
+
     public readonly string $name;
+
     public readonly string $part;
+
     public readonly float $reference_price;
+
     public readonly string $translate;
 
     public function __construct(

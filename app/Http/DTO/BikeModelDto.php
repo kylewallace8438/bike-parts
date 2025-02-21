@@ -3,12 +3,19 @@
 readonly class BikeModelDto
 {
     public readonly string $name;
+
     public readonly string $brand;
+
     public readonly string $type;
+
     public readonly string $color;
+
     public readonly string $size;
+
     public readonly float $price;
+
     public readonly string $description;
+
     public readonly string $image;
 
     public function __construct(

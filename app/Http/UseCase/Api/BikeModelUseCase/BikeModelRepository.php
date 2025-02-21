@@ -22,6 +22,7 @@ class BikeModelRepository implements BikeModelRepositoryInterface
     public function updateBikeModel(int $id, array $bikeModel): array
     {
         BikeModel::find($id)->update($bikeModel);
+
         return BikeModel::find($id)->toArray();
     }
 
@@ -29,6 +30,7 @@ class BikeModelRepository implements BikeModelRepositoryInterface
     {
         $bikeModel = BikeModel::find($id)->toArray();
         BikeModel::destroy($id);
+
         return $bikeModel;
     }
 }

@@ -1,10 +1,10 @@
 <?php
+
 namespace App\Console\Commands\KTM;
 
 use App\Models\BikePart;
 use App\Models\Brand;
 use App\Models\Category;
-use App\Models\Crawl\KTMPartScrape;
 use App\Models\Crawl\KTMPartScrapeSingle;
 use Illuminate\Console\Command;
 use Spatie\Crawler\Crawler;
@@ -30,9 +30,9 @@ class PartScrapeSingle extends Command
      */
     public function handle()
     {
-        $ktm_brand     = Brand::where('slug', 'ktm')->first();
-        $category      = Category::where('brand_id', $ktm_brand->id)->where('id', 83)->first();
-        $ktmPartScrape = new KTMPartScrapeSingle();
+        $ktm_brand = Brand::where('slug', 'ktm')->first();
+        $category = Category::where('brand_id', $ktm_brand->id)->where('id', 83)->first();
+        $ktmPartScrape = new KTMPartScrapeSingle;
         Crawler::create()
             ->setMaximumDepth(0)
             ->setTotalCrawlLimit(1)
@@ -43,12 +43,12 @@ class PartScrapeSingle extends Command
             foreach ($ktm390PartCategories as $c) {
                 BikePart::updateOrCreate([
                     'category_id' => $category->id,
-                    'part'        => $c['part'],
+                    'part' => $c['part'],
                 ], [
-                    'category_id'     => $category->id,
-                    'number'          => $c['number'],
-                    'name'            => $c['name'],
-                    'part'            => $c['part'],
+                    'category_id' => $category->id,
+                    'number' => $c['number'],
+                    'name' => $c['name'],
+                    'part' => $c['part'],
                     'reference_price' => $c['price'],
                 ]);
             }

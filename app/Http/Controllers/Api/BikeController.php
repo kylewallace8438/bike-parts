@@ -14,11 +14,12 @@ class BikeController extends Controller
         $category = Category::where('id', $category_id)->first();
         $bike_model = $category->bike()->first();
         $bike_parts = BikePart::where('category_id', $category_id)->get();
+
         return response()->json([
             'bike_parts' => $bike_parts,
             'category_name' => $category->translate,
             'category_image' => $category ? $category->image_url : '',
-            'bike_model' => $bike_model->name
+            'bike_model' => $bike_model->name,
         ]);
     }
 }

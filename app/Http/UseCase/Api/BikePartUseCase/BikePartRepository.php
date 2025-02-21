@@ -22,6 +22,7 @@ class BikePartRepository implements BikePartRepositoryInterface
     public function updateBikePart(int $id, array $bikePart): array
     {
         BikePart::find($id)->update($bikePart);
+
         return BikePart::find($id)->toArray();
     }
 
@@ -29,6 +30,7 @@ class BikePartRepository implements BikePartRepositoryInterface
     {
         $bikePart = BikePart::find($id)->toArray();
         BikePart::destroy($id);
+
         return $bikePart;
     }
 }

@@ -33,8 +33,8 @@ class TestPartScrape extends Command
         $ktm_brand = Brand::where('slug', 'ktm')->first();
         $categories = Category::where('brand_id', $ktm_brand->id)->where('id', 3)->get();
         foreach ($categories as $category) {
-            $ktmPartScrape = new KTMPartScrape();
-            $this->info('category_id: ' . $category->id);
+            $ktmPartScrape = new KTMPartScrape;
+            $this->info('category_id: '.$category->id);
             Crawler::create()
                 ->setMaximumDepth(0)
                 ->setTotalCrawlLimit(1)
