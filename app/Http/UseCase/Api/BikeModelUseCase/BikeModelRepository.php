@@ -12,7 +12,11 @@ class BikeModelRepository implements BikeModelRepositoryInterface
 
     public function getBikeModelById(int $id): array
     {
-        return BikeModel::find($id)->toArray();
+        $model = BikeModel::find($id);
+        if (!$model) {
+            throw new \Exception("Bike model not found");
+        }
+        return $model->toArray();
     }
 
     public function createBikeModel(array $bikeModel): array
