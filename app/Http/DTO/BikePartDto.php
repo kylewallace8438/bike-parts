@@ -1,8 +1,9 @@
 <?php
+namespace App\Http\DTO;
 
 readonly class BikePartDto
 {
-    public readonly string $category_id;
+    public readonly int $category_id;
 
     public readonly string $number;
 

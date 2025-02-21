@@ -1,4 +1,5 @@
 <?php
+namespace App\Http\UseCase\Api\BikeModelUseCase;
 
 interface BikeModelRepositoryInterface
 {

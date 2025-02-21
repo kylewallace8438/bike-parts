@@ -1,4 +1,5 @@
 <?php
+namespace App\Http\DTO;
 
 readonly class BikeModelDto
 {

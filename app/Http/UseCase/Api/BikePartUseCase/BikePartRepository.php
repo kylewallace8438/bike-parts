@@ -1,6 +1,10 @@
 <?php
+namespace App\Http\UseCase\Api\BikeModelUseCase;
 
+use App\Http\UseCase\Api\BikePartUseCase\BikePartRepositoryInterface;
 use App\Models\BikePart;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\DB;
 
 class BikePartRepository implements BikePartRepositoryInterface
 {
@@ -11,7 +15,11 @@ class BikePartRepository implements BikePartRepositoryInterface
 
     public function getBikePartById(int $id): array
     {
-        return BikePart::find($id)->toArray();
+        $bikePart = BikePart::find($id);
+        if (!$bikePart) {
+            throw new ModelNotFoundException("Bike part with ID {$id} not found");
+        }
+        return $bikePart->toArray();
     }
 
     public function createBikePart(array $bikePart): array
@@ -21,15 +29,25 @@ class BikePartRepository implements BikePartRepositoryInterface
 
     public function updateBikePart(int $id, array $bikePart): array
     {
-        BikePart::find($id)->update($bikePart);
-
-        return BikePart::find($id)->toArray();
+        $model = BikePart::find($id);
+        if (!$model) {
+            throw new ModelNotFoundException("Bike part with ID {$id} not found");
+        }
+        $model->update($bikePart);
+        return $model->fresh()->toArray();
     }
 
     public function deleteBikePart(int $id): array
     {
-        $bikePart = BikePart::find($id)->toArray();
-        BikePart::destroy($id);
+        return DB::transaction(function () use ($id) {
+            $bikePart = BikePart::find($id);
+            if (!$bikePart) {
+                throw new ModelNotFoundException("Bike part with ID {$id} not found");
+            }
+            $data = $bikePart->toArray();
+            $bikePart->delete();
+            return $data;
+        });
 
         return $bikePart;
     }
