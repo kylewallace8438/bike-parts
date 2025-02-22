@@ -1,9 +1,8 @@
 <?php
-namespace App\Http\UseCase\Api\BikeModelUseCase;
 
 use App\Models\BikeModel;
 
-class BikeModelRepository implements BikeModelRepositoryInterface
+class BikeModelQuery implements BikeModelQueryInterface
 {
     public function getBikeModels(): array
     {
@@ -13,9 +12,10 @@ class BikeModelRepository implements BikeModelRepositoryInterface
     public function getBikeModelById(int $id): array
     {
         $model = BikeModel::find($id);
-        if (!$model) {
-            throw new \Exception("Bike model not found");
+        if (! $model) {
+            throw new \Exception('Bike model not found');
         }
+
         return $model->toArray();
     }
 

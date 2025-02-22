@@ -1,7 +1,8 @@
 <?php
-namespace App\Http\UseCase\Api\BikeModelUseCase;
 
-interface BikeModelRepositoryInterface
+namespace App\Repositories\DTOs;
+
+interface BikeModelDtoRepositoryInterface
 {
     public function getBikeModels(): array;
 
