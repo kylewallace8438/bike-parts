@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class BikeModel extends Model
 {
     public $fillable = [
-        'name', 'slug', 'year', 'brand_id', 'description', 'image_url'
+        'name', 'slug', 'year', 'brand_id', 'description', 'image_url',
     ];
 
     protected static function boot()

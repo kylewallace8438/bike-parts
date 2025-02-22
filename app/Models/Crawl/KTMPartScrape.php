@@ -3,8 +3,6 @@
 namespace App\Models\Crawl;
 
 use Exception;
-use Illuminate\Database\Eloquent\Model;
-
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Log;
 use Psr\Http\Message\ResponseInterface;
@@ -15,6 +13,7 @@ use Symfony\Component\DomCrawler\Crawler;
 class KTMPartScrape extends CrawlObserver
 {
     private $content;
+
     public function __construct()
     {
         $this->content = null;
@@ -32,10 +31,6 @@ class KTMPartScrape extends CrawlObserver
 
     /**
      * Undocumented function
-     *
-     * @param UriInterface $url
-     * @param string|null $linkText
-     * @return void
      */
     public function willCrawl(UriInterface $url, ?string $linkText): void
     {
@@ -44,12 +39,6 @@ class KTMPartScrape extends CrawlObserver
 
     /**
      * Undocumented function
-     *
-     * @param UriInterface $url
-     * @param ResponseInterface $response
-     * @param UriInterface|null $foundOnUrl
-     * @param string|null $linkText
-     * @return void
      */
     public function crawled(
         UriInterface $url,
@@ -90,12 +79,6 @@ class KTMPartScrape extends CrawlObserver
 
     /**
      * Undocumented function
-     *
-     * @param UriInterface $url
-     * @param RequestException $requestException
-     * @param UriInterface|null $foundOnUrl
-     * @param string|null $linkText
-     * @return void
      */
     public function crawlFailed(
         UriInterface $url,
@@ -108,11 +91,9 @@ class KTMPartScrape extends CrawlObserver
 
     /**
      * Undocumented function
-     *
-     * @return void
      */
     public function finishedCrawling(): void
     {
-        Log::info("Finished crawling");
+        Log::info('Finished crawling');
     }
 }

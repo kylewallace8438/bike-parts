@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\BikeModel;
 use App\Models\Brand;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class KTMBikeSeed extends Seeder
@@ -70,11 +69,11 @@ class KTMBikeSeed extends Seeder
             ],
         ];
         foreach ($models as $model) {
-            $bikeModel = new BikeModel();
+            $bikeModel = new BikeModel;
             $bikeModel->fill([
                 'name' => $model['name'],
                 'year' => $model['year'],
-                'brand_id' => $brand->id
+                'brand_id' => $brand->id,
             ]);
             $bikeModel->save();
         }

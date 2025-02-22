@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Brand;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class BrandSeed extends Seeder
@@ -17,7 +16,7 @@ class BrandSeed extends Seeder
             ['name' => 'KTM'],
         ];
         foreach ($brands as $brand) {
-            $brand = new Brand();
+            $brand = new Brand;
             $brand->fill(['name' => 'KTM'])->save();
         }
     }

@@ -4,7 +4,6 @@ namespace App\Console\Commands\KTM;
 
 use App\Models\Brand;
 use App\Models\Category;
-use App\Models\Crawl\KTMPartScrape;
 use App\Models\Crawl\KTMPartScrapeSingle;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
@@ -35,7 +34,7 @@ class GetCategoryImage extends Command
         Category::where('brand_id', $ktm_brand->id)
             ->chunkById(5, function ($categories) {
                 foreach ($categories as $category) {
-                    $ktmPartScrape = new KTMPartScrapeSingle();
+                    $ktmPartScrape = new KTMPartScrapeSingle;
                     Crawler::create()
                         ->setMaximumDepth(0)
                         ->setTotalCrawlLimit(1)
@@ -44,10 +43,10 @@ class GetCategoryImage extends Command
                     $content = $ktmPartScrape->getContent();
                     $contents = file_get_contents($content['image']);
                     $name = substr($content['image'], strrpos($content['image'], '/') + 1);
-                    Storage::disk('public')->put($name , $contents);
+                    Storage::disk('public')->put($name, $contents);
                     $category->image_url = $name;
                     $category->save();
                 }
-        });
+            });
     }
 }

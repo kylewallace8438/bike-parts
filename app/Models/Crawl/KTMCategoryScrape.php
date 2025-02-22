@@ -3,7 +3,6 @@
 namespace App\Models\Crawl;
 
 use GuzzleHttp\Exception\RequestException;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
@@ -13,12 +12,13 @@ use Symfony\Component\DomCrawler\Crawler;
 class KTMCategoryScrape extends CrawlObserver
 {
     private $content;
+
     public function __construct()
     {
         $this->content = null;
     }
 
-    public function getContent(): array|null
+    public function getContent(): ?array
     {
         return $this->content;
     }
@@ -30,10 +30,6 @@ class KTMCategoryScrape extends CrawlObserver
 
     /**
      * Undocumented function
-     *
-     * @param UriInterface $url
-     * @param string|null $linkText
-     * @return void
      */
     public function willCrawl(UriInterface $url, ?string $linkText): void
     {
@@ -42,12 +38,6 @@ class KTMCategoryScrape extends CrawlObserver
 
     /**
      * Undocumented function
-     *
-     * @param UriInterface $url
-     * @param ResponseInterface $response
-     * @param UriInterface|null $foundOnUrl
-     * @param string|null $linkText
-     * @return void
      */
     public function crawled(
         UriInterface $url,
@@ -63,6 +53,7 @@ class KTMCategoryScrape extends CrawlObserver
                     'name' => $div->filter('.fw-bold')->text(),
                     'url' => $div->filter('a')->first()->attr('href'),
                 ];
+
                 return $data;
             }
         ))->filter()->values();
@@ -71,12 +62,6 @@ class KTMCategoryScrape extends CrawlObserver
 
     /**
      * Undocumented function
-     *
-     * @param UriInterface $url
-     * @param RequestException $requestException
-     * @param UriInterface|null $foundOnUrl
-     * @param string|null $linkText
-     * @return void
      */
     public function crawlFailed(
         UriInterface $url,
@@ -89,11 +74,9 @@ class KTMCategoryScrape extends CrawlObserver
 
     /**
      * Undocumented function
-     *
-     * @return void
      */
     public function finishedCrawling(): void
     {
-        Log::info("Finished crawling");
+        Log::info('Finished crawling');
     }
 }

@@ -9,7 +9,9 @@ RUN apt update && apt install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
-    gnupg
+    gnupg \
+    zip \
+    unzip
 RUN apt clean && rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 RUN curl -sL https://deb.nodesource.com/setup_20.x  | bash -
