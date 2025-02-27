@@ -26,9 +26,9 @@ class BikeModelQuery implements BikeModelQueryInterface
 
     public function updateBikeModel(int $id, array $bikeModel): array
     {
-        BikeModel::find($id)->update($bikeModel);
-
-        return BikeModel::find($id)->toArray();
+        $model = BikeModel::findOrFail($id);
+        $model->update($bikeModel);
+        return $model->toArray();
     }
 
     public function deleteBikeModel(int $id): array
