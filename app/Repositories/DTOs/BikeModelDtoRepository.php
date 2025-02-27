@@ -40,9 +40,11 @@ class BikeModelDtoRepository implements BikeModelDtoRepositoryInterface
 
     public function deleteBikeModel(int $id): array
     {
-        $bikeModel = BikeModel::find($id)->toArray();
-        BikeModel::destroy($id);
-
-        return $bikeModel;
+        return DB::transaction(function () use ($id) {
+            $model = BikeModel::findOrFail($id);
+            $data = $model->toArray();
+            $model->delete();
+            return $data;
+        });
     }
 }
