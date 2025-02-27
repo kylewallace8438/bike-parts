@@ -1,7 +1,8 @@
 <?php
 
-use App\Models\BikeModel;
+namespace App\DTOs;
 
+use App\Models\BikeModel;
 class BikeModelQuery implements BikeModelQueryInterface
 {
     public function getBikeModels(): array
