@@ -33,9 +33,11 @@ class BikeModelDtoRepository implements BikeModelDtoRepositoryInterface
 
     public function updateBikeModel(int $id, array $bikeModel): array
     {
-        BikeModel::find($id)->update($bikeModel);
-
-        return BikeModel::find($id)->toArray();
+        return DB::transaction(function () use ($id, $bikeModel) {
+            $model = BikeModel::findOrFail($id);
+            $model->update($bikeModel);
+            return $model->fresh()->toArray();
+        });
     }
 
     public function deleteBikeModel(int $id): array
