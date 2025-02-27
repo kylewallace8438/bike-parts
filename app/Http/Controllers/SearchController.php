@@ -16,6 +16,7 @@ class SearchController extends Controller
             ->where('brand_id', $brand_id)
             ->where('bike_model_id', $bike_model_id)
             ->get();
+
         return view('search.ktm', [
             'categories' => $categories,
         ]);
@@ -27,11 +28,12 @@ class SearchController extends Controller
         $category = Category::where('id', $category_id)->first();
         $bike_model = $category->bike()->first();
         $bike_parts = BikePart::where('category_id', $category_id)->get();
+
         return view('search.ktm_category', [
             'bike_parts' => $bike_parts,
             'category_name' => $category->translate,
             'category_image' => $category ? $category->image_url : '',
-            'bike_model' => $bike_model->name
+            'bike_model' => $bike_model->name,
         ]);
     }
 

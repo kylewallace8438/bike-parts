@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Console\Commands\KTM;
 
 use App\Models\BikePart;
@@ -33,7 +34,7 @@ class PartScrape extends Command
         Category::where('brand_id', $ktm_brand->id)
             ->chunk(5, function ($categories) {
                 foreach ($categories as $category) {
-                    $ktmPartScrape = new KTMPartScrape();
+                    $ktmPartScrape = new KTMPartScrape;
                     Crawler::create()
                         ->setMaximumDepth(0)
                         ->setTotalCrawlLimit(1)
@@ -44,12 +45,12 @@ class PartScrape extends Command
                         foreach ($ktm390PartCategories as $c) {
                             BikePart::updateOrCreate([
                                 'category_id' => $category->id,
-                                'part'        => $c['part'],
+                                'part' => $c['part'],
                             ], [
-                                'category_id'     => $category->id,
-                                'number'          => $c['number'],
-                                'name'            => $c['name'],
-                                'part'            => $c['part'],
+                                'category_id' => $category->id,
+                                'number' => $c['number'],
+                                'name' => $c['name'],
+                                'part' => $c['part'],
                                 'reference_price' => $c['price'],
                             ]);
                         }
