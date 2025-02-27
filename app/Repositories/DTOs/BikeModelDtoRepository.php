@@ -4,6 +4,11 @@ namespace App\Repositories\DTOs;
 
 use App\Models\BikeModel;
 
+namespace App\Repositories\DTOs;
+
+use App\Models\BikeModel;
+use Illuminate\Support\Facades\DB;
+
 class BikeModelDtoRepository implements BikeModelDtoRepositoryInterface
 {
     public function getBikeModels(): array
