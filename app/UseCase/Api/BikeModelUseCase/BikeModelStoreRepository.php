@@ -7,8 +7,13 @@ use App\Models\BikeModel;
 
 class BikeModelStoreRepository implements BikeModelStoreRepositoryInterface
 {
-    public function handle(BikeModelRequestModel $request)
+    public function handle(BikeModelRequestModel $request): array
     {
-        return BikeModel::create($request->toArray())->toArray();
+        try {
+            $data = $request->validated();
+            return BikeModel::create($request->toArray())->toArray();
+        } catch (\Exception $e) {
+            throw new \RuntimeException('Failed to create bike model: ' . $e->getMessage());
+        }
     }
 }
