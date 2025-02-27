@@ -11,7 +11,7 @@ class BikeModelRequestModel extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true; // Or implement actual authorization logic
     }
 
     /**
