@@ -1,26 +1,8 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-// import HelloWorld from './components/HelloWorld.vue'
-import HeaderLayout from './layouts/HeaderLayout.vue';
-import FooterLayout from './layouts/FooterLayout.vue';
+<script setup lang="ts">
 </script>
-
 <template>
-  <!-- <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView /> -->
-  <HeaderLayout></HeaderLayout>
-  <RouterView/>
-  <FooterLayout></FooterLayout>
+  <component v-if="$route.meta.layout" :is="$route.meta.layout">
+    <router-view></router-view>
+  </component>
+  <router-view v-else />
 </template>
