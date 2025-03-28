@@ -23,6 +23,6 @@ RUN useradd -G www-data,root -u $uid -d /home/$user $user
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
-WORKDIR /var/www/reverb-demo
-# RUN cd /var/www/reverb-demo && npm install
+WORKDIR /var/www/bike-parts
+
 USER $user
