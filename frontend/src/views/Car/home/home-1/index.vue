@@ -12,13 +12,13 @@ import Brands from './brands.vue'
 
 <template>
     <Hero />
-    <Bodytype />
+    <!-- <Bodytype /> -->
     <Topoffer />
     <Brands />
     <Features />
     <LetestCar />
     <CTA />
-    <MCTA />
+    <!-- <MCTA /> -->
 
     <Blog />
 

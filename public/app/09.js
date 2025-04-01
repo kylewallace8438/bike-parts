@@ -1,1 +1,1 @@
-const g="/093.jpg";export{g as i};
+const e=""+new URL("09.jpg",import.meta.url).href;export{e as i};

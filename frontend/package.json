@@ -34,6 +34,7 @@
     "tailwindcss": "^4.0.17",
     "vue": "^3.4.15",
     "vue-filepond": "^7.0.4",
+    "vue-i18n": "^10.0.6",
     "vue-router": "^4.2.5",
     "vue3-google-map": "^0.19.0",
     "vue3-lottie": "^3.2.0",
