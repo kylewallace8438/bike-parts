@@ -1,0 +1,13 @@
+show databases;
+show collections
+db.createCollection('models')
+show collections
+show databases;
+exit
+show users;
+help
+mongosh --help;
+mongosh --help
+show collections;
+use test
+show databases;

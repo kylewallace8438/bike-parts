@@ -42,6 +42,28 @@ services:
       - ./docker-compose/nginx:/etc/nginx/conf.d/
     networks:
       - bike-parts
+  redis:
+    image: redis:alpine
+    container_name: bike-parts-redis
+    restart: unless-stopped
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    ports:
+      - 6380:6379
+    networks:
+      - bike-parts
+  mongodb:
+    image: mongo:latest
+    container_name: bike-parts-mongodb
+    restart: unless-stopped
+    ports:
+      - ${MONGODB_PORT}:27017
+    volumes:
+      - ./docker/data/mongodb:/data/db
+    networks:
+      - bike-parts
+
 networks:
   bike-parts:
     driver: bridge
