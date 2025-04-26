@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 import PHeader from './pheader.vue';
 import Content from './content.vue';
 import Map from './map.vue';

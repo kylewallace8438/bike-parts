@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 import Hero from './hero.vue'
 import Topoffer from './top-offer.vue'
 import Bodytype from './bodytype.vue'

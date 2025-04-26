@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 import PNav from './pnav.vue';
 import Blog from './blog.vue';
 
@@ -8,5 +8,5 @@ import Blog from './blog.vue';
   <div class="container mt-5 mb-md-4 py-5">
     <PNav />
     <Blog />
-  </div>  
+  </div>
 </template>

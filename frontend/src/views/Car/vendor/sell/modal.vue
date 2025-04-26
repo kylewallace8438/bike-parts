@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script  setup>
 import { Swiper, SwiperSlide } from 'swiper/vue'
 </script>
 

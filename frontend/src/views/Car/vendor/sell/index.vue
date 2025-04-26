@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 import Modal from './modal.vue';
 import PCard from './pcard.vue';
 </script>

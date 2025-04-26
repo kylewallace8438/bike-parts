@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 // Import Vue FilePond
 import vueFilePond from "vue-filepond";
 

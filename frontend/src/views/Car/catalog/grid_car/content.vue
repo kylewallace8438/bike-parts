@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script  setup>
 import { ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import simplebar from 'simplebar-vue';
@@ -6,7 +6,7 @@ import 'simplebar/dist/simplebar.min.css';
 import Slider from '@vueform/slider';
 import "@vueform/slider/themes/default.css";
 
-const value = ref([25000, 65000] as [number, number]);
+const value = ref([25000, 65000]);
 </script>
 <style>
 .slider-connect {

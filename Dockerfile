@@ -35,6 +35,8 @@ RUN pecl install --onlyreqdeps --force redis \
 RUN curl -sL https://deb.nodesource.com/setup_20.x  | bash -
 RUN apt-get -y install nodejs
 
+RUN npm i -g yarn
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN useradd -G www-data,root -u $uid -d /home/$user $user

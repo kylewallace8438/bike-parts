@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script  setup>
 import { ref } from "vue";
 import { GoogleMap, Marker } from "vue3-google-map";
 import vueFilePond from 'vue-filepond'

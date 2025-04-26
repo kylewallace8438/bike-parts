@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 import { Vue3Lottie } from 'vue3-lottie';
 
 import astronautJSON from '@/assets/json/animation-car-finder-404.json';

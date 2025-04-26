@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script  setup>
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import img14 from '@/assets/img/car-finder/catalog/14.jpg'
 import img15 from '@/assets/img/car-finder/catalog/15.jpg'

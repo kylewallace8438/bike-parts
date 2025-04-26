@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import AuthModals from '@/components/AuthModals.vue';
@@ -12,7 +12,7 @@ const isLoader = ref(false);
 const router = useRouter();
 
 const scrollTopButton = () => {
-  const element = document.querySelector('.btn-scroll-top') as HTMLElement;
+  const element = document.querySelector('.btn-scroll-top');
   const scrollOffset = 300;
 
   if (!element) return;
@@ -39,7 +39,7 @@ onMounted(() => {
   initComponent();
 
   // handle scroll
-  let n: HTMLElement | null = document.querySelector(".btn-scroll-top");
+  let n = document.querySelector(".btn-scroll-top");
   let a = 600;
   if (n) {
     window.addEventListener("scroll", (e) => {

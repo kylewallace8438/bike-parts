@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import Hero from '@/assets/img/car-finder/home/hero-bg.png';
 
 </script>

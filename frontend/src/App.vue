@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 </script>
 <template>
   <component v-if="$route.meta.layout" :is="$route.meta.layout">

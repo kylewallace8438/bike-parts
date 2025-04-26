@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script  setup>
 document.body.classList.add("bg-dark")
 </script>
 <template>

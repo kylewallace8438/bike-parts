@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script  setup>
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
 import img09 from '@/assets/img/car-finder/catalog/09.jpg';

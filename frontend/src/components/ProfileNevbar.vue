@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script  setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 const navbar = ref<HTMLElement | null>(null)

@@ -1,4 +1,4 @@
-<script setup lang="ts"></script>
+<script setup ></script>
 
 <template>
   <!-- Sign In Modal-->
@@ -117,7 +117,7 @@
                 </div>
                 <div class="form-check mb-4">
                   <input class="form-check-input" type="checkbox" id="agree-to-terms" required />
-                  <label class="form-check-label" for="agree-to-terms">By joining, I agree to the 
+                  <label class="form-check-label" for="agree-to-terms">By joining, I agree to the
                     <a href="javascript:void(0);">Terms of use</a> and
                     <a href="javascript:void(0);">Privacy policy</a></label>
                 </div>

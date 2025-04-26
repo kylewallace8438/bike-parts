@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 import PNav from './pnav.vue';
 import Feature from './feature.vue';
 import Step from './step.vue';
