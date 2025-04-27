@@ -28,7 +28,7 @@ services:
     ports:
         - 3316:3306
     volumes:
-      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+      - ./.docker/data/mysql:/docker-entrypoint-initdb.d
     networks:
       - bike-parts
   nginx:

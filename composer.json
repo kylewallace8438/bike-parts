@@ -16,7 +16,6 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "laravel/ui": "^4.6",
-        "mongodb/laravel-mongodb": "^5.3",
         "spatie/crawler": "^8.3"
     },
     "require-dev": {

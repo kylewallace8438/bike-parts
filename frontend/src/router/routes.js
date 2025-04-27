@@ -41,7 +41,7 @@ export const routes = [
 
         }
     },
-     
+
     {
         path: '/car-finder-account-info',
         name: 'Car Finder | Account Personal Info',

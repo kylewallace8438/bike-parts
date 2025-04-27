@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('home');
 // })->where('any', '^(?!admin|js|api|app|horizon).*$');
 
-// Auth::routes();
+// Auth::routes();\
 
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->where('any', '^(?!backend|js|api|app|tool).*$');
 // Route::get('search/ktm', [App\Http\Controllers\SearchController::class, 'searchKTM'])->name('search.ktm');
