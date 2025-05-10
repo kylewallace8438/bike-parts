@@ -71,7 +71,7 @@ watch(() => route.fullPath,
       </router-link>
       <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
         <ul class="navbar-nav navbar-nav-scroll" style="max-height: 35rem;">
-          <li class="nav-item dropdown me-lg-2"><a class="nav-link dropdown-toggle align-items-center pe-lg-4" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fi-layers me-2"></i>Demos<span class="d-none d-lg-block position-absolute top-50 end-0 translate-middle-y border-end border-light" style="width: 1px; height: 30px;"></span></a>
+          <!-- <li class="nav-item dropdown me-lg-2"><a class="nav-link dropdown-toggle align-items-center pe-lg-4" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fi-layers me-2"></i>Demos<span class="d-none d-lg-block position-absolute top-50 end-0 translate-middle-y border-end border-light" style="width: 1px; height: 30px;"></span></a>
             <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" href="https://property-finder-vue.vercel.app/"><i class="fi-building fs-base me-2"></i>Real Estate Demo</a></li>
               <li class="dropdown-divider"></li>
@@ -81,7 +81,7 @@ watch(() => route.fullPath,
               <li class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="https://city-finder-vue.vercel.app/"><i class="fi-map-pin fs-base me-2"></i>City Guide Demo</a></li>
             </ul>
-          </li>
+          </li> -->
           <!-- Menu items-->
           <li class="nav-item "><router-link class="nav-link" to="/">Home</router-link></li>
           <li class="nav-item dropdown">
