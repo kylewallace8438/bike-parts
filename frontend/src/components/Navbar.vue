@@ -64,10 +64,10 @@ watch(() => route.fullPath,
       <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="btn btn-link btn-light btn-sm d-none d-lg-block order-lg-3" href="#signin-modal" data-bs-toggle="modal">
-        <i class="fi-user me-2"></i>Sign in</a>
+      <!-- <a class="btn btn-link btn-light btn-sm d-none d-lg-block order-lg-3" href="#signin-modal" data-bs-toggle="modal">
+        <i class="fi-user me-2"></i>Sign in</a> -->
       <router-link class="btn btn-primary btn-sm ms-2 order-lg-3" to="/car-finder-sell-car">
-        <i class="fi-plus me-2"></i>Sell car
+        <i class="fi-plus me-2"></i>Đặt lịch
       </router-link>
       <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
         <ul class="navbar-nav navbar-nav-scroll" style="max-height: 35rem;">
@@ -83,17 +83,17 @@ watch(() => route.fullPath,
             </ul>
           </li> -->
           <!-- Menu items-->
-          <li class="nav-item "><router-link class="nav-link" to="/">Home</router-link></li>
+          <li class="nav-item "><router-link class="nav-link" to="/">Trang chủ</router-link></li>
+          <!-- <li class="nav-item "><router-link class="nav-link" to="/">Phụ tùng</router-link></li> -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Catalog</a>
+              Phụ tùng</a>
             <ul class="dropdown-menu dropdown-menu-dark">
-              <li><router-link class="dropdown-item" to="/car-finder-catalog-list">List View</router-link></li>
-              <li><router-link class="dropdown-item" to="/car-finder-catalog-grid">Grid View</router-link></li>
-              <li><router-link class="dropdown-item" to="/car-finder-single">Car Single Page</router-link></li>
+              <li><router-link class="dropdown-item" to="/car-finder-catalog-list">Tìm phụ tùng</router-link></li>
+              <li><router-link class="dropdown-item" to="/car-finder-catalog-grid">Tra cứu</router-link></li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
             <ul class="dropdown-menu dropdown-menu-dark">
               <li><router-link class="dropdown-item" to="/car-finder-account-info">Personal Info</router-link></li>
@@ -131,7 +131,7 @@ watch(() => route.fullPath,
           </li>
           <li class="nav-item d-lg-none">
             <a class="nav-link" href="#signin-modal" data-bs-toggle="modal"><i class="fi-user me-2"></i>Sign in</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>

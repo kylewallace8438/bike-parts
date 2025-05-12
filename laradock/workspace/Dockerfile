@@ -129,7 +129,7 @@ USER root
 COPY ./composer.json /home/laradock/.composer/composer.json
 
 # Add the auth.json for magento 2 credentials
-COPY ./auth.json /home/laradock/.composer/auth.json
+# COPY ./auth.json /home/laradock/.composer/auth.json
 
 # Make sure that ~/.composer belongs to laradock
 RUN chown -R laradock:laradock /home/laradock/.composer
@@ -160,13 +160,13 @@ RUN if [ ${COMPOSER_GLOBAL_INSTALL} = true ]; then \
 ;fi
 
 # Check if auth file is disabled
-ARG COMPOSER_AUTH_JSON=false
-ENV COMPOSER_AUTH_JSON ${COMPOSER_AUTH_JSON}
+# ARG COMPOSER_AUTH_JSON=false
+# ENV COMPOSER_AUTH_JSON ${COMPOSER_AUTH_JSON}
 
-RUN if [ ${COMPOSER_AUTH_JSON} = false ]; then \
-    # remove the file
-    rm /home/laradock/.composer/auth.json \
-;fi
+# RUN if [ ${COMPOSER_AUTH_JSON} = false ]; then \
+#     # remove the file
+#     rm /home/laradock/.composer/auth.json \
+# ;fi
 
 ARG COMPOSER_REPO_PACKAGIST
 ENV COMPOSER_REPO_PACKAGIST ${COMPOSER_REPO_PACKAGIST}
@@ -440,8 +440,8 @@ RUN if [ ${INSTALL_XDEBUG} = false -a ${INSTALL_BLACKFIRE} = true ]; then \
 
 ARG INSTALL_WORKSPACE_SSH=false
 
-COPY insecure_id_rsa /tmp/id_rsa
-COPY insecure_id_rsa.pub /tmp/id_rsa.pub
+# COPY insecure_id_rsa /tmp/id_rsa
+# COPY insecure_id_rsa.pub /tmp/id_rsa.pub
 
 RUN if [ ${INSTALL_WORKSPACE_SSH} = true ]; then \
     rm -f /etc/service/sshd/down && \

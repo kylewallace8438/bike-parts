@@ -1,43 +1,16 @@
 <script  setup>
-import { ref } from 'vue'
-
 import { Swiper, SwiperSlide } from 'swiper/vue'
-
-const swiperOptions = ref({
-  breakpoints: {
-    320: {
-      slidesPerView: 1,
-      spaceBetween: 20
-    },
-    582: {
-      slidesPerView: 2,
-      spaceBetween: 20
-    },
-
-    992: {
-      slidesPerView: 3,
-      spaceBetween: 20
-    },
-    1264: {
-      slidesPerView: 3,
-      spaceBetween: 20
-    },
-    1980: {
-      slidesPerView: 3,
-      spaceBetween: 20
-    }
-  }
-});
 </script>
 <template>
   <!-- Latest news (Blog)-->
   <section class="container pb-4 pb-sm-5 mb-2 mb-md-4">
     <div class="d-sm-flex align-items-center justify-content-between mb-3 mb-sm-4 pb-sm-2">
-      <h2 class="h3 text-light mb-2 mb-sm-0">Bài viết mới nhất</h2><router-link class="btn btn-link btn-light fw-normal px-0" to="/car-finder-blog">Đọc thêm<i class="fi-arrow-long-right fs-sm mt-0 ps-1 ms-2"></i></router-link>
+      <h2 class="h3 text-light mb-2 mb-sm-0">Latest news</h2><router-link class="btn btn-link btn-light fw-normal px-0" to="/car-finder-blog">Go to blog<i class="fi-arrow-long-right fs-sm mt-0 ps-1 ms-2"></i></router-link>
     </div>
     <div class="tns-carousel-wrapper tns-nav-outside tns-carousel-light">
-      <swiper :autoplay="true" :breakpoints="swiperOptions.breakpoints" :slidesPerView="3" :spaceBetween="20" :loop="true" class="h-100vh">
-        <SwiperSlide>
+      <!-- <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 3, &quot;controls&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 18},&quot;900&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 20}, &quot;1100&quot;:{&quot;gutter&quot;: 24}}}"> -->
+      <swiper :autoplay="true" :slidesPerView="3" :loop="true" class="h-100vh">
+        <SwiperSlide class="pe-4">
           <div>
             <article><router-link class="d-block rounded-3 overflow-hidden" to="/car-finder-blog-single"><img class="d-block" src="@/assets/img/car-finder/blog/04.jpg" alt="Image"></router-link>
               <div class="py-3"><a class="fs-xs text-uppercase text-decoration-none" href="javascript:void(0);">Events</a>
@@ -51,7 +24,7 @@ const swiperOptions = ref({
             </article>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide class="pe-4">
           <div>
             <article><router-link class="d-block rounded-3 overflow-hidden" to="/car-finder-blog-single"><img class="d-block" src="@/assets/img/car-finder/blog/05.jpg" alt="Image"></router-link>
               <div class="py-3"><a class="fs-xs text-uppercase text-decoration-none" href="javascript:void(0);">Inspiration</a>
@@ -65,7 +38,7 @@ const swiperOptions = ref({
             </article>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide class="pe-4">
           <div>
             <article><router-link class="d-block rounded-3 overflow-hidden" to="/car-finder-blog-single"><img class="d-block" src="@/assets/img/car-finder/blog/06.jpg" alt="Image"></router-link>
               <div class="py-3"><a class="fs-xs text-uppercase text-decoration-none" href="javascript:void(0);">Test Drives</a>
@@ -80,6 +53,7 @@ const swiperOptions = ref({
           </div>
         </SwiperSlide>
       </swiper>
+      <!-- </div> -->
     </div>
   </section>
 </template>
