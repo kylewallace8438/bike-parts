@@ -14,12 +14,10 @@ import Catalog from './catalog/list/index.vue'
 <template>
     <!-- <Hero /> -->
     <!-- <Bodytype /> -->
-    <Catalog />
     <!-- <Topoffer /> -->
     <!-- <Brands /> -->
     <!-- <Features /> -->
     <!-- <LetestCar /> -->
-    <CTA />
     <!-- <MCTA /> -->
 
     <Blog />

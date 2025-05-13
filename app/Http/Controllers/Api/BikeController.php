@@ -3,13 +3,24 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\BikeModel;
 use App\Models\BikePart;
+use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BikeController extends Controller
 {
-    public function handleSearchKTM(Request $request, $category_id)
+
+    public function showBrandCategory(Request $request, $brand_id)
+    {
+        $brand = Brand::where('id', $brand_id)->first();
+        $bikes = $brand->bikes()->get();
+        return response()->json([
+            'bikes' => $bikes
+        ]);
+    }
+    public function handleSearchKTM(Request $request, $brand, $category_id)
     {
         $category = Category::where('id', $category_id)->first();
         $bike_model = $category->bike()->first();

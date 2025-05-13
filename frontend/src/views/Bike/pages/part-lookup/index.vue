@@ -4,7 +4,7 @@
 // import Bodytype from './bodytype.vue'
 import Blog from '../../home/blog.vue'
 import CTA from '../../home/cta.vue'
-import Catalog from './catalog/list/index.vue'
+import Catalog from './catalog/grid/index.vue'
 // import MCTA from './mcta.vue'
 // import Features from './features.vue'
 // import LetestCar from './letest-car.vue'

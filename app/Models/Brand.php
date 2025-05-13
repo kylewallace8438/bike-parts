@@ -17,4 +17,9 @@ class Brand extends Model
             $model->slug = Str::slug($model->name);
         });
     }
+
+    public function bikes()
+    {
+        return $this->hasMany(BikeModel::class);
+    }
 }

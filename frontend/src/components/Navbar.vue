@@ -56,7 +56,7 @@ watch(() => route.fullPath,
 
 <template>
 
-  <header ref="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top" data-scroll-header :class="{ 'navbar-stuck': isStuck }">
+  <header ref="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top" data-scroll-header :class="{ 'navbar-stuck': isStuck }" style="background-color: rgba(var(--fi-dark-rgb),var(--fi-bg-opacity))!important;">
     <div class="container">
       <router-link class="navbar-brand me-3 me-xl-4" to="/">
         <img class="d-block" src="@/assets/img/logo/logo-light.svg" width="116" alt="Finder">
@@ -66,7 +66,7 @@ watch(() => route.fullPath,
       </button>
       <!-- <a class="btn btn-link btn-light btn-sm d-none d-lg-block order-lg-3" href="#signin-modal" data-bs-toggle="modal">
         <i class="fi-user me-2"></i>Sign in</a> -->
-      <router-link class="btn btn-primary btn-sm ms-2 order-lg-3" to="/car-finder-sell-car">
+      <router-link class="btn btn-primary btn-sm ms-2 order-lg-3" to="/book-service">
         <i class="fi-plus me-2"></i>Đặt lịch
       </router-link>
       <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
