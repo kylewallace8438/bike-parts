@@ -1,6 +1,6 @@
 <script setup >
 import Hero from './hero.vue'
-// import Topoffer from './top-offer.vue'
+import Topoffer from './top-offer.vue'
 // import Bodytype from './bodytype.vue'
 import Blog from '../../home/blog.vue'
 import CTA from '../../home/cta.vue'
@@ -8,12 +8,14 @@ import CTA from '../../home/cta.vue'
 // import Features from './features.vue'
 // import LetestCar from './letest-car.vue'
 // import Brands from './brands.vue'
+import GridContent from './grid/index.vue'
 </script>
 
 <template>
     <Hero />
     <!-- <Bodytype /> -->
-    <!-- <Topoffer /> -->
+    <GridContent />
+    <Topoffer />
     <!-- <Brands /> -->
     <!-- <Features /> -->
     <!-- <LetestCar /> -->
