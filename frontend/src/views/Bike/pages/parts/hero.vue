@@ -77,7 +77,7 @@ const switchNav = (type) => {
 </script>
 <template>
   <!-- Hero-->
-  <div class="container mt-5 mt-sm-3 pb-5 mb-md-4" style="margin-top: 100px !important;">
+  <div class="container mt-5 mt-sm-3 pb-5" style="margin-top: 100px !important;">
       <!-- Tabs-->
       <ul class="nav nav-tabs nav-tabs-light mb-4">
         <li class="nav-item"><a class="nav-link" :class="{'active': selectedTab == 'parts'}" href="javascript:void(0);" @click="switchNav('parts')">Tìm phụ tùng</a></li>
