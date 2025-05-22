@@ -56,7 +56,7 @@ watch(() => route.fullPath,
 
 <template>
 
-  <header ref="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top" data-scroll-header :class="{ 'navbar-stuck': isStuck }">
+  <header ref="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgb(31, 27, 45);" data-scroll-header :class="{ 'navbar-stuck': isStuck }">
     <div class="container">
       <router-link class="navbar-brand me-3 me-xl-4" to="/">
         <img class="d-block" src="@/assets/img/logo/logo-light.svg" width="116" alt="Finder">
