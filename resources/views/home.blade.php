@@ -13,7 +13,7 @@
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kwappstore.com">
-    <meta property="og:title" content="Kwapp Store | Tìm kiếm phụ tùng và bảo dưỡng xe KTM tại Hà Nội">
+    <meta property="og:title" content="Kwapp Store | Phụ tùng và bảo dưỡng xe KTM tại Hà Nội">
     <meta property="og:description" content="Kwapp Store - Cửa hàng phụ tùng và bảo dưỡng xe máy KTM tại Hà Nội. Các loại phụ tùng, đồ chơi, dầu nhớt dành cho KTM và Husqvana luôn có sẵn. Gọi điện đặt lịch để được thay thế hoặc lắp đặt ngay.">
     <meta property="og:image" content="https://kwapp.store/images/og_image.webp" />
 
