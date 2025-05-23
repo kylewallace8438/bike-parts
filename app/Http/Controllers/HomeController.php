@@ -21,6 +21,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        header('Link: <'.config('app.url').'/app/default.css>; rel=preload; as=style', false);
+        header('Link: <'.config('app.url').'/app/index.css>; rel=preload; as=style', false);
+        header('Link: <'.config('app.url').'/app/app.js>; rel=modulepreload; as=script', false);
         return view('home');
     }
 }
