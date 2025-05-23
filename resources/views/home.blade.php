@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kwapp Store | Phụ tùng và bảo dưỡng xe</title>
-    <meta name="description" content="Kwapp Store - Cửa hàng phụ tùng và bảo dưỡng xe máy chất lượng cao">
+    <meta name="description" content="Kwapp Store - Cửa hàng phụ tùng và bảo dưỡng xe máy KTM chất lượng. Các loại phụ tùng hao mòn, đồ chơi, dầu nhớt dành cho KTM và Husqvana luôn có sẵn. Gọi điện đặt lịch để được thay thế lắp đặt ngay.">
     <meta name="keywords"
-        content="phụ tùng xe máy, bảo dưỡng xe, sửa chữa xe máy, đồ chơi xe máy, phụ kiện xe máy, dầu nhớt, lốp xe, phanh xe, nhông sên dĩa, ktm, husqvana, svartpilen, vitpilen, RC, Duke">
+        content="Kwapp Store, phụ tùng xe máy, bảo dưỡng xe, sửa chữa xe máy, đồ chơi xe máy, phụ kiện xe máy, dầu nhớt, lốp xe, phanh xe, nhông sên dĩa, ktm, husqvana, svartpilen, vitpilen, RC, Duke">
     <meta name="author" content="Kwapp Store">
     <meta name="robots" content="index,follow">
     <meta property="og:type" content="website">
