@@ -24,8 +24,8 @@ class HomeController extends Controller
         header('Link: <'.config('app.url').'/app/default.css>; rel=preload; as=style', false);
         header('Link: <'.config('app.url').'/app/index.css>; rel=preload; as=style', false);
         header('Link: <'.config('app.url').'/app/app.js>; rel=modulepreload; as=script', false);
-        header('Link: <'.config('app.url').'/app/ktm_bg.webp>; rel=preload; as=image; type=image/webp', false);
-        header('Link: <'.config('app.url').'/app/hero-bg.png>; rel=preload; as=image; type=image/png', false);
+        header('Link: <'.config('app.url').'/app/ktm_bg.webp>; rel=preload; as=image; type=image/webp; fetchpriority=high', false);
+        header('Link: <'.config('app.url').'/app/hero-bg.png>; rel=preload; as=image; type=image/png; fetchpriority=high', false);
         return view('home');
     }
 }
