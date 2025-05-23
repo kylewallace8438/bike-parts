@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('app/index.css') }}">
 </head>
 <body>
+    <h1 style="display: none">Kwapp Store | Phụ tùng và bảo dưỡng xe</h1>
     <div id="app" class="main-wrapper"></div>
     <script src="{{ asset('app/app.js') }}" type="module"></script>
 </body>
