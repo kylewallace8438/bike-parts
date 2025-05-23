@@ -1,4 +1,4 @@
-<script  setup>
+<script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
 
@@ -19,18 +19,32 @@ const modules = [Navigation, Pagination, Scrollbar, A11y];
                                 <div class="col-md-4 col-xl-3 mb-4 pb-3 mb-md-0 pb-md-0 text-center text-md-start">
                                     <h2 class="text-light">Phụ tùng thay thế</h2>
                                     <p class="fs-lg text-light opacity-70 pb-md-4">Các loại phụ tùng hao mòn </p>
-                                    <router-link class="btn btn-primary" to="/car-finder-catalog-grid">Mua hàng<i class="fi-chevron-right fs-sm ms-2"></i></router-link>
+                                    <router-link class="btn btn-primary" to="/car-finder-catalog-grid">Mua hàng<i
+                                            class="fi-chevron-right fs-sm ms-2"></i></router-link>
                                 </div>
                                 <div class="col-md-8 col-xl-9">
-                                    <div class="row row-cols-2 row-cols-lg-4 gy-4 gx-3 gx-sm-4"><a class="col text-light text-decoration-none" href="javascript:void(0);"><img class="d-block mb-2 mx-auto" src="@/assets/img/kwapp-store/01.png" width="168" alt="Seat Covers">
+                                    <div class="row row-cols-2 row-cols-lg-4 gy-4 gx-3 gx-sm-4">
+                                        <a class="col text-light text-decoration-none" href="javascript:void(0);">
+                                            <img loading="lazy" class="d-block mb-2 mx-auto"
+                                                src="@/assets/img/kwapp-store/01.png" width="168" alt="Nhông đĩa">
                                             <div class="fw-bold text-center pt-1">Nhông đĩa</div>
-                                        </a><a class="col text-light text-decoration-none" href="javascript:void(0);"><img class="d-block mb-2 mx-auto" src="@/assets/img/kwapp-store/02.png" width="168" alt="Tires">
+                                        </a>
+                                        <a class="col text-light text-decoration-none" href="javascript:void(0);">
+                                            <img loading="lazy" class="d-block mb-2 mx-auto"
+                                                src="@/assets/img/kwapp-store/02.png" width="168" alt="Lốp">
                                             <div class="fw-bold text-center pt-1">Lốp</div>
-                                        </a><a class="col text-light text-decoration-none" href="javascript:void(0);"><img class="d-block mb-2 mx-auto" src="@/assets/img/kwapp-store/03.png" width="168" alt="Disks">
+                                        </a>
+                                        <a class="col text-light text-decoration-none" href="javascript:void(0);">
+                                            <img loading="lazy" class="d-block mb-2 mx-auto"
+                                                src="@/assets/img/kwapp-store/03.png" width="168" alt="Dầu nhớt">
                                             <div class="fw-bold text-center pt-1">Dầu nhớt</div>
-                                        </a><a class="col text-light text-decoration-none" href="javascript:void(0);"><img class="d-block mb-2 mx-auto" src="@/assets/img/kwapp-store/04.png" width="168" alt="Child Seats">
+                                        </a>
+                                        <a class="col text-light text-decoration-none" href="javascript:void(0);">
+                                            <img loading="lazy" class="d-block mb-2 mx-auto"
+                                                src="@/assets/img/kwapp-store/04.png" width="168" alt="Phụ kiện">
                                             <div class="fw-bold text-center pt-1">Phụ kiện</div>
-                                        </a></div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -24,6 +24,7 @@ class HomeController extends Controller
         header('Link: <'.config('app.url').'/app/default.css>; rel=preload; as=style', false);
         header('Link: <'.config('app.url').'/app/index.css>; rel=preload; as=style', false);
         header('Link: <'.config('app.url').'/app/app.js>; rel=modulepreload; as=script', false);
+        header('Link: <'.config('app.url').'/app/ktm_bg.webp>; rel=preload; as=image; type=image/webp', false);
         return view('home');
     }
 }

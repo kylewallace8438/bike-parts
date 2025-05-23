@@ -82,7 +82,7 @@ const switchNav = (type) => {
           <h1 class="display-4 text-light pb-2 mb-4 me-md-n5">{{ $t('homeText.title') }}</h1>
           <p class="fs-lg text-light opacity-70">{{ $t('homeText.description') }}</p>
         </div>
-        <div class="col-lg-8 col-md-7 pt-md-5"><img class="d-block mt-4 ms-auto" src="@/assets/img/bike/ktm_bg.png" width="800" alt="Car"></div>
+        <div class="col-lg-8 col-md-7 pt-md-5"><img class="d-block mt-4 ms-auto" src="@/assets/img/bike/ktm_bg.webp" width="800" alt="Car"></div>
       </div>
     </div>
     <div class="container mt-4 mt-sm-3 mt-lg-n3 pb-5 mb-md-4">
