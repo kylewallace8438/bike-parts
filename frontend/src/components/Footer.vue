@@ -38,7 +38,7 @@
             <div class="input-group input-group-sm"><span class="input-group-text"> <i class="fi-mail"></i></span>
               <input class="form-control" type="text" placeholder="Your email">
             </div>
-            <button class="btn btn-primary btn-icon btn-sm" type="button"><i class="fi-send"></i></button>
+            <button class="btn btn-primary btn-icon btn-sm" type="button" aria-label="Send"><i class="fi-send"></i></button>
           </form>
         </div>
         <div class="col-lg-2 col-md-3 col-sm-6 offset-xl-1 mb-2 mb-sm-4">
@@ -76,10 +76,10 @@
             <i class="fi-mail me-2"></i><span class="text-light">example@email.com</span>
           </router-link>
           <div class="d-flex flex-wrap pt-4">
-            <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" href="javascript:void(0);">
+            <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" href="javascript:void(0);" aria-label="Facebook">
               <i class="fi-facebook"></i>
             </a>
-            <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2" href="javascript:void(0);">
+            <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2" href="javascript:void(0);" aria-label="Messenger">
               <i class="fi-messenger"></i>
             </a>
           </div>
