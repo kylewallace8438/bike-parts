@@ -7,10 +7,23 @@ use App\Models\BikeModel;
 use App\Models\BikePart;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Shopify\Interfaces\ApiClientInterface;
 use Illuminate\Http\Request;
 
 class BikeController extends Controller
 {
+    protected ApiClientInterface $apiClient;
+
+    public function __construct(ApiClientInterface $apiClient)
+    {
+        $this->apiClient = $apiClient;
+    }
+
+    public function test()
+    {
+        $response = $this->apiClient->rest()->get('/products.json');
+        dd($response);
+    }
 
     public function showBrandCategory(Request $request, $brand_id)
     {
