@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
             sessionStorage: new FileSessionStorage('/tmp/php_sessions'),
             apiVersion: ApiVersion::LATEST,
             isEmbeddedApp: false,
-            isPrivateApp: true,
+            isPrivateApp: false,
         );
     }
 }

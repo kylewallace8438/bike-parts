@@ -9,6 +9,9 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Shopify\Interfaces\ApiClientInterface;
 use Illuminate\Http\Request;
+use Shopify\Clients\Graphql;
+use Shopify\Clients\Rest;
+use Shopify\Context;
 
 class BikeController extends Controller
 {
@@ -21,8 +24,9 @@ class BikeController extends Controller
 
     public function test()
     {
-        $response = $this->apiClient->rest()->get('/products.json');
-        dd($response);
+        $client = new Rest(config('shopify.SHOPIFY_DOMAIN'), config('shopify.SHOPIFY_ACCESS_TOKEN'));
+        $response = $client->get('/products.json');
+        dd($response->getDecodedBody());
     }
 
     public function showBrandCategory(Request $request, $brand_id)
