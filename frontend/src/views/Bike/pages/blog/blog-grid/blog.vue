@@ -84,7 +84,7 @@
                 </div>
             </a>
         </article>
-        <article class="col pb-2 pb-md-1"><router-link class="d-block position-relative mb-3" to="/car-finder-blog-single"><img class="d-block rounded-3" src="@/assets/img/car-finder/blog/06.jpg" alt="Post image"></router-link><a class="fs-xs text-uppercase text-decoration-none" href="javascript:void(0);">Reviews</a>
+        <article class="col pb-2 pb-md-1"><router-link class="d-block position-relative mb-3" to="/car-finder-blog-single"><img class="d-block rounded-3" src="@/assets/img/car-finder/blog/06.webp" alt="Post image"></router-link><a class="fs-xs text-uppercase text-decoration-none" href="javascript:void(0);">Reviews</a>
             <h3 class="fs-base text-light pt-1"><router-link class="nav-link" to="/car-finder-blog-single">This Year is All About New Harley Davidson</router-link></h3><a class="d-flex align-items-center text-decoration-none" href="javascript:void(0);"><img class="rounded-circle" src="@/assets/img/avatars/10.jpg" width="44" alt="Kristin Watson">
                 <div class="ps-2">
                     <h6 class="fs-sm text-light lh-base mb-1">Kristin Watson</h6>

@@ -67,7 +67,7 @@ const swiperOptions = ref({
         </SwiperSlide>
         <SwiperSlide>
           <div>
-            <article><router-link class="d-block rounded-3 overflow-hidden" to="/car-finder-blog-single"><img class="d-block" src="@/assets/img/car-finder/blog/06.jpg" alt="Image"></router-link>
+            <article><router-link class="d-block rounded-3 overflow-hidden" to="/car-finder-blog-single"><img class="d-block" src="@/assets/img/car-finder/blog/06.webp" alt="Image"></router-link>
               <div class="py-3"><a class="fs-xs text-uppercase text-decoration-none" href="javascript:void(0);">Test Drives</a>
                 <h3 class="text-light fs-base pt-1"><router-link class="nav-link" to="/car-finder-blog-single">This Year is All About New Harley Davidson</router-link></h3><a class="d-flex align-items-center text-decoration-none" href="javascript:void(0);"><img class="rounded-circle" src="@/assets/img/avatars/12.jpg" width="44" alt="Avatar">
                   <div class="ps-2">
