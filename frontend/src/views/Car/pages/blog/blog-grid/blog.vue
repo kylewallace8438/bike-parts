@@ -68,7 +68,7 @@
     </div>
     <!-- Latest articles (3 columns)-->
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 gx-3 gx-md-4 gy-md-5 gy-4 mb-lg-5 mb-4">
-        <article class="col pb-2 pb-md-1"><router-link class="d-block position-relative mb-3" to="/car-finder-blog-single"><img class="d-block rounded-3" src="@/assets/img/car-finder/blog/04.jpg" alt="Post image"></router-link><a class="fs-xs text-uppercase text-decoration-none" href="javascript:void(0);">Automotive News</a>
+        <article class="col pb-2 pb-md-1"><router-link class="d-block position-relative mb-3" to="/car-finder-blog-single"><img class="d-block rounded-3" src="@/assets/img/car-finder/blog/04.webp" alt="Post image"></router-link><a class="fs-xs text-uppercase text-decoration-none" href="javascript:void(0);">Automotive News</a>
             <h3 class="fs-base text-light pt-1"><router-link class="nav-link" to="/car-finder-blog-single">Volkswagen: Never Done Innovating</router-link></h3><a class="d-flex align-items-center text-decoration-none" href="javascript:void(0);"><img class="rounded-circle" src="@/assets/img/avatars/08.jpg" width="44" alt="Darrell Steward">
                 <div class="ps-2">
                     <h6 class="fs-sm text-light lh-base mb-1">Darrell Steward</h6>
@@ -76,7 +76,7 @@
                 </div>
             </a>
         </article>
-        <article class="col pb-2 pb-md-1"><router-link class="d-block position-relative mb-3" to="/car-finder-blog-single"><img class="d-block rounded-3" src="@/assets/img/car-finder/blog/05.jpg" alt="Post image"></router-link><a class="fs-xs text-uppercase text-decoration-none" href="javascript:void(0);">Tips &amp; Advice</a>
+        <article class="col pb-2 pb-md-1"><router-link class="d-block position-relative mb-3" to="/car-finder-blog-single"><img class="d-block rounded-3" src="@/assets/img/car-finder/blog/05.webp" alt="Post image"></router-link><a class="fs-xs text-uppercase text-decoration-none" href="javascript:void(0);">Tips &amp; Advice</a>
             <h3 class="fs-base text-light pt-1"><router-link class="nav-link" to="/car-finder-blog-single">5 Predictions From the Past About the Future</router-link></h3><a class="d-flex align-items-center text-decoration-none" href="javascript:void(0);"><img class="rounded-circle" src="@/assets/img/avatars/09.jpg" width="44" alt="Guy Hawkins">
                 <div class="ps-2">
                     <h6 class="fs-sm text-light lh-base mb-1">Guy Hawkins</h6>

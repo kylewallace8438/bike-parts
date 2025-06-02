@@ -91,15 +91,13 @@ services:
     networks:
       - laravel
 
-
-
   # Redis Service
   redis:
     image: redis:alpine
     volumes:
       - .data/redis:/data
     ports:
-      - "6379:6379"
+      - "6380:6379"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s

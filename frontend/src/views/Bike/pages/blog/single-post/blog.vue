@@ -155,7 +155,7 @@ import 'swiper/css/navigation';
                                 <!-- <div class="tns-carousel-inner d-block" data-carousel-options="{&quot;nav&quot;: false, &quot;gutter&quot;: 20, &quot;autoHeight&quot;: true, &quot;controlsContainer&quot;: &quot;#externalControls&quot;}"> -->
                                 <swiper :autoplay="true" :slidesPerView="1" :loop="true" class="h-100vh">
                                     <SwiperSlide>
-                                        <article><a class="d-block position-relative mb-3" href="javascript:void(0);"><img class="d-block rounded-3" src="@/assets/img/car-finder/blog/04.jpg" alt="Post image"></a><a class="fs-xs text-uppercase text-decoration-none" href="javascript:void(0);">Automotive News</a>
+                                        <article><a class="d-block position-relative mb-3" href="javascript:void(0);"><img class="d-block rounded-3" src="@/assets/img/car-finder/blog/04.webp" alt="Post image"></a><a class="fs-xs text-uppercase text-decoration-none" href="javascript:void(0);">Automotive News</a>
                                             <h3 class="fs-base text-light pt-1"><a class="nav-link" href="javascript:void(0);">Volkswagen: Never Done Innovating</a></h3><a class="d-flex align-items-center text-decoration-none" href="javascript:void(0);"><img class="rounded-circle" src="@/assets/img/avatars/08.jpg" width="44" alt="Darrell Steward">
                                                 <div class="ps-2">
                                                     <h6 class="fs-sm text-light lh-base mb-1">Darrell Steward</h6>

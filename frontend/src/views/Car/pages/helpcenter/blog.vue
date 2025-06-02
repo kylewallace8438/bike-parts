@@ -12,7 +12,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
       <swiper :autoplay="true" :slidesPerView="3" :loop="true" class="h-100vh">
         <SwiperSlide class="pe-4">
           <div>
-            <article><router-link class="d-block rounded-3 overflow-hidden" to="/car-finder-blog-single"><img class="d-block" src="@/assets/img/car-finder/blog/04.jpg" alt="Image"></router-link>
+            <article><router-link class="d-block rounded-3 overflow-hidden" to="/car-finder-blog-single"><img class="d-block" src="@/assets/img/car-finder/blog/04.webp" alt="Image"></router-link>
               <div class="py-3"><a class="fs-xs text-uppercase text-decoration-none" href="javascript:void(0);">Events</a>
                 <h3 class="text-light fs-base pt-1"><router-link class="nav-link" to="/car-finder-blog-single">Top 10 Classic Car Events</router-link></h3><a class="d-flex align-items-center text-decoration-none" href="javascript:void(0);"><img class="rounded-circle" src="@/assets/img/avatars/08.jpg" width="44" alt="Avatar">
                   <div class="ps-2">
@@ -26,7 +26,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
         </SwiperSlide>
         <SwiperSlide class="pe-4">
           <div>
-            <article><router-link class="d-block rounded-3 overflow-hidden" to="/car-finder-blog-single"><img class="d-block" src="@/assets/img/car-finder/blog/05.jpg" alt="Image"></router-link>
+            <article><router-link class="d-block rounded-3 overflow-hidden" to="/car-finder-blog-single"><img class="d-block" src="@/assets/img/car-finder/blog/05.webp" alt="Image"></router-link>
               <div class="py-3"><a class="fs-xs text-uppercase text-decoration-none" href="javascript:void(0);">Inspiration</a>
                 <h3 class="text-light fs-base pt-1"><router-link class="nav-link" to="/car-finder-blog-single">5 Predictions From the Past About the Future</router-link></h3><a class="d-flex align-items-center text-decoration-none" href="javascript:void(0);"><img class="rounded-circle" src="@/assets/img/avatars/09.jpg" width="44" alt="Avatar">
                   <div class="ps-2">
