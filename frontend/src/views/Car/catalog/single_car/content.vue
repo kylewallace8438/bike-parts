@@ -373,7 +373,7 @@ const modules = [Navigation, Pagination];
                                 <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-info mb-1">Used</span><span class="d-table badge bg-success" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover" data-bs-html="true" data-bs-content="&lt;div class=&quot;d-flex&quot;&gt;&lt;i class=&quot;fi-award mt-1 me-2&quot;&gt;&lt;/i&gt;&lt;div&gt;This car is checked and&lt;br&gt;certified by Finder.&lt;/div&gt;&lt;/div&gt;">Certified</span></div>
                                 <div class="content-overlay end-0 top-0 pt-3 pe-3">
                                     <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist"><i class="fi-heart"></i></button>
-                                </div><img src="@/assets/img/car-finder/catalog/05.jpgp" alt="Image">
+                                </div><img src="@/assets/img/car-finder/catalog/05.jpg" alt="Image">
                             </div>
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between pb-1"><span class="fs-sm text-light me-3">2018</span>

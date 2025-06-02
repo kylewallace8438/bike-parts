@@ -668,10 +668,10 @@ const value = ref([25000, 65000]);
                                 <!-- <div class="tns-carousel-inner"> -->
                                 <swiper :autoplay="true" :slidesPerView="1" :loop="true" class="h-100">
                                     <SwiperSlide>
-                                        <img src="@/assets/img/car-finder/catalog/05.jpgp" alt="Image">
+                                        <img src="@/assets/img/car-finder/catalog/05.jpg" alt="Image">
                                     </SwiperSlide>
                                     <SwiperSlide>
-                                        <img src="@/assets/img/car-finder/catalog/05.jpgp" alt="Image">
+                                        <img src="@/assets/img/car-finder/catalog/05.jpg" alt="Image">
                                     </SwiperSlide>
                                 </swiper>
                                 <!-- </div> -->
