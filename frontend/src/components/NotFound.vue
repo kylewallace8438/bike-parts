@@ -17,7 +17,7 @@ document.body.classList.add('bg-dark');
           <div class="ratio ratio-16x9 mx-auto mb-lg-5 mb-4 py-4" style="max-width: 556px;">
             <Vue3Lottie :animationData="astronautJSON" class="py-4" />
           </div>
-          <p class="h2 mb-lg-5 mb-4 pb-2 text-light">The requested page doesn’t exist</p><router-link class="btn btn-lg btn-primary w-sm-auto w-100 mb-3 me-sm-4" to="/">Go to homepage</router-link><router-link class="btn btn-lg btn-outline-light w-sm-auto w-100 mb-3" to="/car-finder-contacts">Contact us</router-link>
+          <p class="h2 mb-lg-5 mb-4 pb-2 text-light">Không tìm thấy trang yêu cầu</p><router-link class="btn btn-lg btn-primary w-sm-auto w-100 mb-3 me-sm-4" to="/">Về trang chủ</router-link><router-link class="btn btn-lg btn-outline-light w-sm-auto w-100 mb-3" to="/car-finder-contacts">Liên hệ</router-link>
         </div>
       </div>
     </section>

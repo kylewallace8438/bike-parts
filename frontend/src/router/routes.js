@@ -12,16 +12,25 @@ export const routes = [
         }
     },
     {
-        path: '/parts',
-        name: 'parts',
-        component: () => import('@/views/Bike/pages/parts/index.vue'),
+        path: '/phu-tung',
+        name: 'products',
+        component: () => import('@/views/Bike/pages/products/index.vue'),
         meta: {
             title: 'Kwapp Phụ tùng',
             layout: DefaultLayout
-        }
+        },
     },
     {
-        path: '/find-bike',
+        path: '/phu-tung/:id',
+        name: 'product-detail',
+        component: () => import('@/views/Bike/pages/product-detail/index.vue'),
+        meta: {
+            title: 'Kwapp Phụ tùng',
+            layout: DefaultLayout
+        },
+    },
+    {
+        path: '/tim-xe',
         name: 'find-bike',
         component: () => import('@/views/Bike/pages/find-bike/index.vue'),
         meta: {
@@ -30,7 +39,7 @@ export const routes = [
         }
     },
     {
-        path: '/part-lookup',
+        path: '/tra-cuu',
         name: 'part-lookup',
         component: () => import('@/views/Bike/pages/part-lookup/index.vue'),
         meta: {
@@ -39,8 +48,8 @@ export const routes = [
         }
     },
     {
-        path: '/book-service',
-        name: 'book-service',
+        path: '/dat-lich',
+        name: 'dat-lich',
         component: () => import('@/views/Bike/pages/book-service/index.vue'),
         meta: {
             title: 'Kwapp Đặt lịch bảo dưỡng',
@@ -49,8 +58,8 @@ export const routes = [
     },
     {
         path: '/404',
-        name: 'Car 404',
-        component: () => import('@/views/Car/pages/404/index.vue'),
+        name: 'not-found',
+        component: () => import('@/views/Bike/pages/404/index.vue'),
         meta: {
             title: 'Car Finder | 404 ',
         }

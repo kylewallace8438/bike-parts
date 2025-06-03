@@ -66,9 +66,12 @@ watch(() => route.fullPath,
       </button>
       <!-- <a class="btn btn-link btn-light btn-sm d-none d-lg-block order-lg-3" href="#signin-modal" data-bs-toggle="modal">
         <i class="fi-user me-2"></i>Sign in</a> -->
-      <router-link class="btn btn-primary btn-sm ms-2 order-lg-3" to="/book-service">
+      <router-link class="btn btn-secondary btn-sm ms-2 order-lg-3" to="/dat-lich">
         <i class="fi-plus me-2"></i>Đặt lịch
       </router-link>
+      <a class="btn btn-primary btn-sm ms-2 order-lg-3" href="tel:0946305096">
+        <i class="fi-phone me-2"></i>Gọi cứu hộ
+      </a>
       <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
         <ul class="navbar-nav navbar-nav-scroll" style="max-height: 35rem;">
           <!-- <li class="nav-item dropdown me-lg-2"><a class="nav-link dropdown-toggle align-items-center pe-lg-4" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fi-layers me-2"></i>Demos<span class="d-none d-lg-block position-absolute top-50 end-0 translate-middle-y border-end border-light" style="width: 1px; height: 30px;"></span></a>
@@ -89,8 +92,8 @@ watch(() => route.fullPath,
             <a class="nav-link dropdown-toggle" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Phụ tùng</a>
             <ul class="dropdown-menu dropdown-menu-dark">
-              <li><router-link class="dropdown-item" to="/car-finder-catalog-list">Tìm phụ tùng</router-link></li>
-              <li><router-link class="dropdown-item" to="/car-finder-catalog-grid">Tra cứu</router-link></li>
+              <li><router-link class="dropdown-item" to="/phu-tung">Tìm phụ tùng</router-link></li>
+              <li><router-link class="dropdown-item" to="/tra-cuu">Tra cứu</router-link></li>
             </ul>
           </li>
           <!-- <li class="nav-item dropdown">

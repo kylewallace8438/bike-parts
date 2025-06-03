@@ -26,22 +26,22 @@ const modules = [Navigation, Pagination, Scrollbar, A11y];
                                     <div class="row row-cols-2 row-cols-lg-4 gy-4 gx-3 gx-sm-4">
                                         <a class="col text-light text-decoration-none" href="javascript:void(0);">
                                             <img loading="lazy" class="d-block mb-2 mx-auto"
-                                                src="@/assets/img/kwapp-store/01.webp" width="168" alt="Nhông đĩa">
+                                                src="@/assets/img/kwapp-store/sprocket.webp" width="168" alt="Nhông đĩa image">
                                             <div class="fw-bold text-center pt-1">Nhông đĩa</div>
                                         </a>
                                         <a class="col text-light text-decoration-none" href="javascript:void(0);">
                                             <img loading="lazy" class="d-block mb-2 mx-auto"
-                                                src="@/assets/img/kwapp-store/02.webp" width="168" alt="Lốp">
+                                                src="@/assets/img/kwapp-store/tyre.webp" width="168" alt="Lốp image">
                                             <div class="fw-bold text-center pt-1">Lốp</div>
                                         </a>
                                         <a class="col text-light text-decoration-none" href="javascript:void(0);">
                                             <img loading="lazy" class="d-block mb-2 mx-auto"
-                                                src="@/assets/img/kwapp-store/03.webp" width="168" alt="Dầu nhớt">
+                                                src="@/assets/img/kwapp-store/oil.webp" width="168" alt="Dầu nhớt image">
                                             <div class="fw-bold text-center pt-1">Dầu nhớt</div>
                                         </a>
                                         <a class="col text-light text-decoration-none" href="javascript:void(0);">
                                             <img loading="lazy" class="d-block mb-2 mx-auto"
-                                                src="@/assets/img/kwapp-store/04.webp" width="168" alt="Phụ kiện">
+                                                src="@/assets/img/kwapp-store/accessories.webp" width="168" alt="Phụ kiện image">
                                             <div class="fw-bold text-center pt-1">Phụ kiện</div>
                                         </a>
                                     </div>
