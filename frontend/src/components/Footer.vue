@@ -44,18 +44,18 @@
         <div class="col-lg-2 col-md-3 col-sm-6 offset-xl-1 mb-2 mb-sm-4">
           <h3 class="fs-base text-light">Mua &amp; bán</h3>
           <ul class="list-unstyled fs-sm">
-            <li><a class="nav-link-light" href="javascript:void(0);">Tìm phụ tùng</a></li>
-            <li><a class="nav-link-light" href="javascript:void(0);">Tìm cửa hàng bảo dưỡng</a></li>
-            <li><a class="nav-link-light" href="javascript:void(0);">Bán xe</a></li>
+            <li><router-link class="nav-link-light" to="/phu-tung">Tìm phụ tùng</router-link></li>
+            <li><router-link class="nav-link-light" to="/bao-duong">Tìm cửa hàng bảo dưỡng</router-link></li>
+            <li><router-link class="nav-link-light" to="/tim-xe">Bán xe</router-link></li>
           </ul>
         </div>
         <div class="col-lg-2 col-md-3 col-sm-6 mb-2 mb-sm-4">
           <h3 class="fs-base text-light">Về chúng tôi</h3>
           <ul class="list-unstyled fs-sm">
-            <li><a class="nav-link-light" href="javascript:void(0);">Thông tin</a></li>
-            <li><a class="nav-link-light" href="javascript:void(0);">Liên hệ</a></li>
-            <li><a class="nav-link-light" href="javascript:void(0);">Câu hỏi thường gặp</a></li>
-            <li><a class="nav-link-light" href="javascript:void(0);">Bài viết</a></li>
+            <li><router-link class="nav-link-light" to="/thong-tin">Thông tin</router-link></li>
+            <li><router-link class="nav-link-light" to="/lien-he">Liên hệ</router-link></li>
+            <li><router-link class="nav-link-light" to="/faq">Câu hỏi thường gặp</router-link></li>
+            <li><router-link class="nav-link-light" to="/bai-viet">Bài viết</router-link></li>
           </ul>
         </div>
         <!-- <div class="col-lg-2 col-md-3 col-sm-6 mb-2 mb-sm-4">
@@ -72,16 +72,16 @@
             <i class="fi-device-mobile me-2"></i>
             <span class="text-light">(406) 555-0120</span>
           </router-link>
-          <router-link class="d-flex align-items-center text-decoration-none mb-2" to="mailto:example@email.com">
-            <i class="fi-mail me-2"></i><span class="text-light">example@email.com</span>
+          <router-link class="d-flex align-items-center text-decoration-none mb-2" to="mailto:admin@kwapp.store">
+            <i class="fi-mail me-2"></i><span class="text-light">admin@kwapp.store</span>
           </router-link>
           <div class="d-flex flex-wrap pt-4">
-            <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" href="javascript:void(0);" aria-label="Facebook">
+            <button class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2 me-2" aria-label="Facebook">
               <i class="fi-facebook"></i>
-            </a>
-            <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2" href="javascript:void(0);" aria-label="Messenger">
+            </button>
+            <button class="btn btn-icon btn-translucent-light btn-xs rounded-circle mb-2" aria-label="Messenger">
               <i class="fi-messenger"></i>
-            </a>
+            </button>
           </div>
         </div>
       </div>

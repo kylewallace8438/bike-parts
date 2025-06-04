@@ -2,6 +2,10 @@
 import PHeader from './pheader.vue';
 import Content from './content.vue';
 import Map from './map.vue';
+import { onMounted } from 'vue';
+onMounted(() => {
+    window.scrollTo(0, 0);
+})
 </script>
 
 <template>

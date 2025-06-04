@@ -9,6 +9,10 @@ import Catalog from './catalog/list/index.vue'
 // import Features from './features.vue'
 // import LetestCar from './letest-car.vue'
 // import Brands from './brands.vue'
+import { onMounted } from 'vue';
+onMounted(() => {
+    window.scrollTo(0, 0);
+})
 </script>
 
 <template>

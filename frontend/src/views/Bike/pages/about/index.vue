@@ -9,6 +9,10 @@ import Brand from './brand.vue';
 import Blog from './blog.vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { onMounted } from 'vue';
+onMounted(() => {
+    window.scrollTo(0, 0);
+})
 </script>
 
 <template>

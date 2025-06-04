@@ -74,7 +74,7 @@ router.beforeEach(() => {
   </div>
 
   <main class="page-wrapper">
-    <AuthModals />
+    <!-- <AuthModals /> -->
     <NavBar />
 
     <slot />

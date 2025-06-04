@@ -10,6 +10,10 @@ import Catalog from './catalog/grid/index.vue'
 // import LetestCar from './letest-car.vue'
 // import Brands from './brands.vue'
 import GridContent from './grid/index.vue'
+import { onMounted } from 'vue';
+onMounted(() => {
+    window.scrollTo(0, 0);
+})
 </script>
 
 <template>
