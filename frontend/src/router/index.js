@@ -6,7 +6,7 @@ const router = createRouter({
   routes
 })
 
-const title = 'Finder'
+const title = 'Kwapp Store'
 
 router.beforeEach((to) => {
   const nearestWithTitle = to.matched
