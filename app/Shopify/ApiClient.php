@@ -25,6 +25,16 @@ class ApiClient implements ApiClientInterface
         return $this->access_token;
     }
 
+    public function setShop($shop)
+    {
+        $this->shop = $shop;
+    }
+
+    public function setAccessToken($access_token)
+    {
+        $this->access_token = $access_token;
+    }
+
     public function rest()
     {
         $rest = new Rest($this->shop, $this->access_token);

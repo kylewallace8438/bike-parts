@@ -9,10 +9,13 @@ import { onMounted } from 'vue';
 import axios from "axios";
 import { useRoute, useRouter } from 'vue-router';
 import LoadingComponent from '@/components/LoadingComponent.vue';
+import { mixins } from '@/mixins'
 const router = useRouter();
 const products = ref([]);
 const value = ref([25000, 65000]);
-const loading = ref(true)
+const loading = ref(true);
+const { formatMoney, getIdFromGid } = mixins();
+
 const fetchProducts = async () => {
     loading.value = true
     try {
@@ -34,9 +37,9 @@ onMounted(() => {
 
 const gotoProduct = function (item) {
     router.push({
-        path: '/phu-tung',
+        name: 'product-detail',
         params: {
-            slug: item.slug
+            id: getIdFromGid(item.node.id)
         }
     })
 }
@@ -238,9 +241,9 @@ const gotoProduct = function (item) {
                         <div class="card card-light card-hover h-100">
                             <div class="tns-carousel-wrapper card-img-top card-img-hover">
                                 <a class="img-overlay" href="javascript:void(0)" @click="gotoProduct(product)"></a>
-                                <div class="position-absolute start-0 top-0 pt-3 ps-3">
+                                <!-- <div class="position-absolute start-0 top-0 pt-3 ps-3">
                                     <span class="d-table badge bg-info">Used</span>
-                                </div>
+                                </div> -->
                                 <!-- <div class="content-overlay end-0 top-0 pt-3 pe-3">
                                     <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to Wishlist">
                                         <i class="fi-heart"></i>
@@ -252,7 +255,7 @@ const gotoProduct = function (item) {
                                 <h3 class="h6 mb-1">
                                     <router-link class="nav-link-light" to="/car-finder-single">{{product.node.title}}</router-link>
                                 </h3>
-                                <div class="text-primary fw-bold mb-1">{{ product.node.priceRange.maxVariantPrice.amount == 0 ? 'Liên hệ' : product.node.priceRange.maxVariantPrice.amount + 'đ' }}</div>
+                                <div class="text-primary fw-bold mb-1">{{ product.node.priceRange.maxVariantPrice.amount == 0 ? 'Liên hệ' : formatMoney(product.node.priceRange.maxVariantPrice.amount) }}</div>
                                 <div class="fs-sm text-light opacity-70"><i class="fi-map-pin me-1"></i>Hà Nội</div>
                             </div>
                         </div>

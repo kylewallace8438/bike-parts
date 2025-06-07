@@ -1,5 +1,9 @@
 <script setup >
+import { onMounted } from 'vue';
 import Content from './content.vue';
+onMounted(() => {
+    window.scrollTo(0, 0);
+})
 </script>
 
 <template>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BikeController;
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Auth;
@@ -17,8 +18,8 @@ Route::post('register', [AuthController::class, 'register']);
 Route::get('/auth/google', [GoogleAuthController::class, 'redirectToGoogle']);
 
 Route::middleware('auth:sanctum')->get('/user', [AuthController::class, 'user']);
-Route::get('products', [BikeController::class, 'getProducts']);
-Route::get('products/{id}', [BikeController::class, 'getProduct']);
+Route::get('products', [ProductController::class, 'getProducts']);
+Route::get('products/{id}', [ProductController::class, 'getProduct']);
 Route::get('search/{brand_id}', [BikeController::class, 'showBrandCategory']);
 Route::get('search/{brand}/{category_id}', [BikeController::class, 'handleSearchKTM']);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

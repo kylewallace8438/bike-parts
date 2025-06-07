@@ -7,8 +7,10 @@ import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import LoadingComponent from '@/components/LoadingComponent.vue';
 import 'swiper/css';
-
 import { watch } from 'vue';
+import { mixins } from '@/mixins';
+
+const { formatMoney, getIdFromGid } = mixins();
 const route = useRoute();
 const router = useRouter();
 const id = route.params.id;
@@ -26,32 +28,75 @@ const product = ref({
             currencyCode: null
         }
     },
+    metafields: {
+        edges: []
+    },
     tags: [],
-    variants: [],
+    variants: {
+        nodes: []
+    },
     vendor: null,
-    images: {}
+    images: {},
+    description: null
 })
 const images = ref([]);
+const productFields = ref([]);
+const productVariants = ref([]);
+const initVariant = ref(null);
+const productPrice = ref(0);
+const getProductFieldLabel = function(value) {
+    let label = '';
+    switch (value) {
+        case 'ma_tra_cuu':
+            label = 'Mã tra cứu';
+            break;
+        case 'xuat_su':
+            label = 'Xuất sứ';
+            break;
+        case 'chat_lieu':
+            label = 'Chất liệu';
+            break;
+        case 'mau':
+            label = 'Màu';
+            break;
+        default:
+            break;
+    }
+    return label;
+}
+const updatePrice = function(e) {
+    console.log('update price', e.target.value)
+}
 const fetchProduct = async (id) => {
     loading.value = true;
     try {
         const response = await axios.get(`/api/products/${id}`);
         product.value = response.data.data
         images.value = response.data.data.images ? response.data.data.images.nodes : []
+        productFields.value = response.data.data.metafields.edges[0].node.reference.fields
+        productVariants.value = response.data.data.variants.nodes
+        if (productVariants.value.length > 0) {
+            initVariant.value = getIdFromGid(productVariants.value[0].id)
+        }
     } catch (error) {
         console.error(error);
     } finally {
         loading.value = false;
     }
 }
+const openCrisp = (productTitle) => {
+    console.log('click');
+    window.$crisp.push(['do', 'chat:open']);
+    window.$crisp.push(['do', 'message:show', ['text', 'Tôi muốn mua ' + productTitle]]);
+}
 onMounted(() => {
     window.scrollTo(0, 0);
     fetchProduct(id)
 })
-watch(images, (images) => {
-    console.log('images', images)
-}
-);
+
+watch(initVariant, (variantPrice) => {
+    productPrice.value = (productVariants.value.find(variant => getIdFromGid(variant.id) == variantPrice).price)
+});
 
 const modules = [Navigation, Pagination];
 </script>
@@ -108,11 +153,10 @@ const modules = [Navigation, Pagination];
                     <!-- <div class="tns-carousel-inner" data-carousel-options="{&quot;navAsThumbnails&quot;: true, &quot;navContainer&quot;: &quot;#thumbnails&quot;, &quot;gutter&quot;: 12, &quot;responsive&quot;: {&quot;0&quot;:{&quot;controls&quot;: false},&quot;500&quot;:{&quot;controls&quot;: true}}}"> -->
                     <swiper
                         :slides-per-view="1"
-                        :space-between="50"
                         :navigation="true"
                     >
                         <swiper-slide v-for="(image, index) in images" :key="index">
-                            <div><img class="rounded-3" :src="image.url" :alt="image.altText"></div>
+                            <div><img class="rounded-3" :src="image.url" :alt="image.altText" style="width: 100%"></div>
                         </swiper-slide>
                     </swiper>
                 </div>
@@ -123,14 +167,15 @@ const modules = [Navigation, Pagination];
                 </ul>
                 <!-- Specs-->
                 <div class="py-3 mb-3">
-                    <h2 class="h4 text-light mb-4">Specifications</h2>
+                    <h2 class="h4 text-light mb-4">Thông số</h2>
                     <div class="row text-light">
                         <div class="col-sm-12 col-md-12 col-lg-6">
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><strong>Mã tra cứu: </strong><span class="opacity-70 ms-1"></span></li>
-                                <li class="mb-2"><strong>Xuất sứ: </strong><span class="opacity-70 ms-1">Ấn Độ</span></li>
-                                <li class="mb-2"><strong>Chất liệu:</strong><span class="opacity-70 ms-1">Kim loại</span></li>
-                                <li class="mb-2"><strong>Màu:</strong><span class="opacity-70 ms-1">Đen</span></li>
+                            <ul class="list-unstyled" v-if="productFields.length > 0">
+                                <li class="mb-2" v-for="(field, index) in productFields" :key="index">
+                                    <strong>{{ getProductFieldLabel(field.key) }}: </strong>
+                                    <span class="opacity-70 ms-1">{{field.value}}</span>
+                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -157,7 +202,7 @@ const modules = [Navigation, Pagination];
                     </div>
                 </div> -->
                 <!-- Features-->
-                <h2 class="h4 text-light pt-3 mb-4">Features</h2>
+                <!-- <h2 class="h4 text-light pt-3 mb-4">Features</h2>
                 <div class="accordion accordion-light" id="features">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingExterior">
@@ -268,41 +313,54 @@ const modules = [Navigation, Pagination];
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Description-->
                 <div class="pb-4 mb-3">
-                    <h2 class="h4 text-light pt-4 mt-3">Seller's Description</h2>
-                    <p class="text-light opacity-70 mb-1">Lorem tincidunt lectus vitae id vulputate diam quam. Imperdiet non scelerisque turpis sed etiam ultrices. Blandit mollis dignissim egestas consectetur porttitor. Vulputate dolor pretium, dignissim eu augue sit ut convallis. Lectus est, magna urna feugiat sed ultricies sed in lacinia. Fusce potenti sit id pharetra vel ornare. Vestibulum sed tellus ullamcorper arcu.</p>
-                    <div class="collapse" id="seeMoreDescription">
+                    <h2 class="h4 text-light pt-4 mt-3">Mô tả</h2>
+                    <p class="text-light opacity-70 mb-1">{{ product.description }}</p>
+                    <!-- <div class="collapse" id="seeMoreDescription">
                         <p class="text-light opacity-70 mb-1">Asperiores eos molestias, aspernatur assumenda vel corporis ex, magni excepturi totam exercitationem quia inventore quod amet labore impedit quae distinctio? Officiis blanditiis consequatur alias, atque, sed est incidunt accusamus repudiandae tempora repellendus obcaecati delectus ducimus inventore tempore harum numquam autem eligendi culpa.</p>
-                    </div><a class="collapse-label collapsed" href="#seeMoreDescription" data-bs-toggle="collapse" data-bs-label-collapsed="Show more" data-bs-label-expanded="Show less" role="button" aria-expanded="false" aria-controls="seeMoreDescription"></a>
+                    </div><a class="collapse-label collapsed" href="#seeMoreDescription" data-bs-toggle="collapse" data-bs-label-collapsed="Show more" data-bs-label-expanded="Show less" role="button" aria-expanded="false" aria-controls="seeMoreDescription"></a> -->
                 </div>
                 <!-- Post meta-->
                 <div class="d-flex flex-wrap border-top border-light fs-sm text-light pt-4 pb-5 pb-md-2">
-                    <div class="border-end border-light pe-3 me-3"><span class="opacity-70">Published: <strong>May 9, 2021</strong></span></div>
-                    <div class="border-end border-light pe-3 me-3"><span class="opacity-70">Ad number: <strong>681013232</strong></span></div>
-                    <div class="opacity-70">Views: <strong>57</strong></div>
+                    <!-- <div class="border-end border-light pe-3 me-3"><span class="opacity-70">Published: <strong>May 9, 2021</strong></span></div>
+                    <div class="border-end border-light pe-3 me-3"><span class="opacity-70">Ad number: <strong>681013232</strong></span></div> -->
+                    <div class="opacity-70">Lượt xem: <strong>{{ Math.floor(Math.random() * 100) }}</strong></div>
                 </div>
             </div>
             <!-- Sidebar-->
             <div class="col-md-5 pt-5 pt-md-0" style="margin-top: -6rem;">
                 <div class="sticky-top pt-5">
                     <div class="d-none d-md-block pt-5">
-                        <div class="d-flex mb-4"><span class="badge bg-info fs-base me-2">Used</span><span class="badge bg-success fs-base me-2" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-html="true" data-bs-content="&lt;div class=&quot;d-flex&quot;&gt;&lt;i class=&quot;fi-award mt-1 me-2&quot;&gt;&lt;/i&gt;&lt;div&gt;This car is checked and&lt;br&gt;certified by Finder.&lt;/div&gt;&lt;/div&gt;">Certified</span></div>
-                        <div class="h3 text-light">$31,900</div>
+                        <div class="mb-4 text-light">
+                            <strong class="mb-2">Tình trạng</strong>
+                            <div class="d-flex flex-row ">
+                                <div class="form-check form-check-light" style="margin-right: 1rem"  v-for="(variant, index) in productVariants" :key="index">
+                                    <input class="form-check-input" type="radio" :id="variant.id" name="variants" :value="getIdFromGid(variant.id)" v-model="initVariant">
+                                    <label class="form-check-label" :for="variant.id">{{ variant.title }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="h3 text-light">{{ formatMoney(productPrice) }}</div>
                         <div class="d-flex align-items-center text-light pb-4 mb-2">
-                            <div class="text-nowrap border-end border-light pe-3 me-3"><i class="fi-dashboard fs-lg opacity-70 me-2"></i><span class="align-middle">25K miles</span></div>
-                            <div class="text-nowrap"><i class="fi-map-pin fs-lg opacity-70 me-2"></i><span class="align-middle">Chicago, IL 60603</span></div>
+                            <div class="text-nowrap border-end border-light pe-3 me-3"><i class="fi-dashboard fs-lg opacity-70 me-2"></i><span class="align-middle">100 đã mua</span></div>
+                            <div class="text-nowrap"><i class="fi-map-pin fs-lg opacity-70 me-2"></i><span class="align-middle">Hà Nội</span></div>
                         </div>
                     </div>
                     <div class="card card-light card-body mb-4">
-                        <div class="text-light mb-2">Private Seller</div><router-link class="d-flex align-items-center text-decoration-none mb-3" to="/car-finder-vendor"><img class="rounded-circle" src="@/assets/img/avatars/33.jpg" width="48" alt="Devon Lane">
-                            <div class="ps-2">
-                                <h5 class="text-light mb-0">Devon Lane</h5><span class="star-rating"><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i></span><span class="fs-sm text-light opacity-70 align-middle ms-1">(5 reviews)</span>
+                        <div class="text-light mb-2">
+                            <strong>Liên hệ mua hàng</strong>
+                        </div>
+                        <div class="pt-4">
+                            <div class="d-flex flex-row">
+                                <a class="btn btn-outline-light btn-lg px-4 mb-3 mr-2" href="tel:0912345678">
+                                    <i class="fi-phone me-2"></i> 0912345678
+                                </a>
+                                <a class="btn btn-primary btn-lg px-4 mb-3 mr-2" @click="openCrisp(product.title)" href="javascript:void(0)">
+                                    <i class="fi-chat-left me-2"></i>Nhắn tin
+                                </a>
                             </div>
-                        </router-link><router-link class="text-light" to="/car-finder-vendor">Other ads by this seller</router-link>
-                        <div class="pt-4 mt-2">
-                            <button class="btn btn-outline-light btn-lg px-4 mb-3" type="button"><i class="fi-phone me-2"></i>(316) *** **** – reveal</button><br><a class="btn btn-primary btn-lg" href="#send-mail" data-bs-toggle="collapse"><i class="fi-chat-left me-2"></i>Send message</a>
                             <div class="collapse" id="send-mail">
                                 <form class="needs-validation pt-4" novalidate>
                                     <div class="mb-3">

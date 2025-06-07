@@ -34,6 +34,10 @@
     @endif
     <script src="{{ asset('app/app.js') }}" type="module"></script>
 </body>
+<script type="text/javascript">
+    window.$crisp=[];
+    window.CRISP_WEBSITE_ID="99f8d42f-1305-457c-8cbb-c57381918eb5";
+    (function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2YPXDDET1Y"></script>
 <script>
   window.dataLayer = window.dataLayer || [];

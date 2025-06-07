@@ -34,7 +34,7 @@ const value = ref([25000, 65000] as [number, number]);
                     <div class="col-sm-3 mb-4">
                         <div class="card card-light card-hover h-100">
                             <div class="tns-carousel-wrapper card-img-top card-img-hover">
-                                <router-link class="img-overlay" to="/car-finder-single"></router-link>
+                                <router-link class="img-overlay" to="/phu-tung"></router-link>
                                 <!-- <div class="position-absolute start-0 top-0 pt-3 ps-3">
                                     <span class="d-table badge bg-info">Used</span>
                                 </div> -->
