@@ -3,13 +3,17 @@ import axios from '@/lib/axios'
 import { onMounted } from 'vue';
 
 onMounted(() => {
-    axios.get('user').then(response => {
-        if (response.status == 200) {
-            localStorage.setItem('user', JSON.stringify(response.data))
-        }
-    }).catch(error => {
-        console.error(error)
-    })
+    // try {
+    //     axios.get('api/user').then(response => {
+    //         if (response.status == 200) {
+    //             localStorage.setItem('user', JSON.stringify(response.data))
+    //         }
+    //     }).catch(error => {
+    //         console.error(error)
+    //     })
+    // } catch (error) {
+
+    // }
 })
 </script>
 <template>

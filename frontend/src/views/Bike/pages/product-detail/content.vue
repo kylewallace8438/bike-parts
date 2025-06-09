@@ -44,6 +44,7 @@ const productFields = ref([]);
 const productVariants = ref([]);
 const initVariant = ref(null);
 const productPrice = ref(0);
+
 const getProductFieldLabel = function(value) {
     let label = '';
     switch (value) {
@@ -71,10 +72,11 @@ const fetchProduct = async (id) => {
     loading.value = true;
     try {
         const response = await axios.get(`/api/products/${id}`);
-        product.value = response.data.data
-        images.value = response.data.data.images ? response.data.data.images.nodes : []
-        productFields.value = response.data.data.metafields.edges[0].node.reference.fields
-        productVariants.value = response.data.data.variants.nodes
+        const products = response.data.data;
+        product.value = products
+        images.value = products.images ? products.images.nodes : []
+        productFields.value = products.metafields.edges[0].node.reference.fields
+        productVariants.value = products.variants.nodes
         if (productVariants.value.length > 0) {
             initVariant.value = getIdFromGid(productVariants.value[0].id)
         }
@@ -85,7 +87,6 @@ const fetchProduct = async (id) => {
     }
 }
 const openCrisp = (productTitle) => {
-    console.log('click');
     window.$crisp.push(['do', 'chat:open']);
     window.$crisp.push(['do', 'message:show', ['text', 'Tôi muốn mua ' + productTitle]]);
 }
@@ -108,7 +109,7 @@ const modules = [Navigation, Pagination];
         <nav class="mb-3 pt-md-3" aria-label="Breadcrumb">
             <ol class="breadcrumb breadcrumb-light">
                 <li class="breadcrumb-item"><router-link to="/">Trang chủ</router-link></li>
-                <li class="breadcrumb-item"><router-link to="/car-finder-catalog-grid">Phụ tùng </router-link></li>
+                <li class="breadcrumb-item"><router-link to="/phu-tung">Phụ tùng </router-link></li>
                 <li class="breadcrumb-item active" aria-current="page">{{product.title}}</li>
             </ol>
         </nav>
@@ -335,10 +336,16 @@ const modules = [Navigation, Pagination];
                     <div class="d-none d-md-block pt-5">
                         <div class="mb-4 text-light">
                             <strong class="mb-2">Tình trạng</strong>
-                            <div class="d-flex flex-row ">
+                            <div class="d-flex flex-row" v-if="productVariants.length > 1">
                                 <div class="form-check form-check-light" style="margin-right: 1rem"  v-for="(variant, index) in productVariants" :key="index">
                                     <input class="form-check-input" type="radio" :id="variant.id" name="variants" :value="getIdFromGid(variant.id)" v-model="initVariant">
                                     <label class="form-check-label" :for="variant.id">{{ variant.title }}</label>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row" v-else>
+                                <div class="form-check form-check-light" style="margin-right: 1rem"  >
+                                    <input class="form-check-input" type="radio" name="variants" value="new" id="new" checked>
+                                    <label class="form-check-label" for="new">Mới</label>
                                 </div>
                             </div>
                         </div>
@@ -352,16 +359,16 @@ const modules = [Navigation, Pagination];
                         <div class="text-light mb-2">
                             <strong>Liên hệ mua hàng</strong>
                         </div>
-                        <div class="pt-4">
+                        <div class="">
                             <div class="d-flex flex-row">
-                                <a class="btn btn-outline-light btn-lg px-4 mb-3 mr-2" href="tel:0912345678">
+                                <a class="btn btn-outline-light btn-sm px-4 mb-3 mr-3" style="margin-right: 1rem" href="tel:0912345678">
                                     <i class="fi-phone me-2"></i> 0912345678
                                 </a>
-                                <a class="btn btn-primary btn-lg px-4 mb-3 mr-2" @click="openCrisp(product.title)" href="javascript:void(0)">
+                                <a class="btn btn-primary btn-sm px-4 mb-3 mr-3" @click="openCrisp(product.title)" href="javascript:void(0)">
                                     <i class="fi-chat-left me-2"></i>Nhắn tin
                                 </a>
                             </div>
-                            <div class="collapse" id="send-mail">
+                            <!-- <div class="collapse" id="send-mail">
                                 <form class="needs-validation pt-4" novalidate>
                                     <div class="mb-3">
                                         <textarea class="form-control form-control-light" rows="5" placeholder="Write your message" required></textarea>
@@ -369,10 +376,10 @@ const modules = [Navigation, Pagination];
                                     </div>
                                     <button class="btn btn-outline-primary" type="submit">Submit</button>
                                 </form>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
-                    <div class="card card-body bg-transparent border-light">
+                    <!-- <div class="card card-body bg-transparent border-light">
                         <h5 class="text-light">Email me price drops and new listings for these search results:</h5>
                         <form class="form-group form-group-light mb-3">
                             <div class="input-group"><span class="input-group-text"> <i class="fi-mail"></i></span>
@@ -384,7 +391,7 @@ const modules = [Navigation, Pagination];
                             <input class="form-check-input" type="checkbox" id="subscription-agree">
                             <label class="form-check-label fs-sm opacity-70" for="subscription-agree">I agree to receive price drop alerts on this vehicle and helpful shopping information.</label>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

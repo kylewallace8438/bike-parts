@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Shopify\Interfaces\ApiClientInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -14,54 +15,82 @@ class ProductController extends Controller
     {
         $this->apiClient = $apiClient;
     }
-    public function getProducts()
+    public function getProducts(Request $request)
     {
+        $startCursor = $request->get('startCursor');
+        $endCursor = $request->get('endCursor');
         $limit = config('shopify.limit_pagination');
-
-        $response = $this->apiClient->graphql()->query([
-            'query' => 'query GetFirst10Products($first: Int!, $after: String, $reverse: Boolean) {
-                products(first: $first, reverse: $reverse, after: $after) {
-                    edges {
-                        cursor
-                        node {
-                            id
-                            title
-                            tags
-                            vendor
-                            featuredImage {
-                                url
-                                width
-                                height
-                                altText
-                            }
-                            priceRange {
-                                minVariantPrice {
-                                    amount
-                                    currencyCode
-                                }
-                                maxVariantPrice {
-                                    amount
-                                    currencyCode
-                                }
-                            }
+        $edgesQuery = '
+            edges {
+                cursor
+                node {
+                    id
+                    title
+                    tags
+                    vendor
+                    featuredImage {
+                        url
+                        width
+                        height
+                        altText
+                    }
+                    priceRange {
+                        minVariantPrice {
+                            amount
+                            currencyCode
+                        }
+                        maxVariantPrice {
+                            amount
+                            currencyCode
                         }
                     }
-                    pageInfo {
-                        hasNextPage
-                        hasPreviousPage
-                        startCursor
-                        endCursor
-                    }
                 }
-            }',
+            }
+            pageInfo {
+                hasNextPage
+                hasPreviousPage
+                startCursor
+                endCursor
+            }
+        ';
+        if ($startCursor) {
+            $cursor = $startCursor;
+            $query = 'query GetProducts($limit: Int!, $cursor: String!, $reverse: Boolean) {
+                products(reverse: $reverse, last: $limit, before: $cursor) {
+                    ' . $edgesQuery . '
+                }
+            }';
+        } else if ($endCursor) {
+            $cursor = $endCursor;
+            $query = 'query GetProducts($limit: Int!, $cursor: String!, $reverse: Boolean) {
+                products(reverse: $reverse, first: $limit, after: $cursor) {
+                    ' . $edgesQuery . '
+                }
+            }';
+        } else {
+            $cursor = null;
+            $query = 'query GetProducts($limit: Int!, $reverse: Boolean) {
+                products(reverse: $reverse, first: $limit) {
+                    ' . $edgesQuery . '
+                }
+            }';
+        }
+        $queryData = [
+            'query' => $query,
             'variables' => [
-                'first' => $limit,
-                'after' => null,
-                'reverse' => false
+                'limit' => $limit,
+                'reverse' => true
             ]
-        ]);
+        ];
+        if ($cursor) {
+            $queryData['variables']['cursor'] = $cursor;
+        }
+        $response = $this->apiClient->graphql()->query($queryData);
+        Log::info('response', $response->getDecodedBody());
+
         return response()->json([
-            'data' => data_get($response->getDecodedBody(), 'data.products.edges')
+            'data' => data_get($response->getDecodedBody(), 'data.products.edges'),
+            'pageInfo' => data_get($response->getDecodedBody(), 'data.products.pageInfo')
         ]);
     }
 
@@ -135,5 +164,10 @@ class ProductController extends Controller
         return response()->json([
             'data' => data_get($response->getDecodedBody(), 'data.product')
         ]);
+    }
+
+    public function listenProductUpdate(Request $request)
+    {
+        Log::info('request', $request);
     }
 }

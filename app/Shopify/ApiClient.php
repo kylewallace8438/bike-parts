@@ -15,12 +15,12 @@ class ApiClient implements ApiClientInterface
         $this->access_token = config('shopify.SHOPIFY_ACCESS_TOKEN');
     }
 
-    protected function getShop()
+    public function getShop()
     {
         return $this->shop;
     }
 
-    protected function getAccessToken()
+    public function getAccessToken()
     {
         return $this->access_token;
     }

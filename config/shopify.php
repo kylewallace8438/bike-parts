@@ -6,5 +6,5 @@ return [
     'SHOPIFY_API_SECRET' => env('SHOPIFY_API_SECRET'),
     'SHOPIFY_APP_SCOPES' => env('SHOPIFY_APP_SCOPES'),
     'SHOPIFY_APP_HOST_NAME' => env('SHOPIFY_APP_HOST_NAME'),
-    'limit_pagination' => 10
+    'limit_pagination' => 12
 ];

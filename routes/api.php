@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BikeController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\WebhookController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Auth;
@@ -23,3 +24,4 @@ Route::get('products/{id}', [ProductController::class, 'getProduct']);
 Route::get('search/{brand_id}', [BikeController::class, 'showBrandCategory']);
 Route::get('search/{brand}/{category_id}', [BikeController::class, 'handleSearchKTM']);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('wehbooks/products-update', [ProductController::class, 'listenProductUpdate']);

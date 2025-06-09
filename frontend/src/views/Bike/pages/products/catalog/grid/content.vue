@@ -1,32 +1,45 @@
 <script  setup>
 import { ref } from 'vue';
-import { Swiper, SwiperSlide } from 'swiper/vue'
 import simplebar from 'simplebar-vue';
 import 'simplebar/dist/simplebar.min.css';
-import Slider from '@vueform/slider';
 import "@vueform/slider/themes/default.css";
 import { onMounted } from 'vue';
 import axios from "axios";
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import LoadingComponent from '@/components/LoadingComponent.vue';
 import { mixins } from '@/mixins'
 const router = useRouter();
 const products = ref([]);
-const value = ref([25000, 65000]);
 const loading = ref(true);
 const { formatMoney, getIdFromGid } = mixins();
-
-const fetchProducts = async () => {
+const pagination = ref({
+    endCursor: null,
+    hasNextPage: false,
+    hasPreviousPage: false,
+    startCursor: null
+})
+const fetchProducts = async (startCursor = null, endCursor = null) => {
     loading.value = true
     try {
-        await axios.get('/api/products').then((response) => {
+        let params = {}
+        if (startCursor) {
+            params.startCursor = startCursor
+        }
+        if (endCursor) {
+            params.endCursor = endCursor
+        }
+        await axios.get('/api/products', {
+            params: params
+         }).then((response) => {
             console.log(response)
             if (response.status == 200 && response.data.data) {
                 products.value = response.data.data
+                const pageInfo = response.data.pageInfo;
+                pagination.value = pageInfo
             }
         });
     } catch (error) {
-
+        console.log(error)
     } finally {
         loading.value = false
     }
@@ -34,7 +47,6 @@ const fetchProducts = async () => {
 onMounted(() => {
   fetchProducts()
 })
-
 const gotoProduct = function (item) {
     router.push({
         name: 'product-detail',
@@ -42,6 +54,12 @@ const gotoProduct = function (item) {
             id: getIdFromGid(item.node.id)
         }
     })
+}
+const handleGoPrevious = function () {
+    fetchProducts(pagination.value.startCursor, null)
+}
+const handleGoNext = function () {
+    fetchProducts(null, pagination.value.endCursor)
 }
 </script>
 <style>
@@ -275,8 +293,12 @@ const gotoProduct = function (item) {
                 <div class="d-flex align-items-center justify-content-between py-2" v-if="products.length > 0">
                     <nav aria-label="Pagination">
                         <ul class="pagination pagination-light mb-0">
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);" aria-label="Previous"><i class="fi-chevron-left"></i>Trước</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);" aria-label="Next">Sau<i class="fi-chevron-right"></i></a></li>
+                            <li class="page-item">
+                                <button class="page-link" :disabled="!pagination.hasPreviousPage" aria-label="Previous" @click="handleGoPrevious"><i class="fi-chevron-left"></i>Trước</button>
+                            </li>
+                            <li class="page-item">
+                                <button class="page-link" :disabled="!pagination.hasNextPage" aria-label="Next" @click="handleGoNext">Sau<i class="fi-chevron-right"></i></button>
+                            </li>
                         </ul>
                     </nav>
                 </div>
