@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Shopify\Interfaces\ApiClientInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -86,11 +87,22 @@ class ProductController extends Controller
             $queryData['variables']['cursor'] = $cursor;
         }
         $response = $this->apiClient->graphql()->query($queryData);
-        Log::info('response', $response->getDecodedBody());
-
+        $products = data_get($response->getDecodedBody(), 'data.products.edges');
+        $pageInfo = data_get($response->getDecodedBody(), 'data.products.pageInfo');
+        $list_id = collect($products)->pluck('node.id')->map(function ($item) {
+            return basename($item);
+        })->toArray();
+        $local_products = Product::whereIn('shopify_id', $list_id)->get(['shopify_id', 'slug']);
+        foreach ($products as $key => $product) {
+            foreach ($local_products as $local_product) {
+                if (basename($product['node']['id']) == $local_product->shopify_id) {
+                    $products[$key]['node']['slug'] = $local_product->slug;
+                }
+            }
+        }
         return response()->json([
-            'data' => data_get($response->getDecodedBody(), 'data.products.edges'),
-            'pageInfo' => data_get($response->getDecodedBody(), 'data.products.pageInfo')
+            'data' => $products,
+            'pageInfo' => $pageInfo
         ]);
     }
 

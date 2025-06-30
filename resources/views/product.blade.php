@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 @endsection
 @section('content')
-    <div class="main-wrapper" id="home-app">
-        <home-component></home-component>
+    <div class="main-wrapper" id="product-app">
+        <product-detail-component :product="{{ json_encode($product) }}"></product-detail-component>
     </div>
 @endsection
 @section('scripts')
