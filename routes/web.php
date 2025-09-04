@@ -14,7 +14,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/san-pham', [App\Http\Controllers\ProductController::class, 'index'])->name('san-pham');
 Route::get('/san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'getProduct']);
 Route::get('/lien-he', [App\Http\Controllers\ProductController::class, 'index'])->name('lien-he');
-// Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])
+Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index']);
 //     ->where('any', '^(?!backend|js|api|app|tool|auth).*$');
 // Route::get('search/ktm', [App\Http\Controllers\SearchController::class, 'searchKTM'])->name('search.ktm');
 // Route::get('search/ktm/{category_id}', [App\Http\Controllers\SearchController::class, 'searchKTMCategory'])->name('search.ktm.category');

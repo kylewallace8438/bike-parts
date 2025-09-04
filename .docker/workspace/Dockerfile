@@ -38,5 +38,9 @@ RUN npm install -g npm@latest
 # Set working directory
 WORKDIR /var/www
 
+# Copy entrypoint script
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 # Default command
-CMD ["tail", "-f", "/dev/null"]
+CMD ["/usr/local/bin/entrypoint.sh"]

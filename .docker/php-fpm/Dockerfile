@@ -22,3 +22,10 @@ WORKDIR /var/www
 
 # Install Redis extension
 RUN pecl install redis && docker-php-ext-enable redis
+
+# Copy entrypoint script
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Use custom entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
