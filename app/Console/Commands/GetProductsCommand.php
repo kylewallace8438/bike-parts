@@ -45,6 +45,24 @@ class GetProductsCommand extends Command
                 node {
                     id
                     title
+                    tags
+                    vendor
+                    featuredImage {
+                        url
+                        width
+                        height
+                        altText
+                    }
+                    priceRange {
+                        minVariantPrice {
+                            amount
+                            currencyCode
+                        }
+                        maxVariantPrice {
+                            amount
+                            currencyCode
+                        }
+                    }
                 }
             }
             pageInfo {
@@ -81,7 +99,22 @@ class GetProductsCommand extends Command
                     'shopify_id' => basename($product['node']['id'])
                 ], [
                     'shopify_id' => basename($product['node']['id']),
-                    'slug' => Str::slug($product['node']['title'])
+                    'slug' => Str::slug($product['node']['title']),
+                    'title' => $product['node']['title'],
+                    'tags' => $product['node']['tags'],
+                    'vendor' => $product['node']['vendor'],
+                    'featured_image_url' => $product['node']['featuredImage']['url'] ?? null,
+                    'featured_image_width' => $product['node']['featuredImage']['width'] ?? null,
+                    'featured_image_height' => $product['node']['featuredImage']['height'] ?? null,
+                    'featured_image_alt_text' => $product['node']['featuredImage']['altText'] ?? null,
+                    'min_price' => $product['node']['priceRange']['minVariantPrice']['amount'] ?? null,
+                    'max_price' => $product['node']['priceRange']['maxVariantPrice']['amount'] ?? null,
+                    'currency_code' => $product['node']['priceRange']['minVariantPrice']['currencyCode'] ?? null,
+                    'description' => $product['node']['description'] ?? null,
+                    'images' => $product['node']['images'] ?? null,
+                    'variants' => $product['node']['variants'] ?? null,
+                    'metafields' => $product['node']['metafields'] ?? null,
+                    'shopify_updated_at' => now(),
                 ]);
             }
         }

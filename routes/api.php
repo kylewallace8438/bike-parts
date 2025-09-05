@@ -21,6 +21,7 @@ Route::get('/auth/google', [GoogleAuthController::class, 'redirectToGoogle']);
 Route::middleware('auth:sanctum')->get('/user', [AuthController::class, 'user']);
 Route::get('products', [ProductController::class, 'getProducts']);
 Route::get('products/{id}', [ProductController::class, 'getProduct']);
+Route::get('products/{slug}', [ProductController::class, 'getProduct']);
 Route::get('search/{brand_id}', [BikeController::class, 'showBrandCategory']);
 Route::get('search/{brand}/{category_id}', [BikeController::class, 'handleSearchKTM']);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

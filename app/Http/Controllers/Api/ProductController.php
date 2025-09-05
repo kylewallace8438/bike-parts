@@ -106,8 +106,10 @@ class ProductController extends Controller
         ]);
     }
 
-    public function getProduct($id, Request $request)
+    public function getProduct($slug, Request $request)
     {
+        $product = Product::where('slug', $slug)->firstOrFail();
+        $id = $product->shopify_id;
         $response = $this->apiClient->graphql()->query([
             'query' => '
                 query GetProductWithMetafieldsAndMetaobjects($id: ID!, $namespace: String!) {
@@ -174,7 +176,8 @@ class ProductController extends Controller
             ]
         ]);
         return response()->json([
-            'data' => data_get($response->getDecodedBody(), 'data.product')
+            // 'data' => data_get($response->getDecodedBody(), 'data.product')
+            'data' =>  $product
         ]);
     }
 
