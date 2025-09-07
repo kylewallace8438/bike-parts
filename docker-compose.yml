@@ -51,7 +51,7 @@ services:
       VITE_PORT: 5173
     restart: unless-stopped
     ports:
-      - 3000:3000 # For Node.js applications
+      - "${WORKSPACE_FORWARD_PORT}:3000" # For Node.js applications
     networks:
       - laravel
 
@@ -85,7 +85,7 @@ services:
       - .data/mysql:/var/lib/mysql
       - ./.docker/mysql:/var/lib/mysql-init
     ports:
-      - "3306:3306"
+      - "${MYSQL_FORWARD_PORT}:3306"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_PASSWORD}"]
       interval: 5s
@@ -101,7 +101,7 @@ services:
     volumes:
       - .data/redis:/data
     ports:
-      - "6380:6379"
+      - "${REDIS_FORWARD_PORT}:6379"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
