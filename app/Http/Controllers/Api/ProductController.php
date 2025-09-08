@@ -27,22 +27,55 @@ class ProductController extends Controller
                 node {
                     id
                     title
+                    images(first: 5) {
+                        nodes {
+                            altText
+                            id
+                            url
+                        }
+                    }
                     tags
                     vendor
-                    featuredImage {
-                        url
-                        width
-                        height
-                        altText
-                    }
+                    description
                     priceRange {
+                        maxVariantPrice {
+                            amount
+                            currencyCode
+                        }
                         minVariantPrice {
                             amount
                             currencyCode
                         }
-                        maxVariantPrice {
-                            amount
-                            currencyCode
+                    }
+                    variants(first: 10) {
+                        nodes {
+                            id
+                            title
+                            price
+                        }
+                    }
+                    metafields(first: 1, namespace: $namespace) {
+                        edges {
+                            node {
+                            id
+                            namespace
+                            key
+                            value
+                            type
+                            reference {
+                                ... on Metaobject {
+                                    id
+                                    fields {
+                                        key
+                                        value
+                                    }
+                                    type
+                                    handle
+                                    displayName
+                                    updatedAt
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -56,21 +89,21 @@ class ProductController extends Controller
         ';
         if ($startCursor) {
             $cursor = $startCursor;
-            $query = 'query GetProducts($limit: Int!, $cursor: String!, $reverse: Boolean) {
+            $query = 'query GetProducts($limit: Int!, $cursor: String!, $reverse: Boolean, $namespace: String!) {
                 products(reverse: $reverse, last: $limit, before: $cursor) {
                     ' . $edgesQuery . '
                 }
             }';
         } else if ($endCursor) {
             $cursor = $endCursor;
-            $query = 'query GetProducts($limit: Int!, $cursor: String!, $reverse: Boolean) {
+            $query = 'query GetProducts($limit: Int!, $cursor: String!, $reverse: Boolean, $namespace: String!) {
                 products(reverse: $reverse, first: $limit, after: $cursor) {
                     ' . $edgesQuery . '
                 }
             }';
         } else {
             $cursor = null;
-            $query = 'query GetProducts($limit: Int!, $reverse: Boolean) {
+            $query = 'query GetProducts($limit: Int!, $reverse: Boolean, $namespace: String!) {
                 products(reverse: $reverse, first: $limit) {
                     ' . $edgesQuery . '
                 }
@@ -80,7 +113,8 @@ class ProductController extends Controller
             'query' => $query,
             'variables' => [
                 'limit' => $limit,
-                'reverse' => true
+                'reverse' => true,
+                'namespace' => 'custom'
             ]
         ];
         if ($cursor) {

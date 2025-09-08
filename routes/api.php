@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\WebhookController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\ShopifyProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
