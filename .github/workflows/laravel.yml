@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+    - name: Pull latest code (optional if checkout done)
+      run: cd ~/projects/bike-parts && git pull origin main
     - name: Build
       run: |
         cd ~/projects/bike-parts
