@@ -28,12 +28,14 @@ class ProductController extends Controller
                     id
                     title
                     media(first: 5) {
-                        node {
-                            ... on MediaImage {
-                                id
-                                image {
-                                originalSrc
-                                altText
+                        edges {
+                            node {
+                                ... on MediaImage {
+                                    id
+                                    image {
+                                    originalSrc
+                                    altText
+                                    }
                                 }
                             }
                         }
@@ -53,7 +55,7 @@ class ProductController extends Controller
                     }
                     variants(first: 10) {
                         edges {
-                            nodes {
+                            node {
                                 id
                                 title
                                 price
@@ -181,6 +183,17 @@ class ProductController extends Controller
                                 id
                                 title
                                 price
+                            }
+                        }
+                        featuredMedia {
+                            mediaContentType
+                            alt
+                            ... on MediaImage {
+                                id
+                                image {
+                                    url
+                                    altText
+                                }
                             }
                         }
                         metafields(first: 1, namespace: $namespace) {

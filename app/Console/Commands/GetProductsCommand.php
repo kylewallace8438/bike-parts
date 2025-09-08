@@ -76,6 +76,17 @@ class GetProductsCommand extends Command
                             price
                         }
                     }
+                    featuredMedia {
+                        mediaContentType
+                        alt
+                        ... on MediaImage {
+                            id
+                            image {
+                                url
+                                altText
+                            }
+                        }
+                    }
                     metafields(first: 1, namespace: $namespace) {
                         edges {
                             node {

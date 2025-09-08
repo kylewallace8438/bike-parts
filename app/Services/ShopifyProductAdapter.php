@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Collection;
 
 class ShopifyProductAdapter
 {
@@ -13,48 +15,114 @@ class ShopifyProductAdapter
      *
      * @param array $shopifyData
      * @return Product
+     * @throws \Exception
      */
     public function mapToProduct(array $shopifyData): Product
     {
-        $nodeData = $shopifyData['node'] ?? $shopifyData;
+        try {
+            $nodeData = $shopifyData['node'] ?? $shopifyData;
 
-        return new Product([
-            'shopify_id' => $this->extractShopifyId($nodeData['id']),
-            'slug' => $this->generateSlug($nodeData['title'] ?? ''),
-            'title' => $nodeData['title'] ?? null,
-            'tags' => $nodeData['tags'] ?? [],
-            'vendor' => $nodeData['vendor'] ?? null,
-            'featured_image_url' => $nodeData['featuredImage']['url'] ?? null,
-            'featured_image_width' => $nodeData['featuredImage']['width'] ?? null,
-            'featured_image_height' => $nodeData['featuredImage']['height'] ?? null,
-            'featured_image_alt_text' => $nodeData['featuredImage']['altText'] ?? null,
-            'min_price' => $this->extractPrice($nodeData['priceRange']['minVariantPrice'] ?? null),
-            'max_price' => $this->extractPrice($nodeData['priceRange']['maxVariantPrice'] ?? null),
-            'currency_code' => $nodeData['priceRange']['minVariantPrice']['currencyCode'] ?? 'VND',
-            'description' => $nodeData['description'] ?? null,
-            'images' => $this->mapImages($nodeData['images'] ?? []),
-            'variants' => $this->mapVariants($nodeData['variants'] ?? []),
-            'metafields' => $nodeData['metafields'] ?? [],
-            'shopify_updated_at' => $this->parseShopifyDate($nodeData['updatedAt'] ?? null),
-        ]);
+            if (!$this->validateShopifyData($shopifyData)) {
+                throw new \InvalidArgumentException('Invalid Shopify data format');
+            }
+
+            return new Product([
+                'shopify_id' => $this->extractShopifyId($nodeData['id']),
+                'slug' => $this->generateSlug($nodeData['title'] ?? ''),
+                'title' => $nodeData['title'] ?? null,
+                'tags' => $nodeData['tags'] ?? [],
+                'vendor' => $nodeData['vendor'] ?? null,
+                'featured_image_url' => $this->extractFeaturedImageUrl($nodeData),
+                'featured_image_width' => $this->extractFeaturedImageWidth($nodeData),
+                'featured_image_height' => $this->extractFeaturedImageHeight($nodeData),
+                'featured_image_alt_text' => $this->extractFeaturedImageAltText($nodeData),
+                'min_price' => $this->extractPrice($nodeData['priceRange']['minVariantPrice'] ?? null),
+                'max_price' => $this->extractPrice($nodeData['priceRange']['maxVariantPrice'] ?? null),
+                'currency_code' => $nodeData['priceRange']['minVariantPrice']['currencyCode'] ?? 'VND',
+                'description' => $nodeData['description'] ?? $nodeData['descriptionHtml'] ?? null,
+                'images' => $this->mapImages($nodeData['media'] ?? $nodeData['images'] ?? []),
+                'variants' => $this->mapVariants($nodeData['variants'] ?? []),
+                'metafields' => $this->mapMetafields($nodeData['metafields'] ?? []),
+                'shopify_updated_at' => $this->parseShopifyDate($nodeData['updatedAt'] ?? null),
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Error mapping Shopify product data', [
+                'error' => $e->getMessage(),
+                'shopify_data' => $shopifyData
+            ]);
+            throw $e;
+        }
     }
 
     /**
      * Map nhiều sản phẩm từ Shopify response
      *
      * @param array $shopifyResponse
-     * @return array
+     * @return Collection
      */
-    public function mapMultipleProducts(array $shopifyResponse): array
+    public function mapMultipleProducts(array $shopifyResponse): Collection
     {
-        $products = [];
+        $products = collect();
         $edges = $shopifyResponse['data']['products']['edges'] ?? [];
 
         foreach ($edges as $edge) {
-            $products[] = $this->mapToProduct($edge);
+            try {
+                $products->push($this->mapToProduct($edge));
+            } catch (\Exception $e) {
+                Log::warning('Failed to map product', [
+                    'error' => $e->getMessage(),
+                    'product_id' => $edge['node']['id'] ?? 'unknown'
+                ]);
+                continue; // Skip invalid products
+            }
         }
 
         return $products;
+    }
+
+    /**
+     * Batch create hoặc update products từ Shopify data
+     *
+     * @param array $shopifyResponse
+     * @return array
+     */
+    public function batchCreateOrUpdateProducts(array $shopifyResponse): array
+    {
+        $results = [
+            'created' => 0,
+            'updated' => 0,
+            'failed' => 0,
+            'errors' => []
+        ];
+
+        $products = $this->mapMultipleProducts($shopifyResponse);
+
+        foreach ($products as $productData) {
+            try {
+                $shopifyId = $productData->shopify_id;
+                $existingProduct = Product::where('shopify_id', $shopifyId)->first();
+
+                if ($existingProduct) {
+                    $existingProduct->update($productData->toArray());
+                    $results['updated']++;
+                } else {
+                    Product::create($productData->toArray());
+                    $results['created']++;
+                }
+            } catch (\Exception $e) {
+                $results['failed']++;
+                $results['errors'][] = [
+                    'shopify_id' => $productData->shopify_id ?? 'unknown',
+                    'error' => $e->getMessage()
+                ];
+                Log::error('Failed to create/update product', [
+                    'shopify_id' => $productData->shopify_id ?? 'unknown',
+                    'error' => $e->getMessage()
+                ]);
+            }
+        }
+
+        return $results;
     }
 
     /**
@@ -62,35 +130,48 @@ class ShopifyProductAdapter
      *
      * @param array $shopifyData
      * @return Product
+     * @throws \Exception
      */
     public function createOrUpdateProduct(array $shopifyData): Product
     {
-        $nodeData = $shopifyData['node'] ?? $shopifyData;
-        $shopifyId = $this->extractShopifyId($nodeData['id']);
+        try {
+            $nodeData = $shopifyData['node'] ?? $shopifyData;
+            $shopifyId = $this->extractShopifyId($nodeData['id']);
 
-        $productData = [
-            'shopify_id' => $shopifyId,
-            'slug' => $this->generateSlug($nodeData['title'] ?? ''),
-            'title' => $nodeData['title'] ?? null,
-            'tags' => $nodeData['tags'] ?? [],
-            'vendor' => $nodeData['vendor'] ?? null,
-            'featured_image_url' => $nodeData['featuredImage']['url'] ?? null,
-            'featured_image_width' => $nodeData['featuredImage']['width'] ?? null,
-            'featured_image_height' => $nodeData['featuredImage']['height'] ?? null,
-            'featured_image_alt_text' => $nodeData['featuredImage']['altText'] ?? null,
-            'min_price' => $this->extractPrice($nodeData['priceRange']['minVariantPrice'] ?? null),
-            'max_price' => $this->extractPrice($nodeData['priceRange']['maxVariantPrice'] ?? null),
-            'currency_code' => $nodeData['priceRange']['minVariantPrice']['currencyCode'] ?? 'VND',
-            'description' => $nodeData['description'] ?? null,
-            'images' => $this->mapImages($nodeData['media'] ?? []),
-            'variants' => $this->mapVariants($nodeData['variants'] ?? []),
-            'metafields' => $nodeData['metafields'] ?? [],
-            'shopify_updated_at' => $this->parseShopifyDate($nodeData['updatedAt'] ?? null),
-        ];
-        return Product::updateOrCreate(
-            ['shopify_id' => $shopifyId],
-            $productData
-        );
+            if (!$shopifyId) {
+                throw new \InvalidArgumentException('Invalid Shopify ID');
+            }
+
+            $productData = [
+                'shopify_id' => $shopifyId,
+                'slug' => $this->generateSlug($nodeData['title'] ?? ''),
+                'title' => $nodeData['title'] ?? null,
+                'tags' => $nodeData['tags'] ?? [],
+                'vendor' => $nodeData['vendor'] ?? null,
+                'featured_image_url' => $this->extractFeaturedImageUrl($nodeData),
+                'featured_image_width' => $this->extractFeaturedImageWidth($nodeData),
+                'featured_image_height' => $this->extractFeaturedImageHeight($nodeData),
+                'featured_image_alt_text' => $this->extractFeaturedImageAltText($nodeData),
+                'min_price' => $this->extractPrice($nodeData['priceRange']['minVariantPrice'] ?? null),
+                'max_price' => $this->extractPrice($nodeData['priceRange']['maxVariantPrice'] ?? null),
+                'currency_code' => $nodeData['priceRange']['minVariantPrice']['currencyCode'] ?? 'VND',
+                'description' => $nodeData['description'] ?? $nodeData['descriptionHtml'] ?? null,
+                'images' => $this->mapImages($nodeData['images'] ?? []),
+                'variants' => $this->mapVariants($nodeData['variants'] ?? []),
+                'metafields' => $this->mapMetafields($nodeData['metafields'] ?? []),
+                'shopify_updated_at' => $this->parseShopifyDate($nodeData['updatedAt'] ?? null),
+            ];
+            return Product::updateOrCreate(
+                ['shopify_id' => $shopifyId],
+                $productData
+            );
+        } catch (\Exception $e) {
+            Log::error('Error creating/updating product', [
+                'error' => $e->getMessage(),
+                'shopify_data' => $shopifyData
+            ]);
+            throw $e;
+        }
     }
 
     /**
@@ -137,7 +218,59 @@ class ShopifyProductAdapter
     }
 
     /**
-     * Map images data
+     * Extract featured image URL
+     *
+     * @param array $nodeData
+     * @return string|null
+     */
+    private function extractFeaturedImageUrl(array $nodeData): ?string
+    {
+        return $nodeData['featuredMedia']['url'] ??
+               $nodeData['featuredMedia']['image']['url'] ??
+               null;
+    }
+
+    /**
+     * Extract featured image width
+     *
+     * @param array $nodeData
+     * @return int|null
+     */
+    private function extractFeaturedImageWidth(array $nodeData): ?int
+    {
+        return $nodeData['featuredImage']['width'] ??
+               $nodeData['featuredMedia']['image']['width'] ??
+               null;
+    }
+
+    /**
+     * Extract featured image height
+     *
+     * @param array $nodeData
+     * @return int|null
+     */
+    private function extractFeaturedImageHeight(array $nodeData): ?int
+    {
+        return $nodeData['featuredImage']['height'] ??
+               $nodeData['featuredMedia']['image']['height'] ??
+               null;
+    }
+
+    /**
+     * Extract featured image alt text
+     *
+     * @param array $nodeData
+     * @return string|null
+     */
+    private function extractFeaturedImageAltText(array $nodeData): ?string
+    {
+        return $nodeData['featuredImage']['altText'] ??
+               $nodeData['featuredMedia']['image']['altText'] ??
+               null;
+    }
+
+    /**
+     * Map images/media data with support for both images and media fields
      *
      * @param array $imagesData
      * @return array
@@ -145,14 +278,15 @@ class ShopifyProductAdapter
     private function mapImages(array $imagesData): array
     {
         $images = [];
-        $edges = $imagesData['edges'] ?? $imagesData;
+        $nodes = $imagesData['nodes'] ?? $imagesData;
 
-        foreach ($edges as $edge) {
-            $imageNode = $edge['node'] ?? $edge;
+        foreach ($nodes as $node) {
+            $imageNode = $node;
             $images[] = [
                 'id' => $imageNode['id'] ?? null,
-                'image' => $imageNode['image']['originalSrc'] ?? null,
-                'altText' => $imageNode['image']['altText'] ?? null,
+                'url' => $imageNode['originalSrc'] ?? $imageNode['url'] ?? null,
+                'altText' => $imageNode['altText'] ?? null,
+                'mediaContentType' => 'IMAGE',
             ];
         }
 
@@ -160,7 +294,7 @@ class ShopifyProductAdapter
     }
 
     /**
-     * Map variants data
+     * Map variants data with enhanced information
      *
      * @param array $variantsData
      * @return array
@@ -168,23 +302,43 @@ class ShopifyProductAdapter
     private function mapVariants(array $variantsData): array
     {
         $variants = [];
-        $edges = $variantsData['edges'] ?? $variantsData;
-
+        $edges = $variantsData['nodes'] ?? $variantsData;
         foreach ($edges as $edge) {
-            $variantNode = $edge['node'] ?? $edge;
+            $variantNode = $edge;
             $variants[] = [
-                'id' => $this->extractShopifyId($variantNode['id'] ?? null),
+                'id' => $variantNode['id'] ?? null,
                 'title' => $variantNode['title'] ?? null,
-                'price' => $this->extractPrice($variantNode['price'] ?? null),
-                'sku' => $variantNode['sku'] ?? null,
-                'inventoryQuantity' => $variantNode['inventoryQuantity'] ?? null,
-                'available' => $variantNode['availableForSale'] ?? false,
-                'weight' => $variantNode['weight'] ?? null,
-                'weightUnit' => $variantNode['weightUnit'] ?? null,
+                'price' => $variantNode['price'] ?? null,
             ];
         }
 
         return $variants;
+    }
+
+    /**
+     * Map metafields data
+     *
+     * @param array $metafieldsData
+     * @return array
+     */
+    private function mapMetafields(array $metafieldsData): array
+    {
+        $metafields = [];
+        $edges = $metafieldsData['edges'] ?? $metafieldsData;
+
+        foreach ($edges as $edge) {
+            $metafieldNode = $edge['node'] ?? $edge;
+            $metafields[] = [
+                'id' => $metafieldNode['id'] ?? null,
+                'namespace' => $metafieldNode['namespace'] ?? null,
+                'key' => $metafieldNode['key'] ?? null,
+                'value' => $metafieldNode['value'] ?? null,
+                'type' => $metafieldNode['type'] ?? null,
+                'description' => $metafieldNode['description'] ?? null,
+            ];
+        }
+
+        return $metafields;
     }
 
     /**
