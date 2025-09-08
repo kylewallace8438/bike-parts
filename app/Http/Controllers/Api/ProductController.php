@@ -27,11 +27,15 @@ class ProductController extends Controller
                 node {
                     id
                     title
-                    images(first: 5) {
-                        nodes {
-                            altText
-                            id
-                            url
+                    media(first: 5) {
+                        node {
+                            ... on MediaImage {
+                                id
+                                image {
+                                originalSrc
+                                altText
+                                }
+                            }
                         }
                     }
                     tags
@@ -48,10 +52,12 @@ class ProductController extends Controller
                         }
                     }
                     variants(first: 10) {
-                        nodes {
-                            id
-                            title
-                            price
+                        edges {
+                            nodes {
+                                id
+                                title
+                                price
+                            }
                         }
                     }
                     metafields(first: 1, namespace: $namespace) {

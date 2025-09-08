@@ -82,7 +82,7 @@ class ShopifyProductAdapter
             'max_price' => $this->extractPrice($nodeData['priceRange']['maxVariantPrice'] ?? null),
             'currency_code' => $nodeData['priceRange']['minVariantPrice']['currencyCode'] ?? 'VND',
             'description' => $nodeData['description'] ?? null,
-            'images' => $this->mapImages($nodeData['images'] ?? []),
+            'images' => $this->mapImages($nodeData['media'] ?? []),
             'variants' => $this->mapVariants($nodeData['variants'] ?? []),
             'metafields' => $nodeData['metafields'] ?? [],
             'shopify_updated_at' => $this->parseShopifyDate($nodeData['updatedAt'] ?? null),
@@ -150,10 +150,9 @@ class ShopifyProductAdapter
         foreach ($edges as $edge) {
             $imageNode = $edge['node'] ?? $edge;
             $images[] = [
-                'url' => $imageNode['url'] ?? null,
-                'width' => $imageNode['width'] ?? null,
-                'height' => $imageNode['height'] ?? null,
-                'altText' => $imageNode['altText'] ?? null,
+                'id' => $imageNode['id'] ?? null,
+                'image' => $imageNode['image']['originalSrc'] ?? null,
+                'altText' => $imageNode['image']['altText'] ?? null,
             ];
         }
 
