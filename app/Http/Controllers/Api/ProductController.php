@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\ProductResource;
 use App\Models\Product;
 use App\Shopify\Interfaces\ApiClientInterface;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class ProductController extends Controller
     {
         $this->apiClient = $apiClient;
     }
-    public function getProducts(Request $request)
+    public function getProducts_(Request $request)
     {
         $startCursor = $request->get('startCursor');
         $endCursor = $request->get('endCursor');
@@ -146,6 +147,12 @@ class ProductController extends Controller
             'data' => $products,
             'pageInfo' => $pageInfo
         ]);
+    }
+
+    public function getProducts(Request $request)
+    {
+        $products = Product::paginate($request->get('limit', 10));
+        return ProductResource::collection($products);
     }
 
     public function getProduct($slug, Request $request)
