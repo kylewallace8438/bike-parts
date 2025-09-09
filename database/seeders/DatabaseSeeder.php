@@ -19,5 +19,11 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Seed rental bikes first, then maintenance history
+        $this->call([
+            RentalBikeSeeder::class,
+            MaintenanceHistorySeeder::class,
+        ]);
     }
 }
