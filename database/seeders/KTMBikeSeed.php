@@ -69,13 +69,17 @@ class KTMBikeSeed extends Seeder
             ],
         ];
         foreach ($models as $model) {
-            $bikeModel = new BikeModel;
-            $bikeModel->fill([
-                'name' => $model['name'],
-                'year' => $model['year'],
-                'brand_id' => $brand->id,
-            ]);
-            $bikeModel->save();
+            // $bikeModel = new BikeModel;
+            // $bikeModel->fill([
+            //     'name' => $model['name'],
+            //     'year' => $model['year'],
+            //     'brand_id' => $brand->id,
+            // ]);
+            // $bikeModel->save();
+            BikeModel::updateOrCreate(
+                ['name' => $model['name'], 'brand_id' => $brand->id],
+                ['year' => $model['year']]
+            );
         }
     }
 }

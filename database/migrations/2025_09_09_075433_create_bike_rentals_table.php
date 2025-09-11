@@ -19,10 +19,10 @@ return new class extends Migration
             $table->datetime('end_time'); // Thời gian kết thúc thuê (dự kiến)
             $table->datetime('actual_end_time')->nullable(); // Thời gian trả xe thực tế
             $table->string('rental_type'); // hourly, daily, weekly, monthly
-            $table->decimal('base_price', 10, 2); // Giá cơ bản
-            $table->decimal('additional_fees', 10, 2)->default(0); // Phí phát sinh
-            $table->decimal('discount', 10, 2)->default(0); // Giảm giá
-            $table->decimal('total_price', 10, 2); // Tổng tiền
+            $table->decimal('base_price', 15, 2); // Giá cơ bản
+            $table->decimal('additional_fees', 15, 2)->default(0); // Phí phát sinh
+            $table->decimal('discount', 15, 2)->default(0); // Giảm giá
+            $table->decimal('total_price', 15, 2); // Tổng tiền
             $table->string('status')->default('pending'); // pending, confirmed, active, completed, cancelled
             $table->string('payment_status')->default('unpaid'); // unpaid, paid, refunded, partially_refunded
             $table->string('payment_method')->nullable(); // cash, card, online, wallet
@@ -30,10 +30,10 @@ return new class extends Migration
             $table->string('return_location')->nullable(); // Địa điểm trả xe
             $table->text('notes')->nullable(); // Ghi chú
             $table->text('damage_report')->nullable(); // Báo cáo hư hỏng (nếu có)
-            $table->decimal('damage_fee', 8, 2)->default(0); // Phí sửa chữa hư hỏng
+            $table->decimal('damage_fee', 15, 2)->default(0); // Phí sửa chữa hư hỏng
             $table->integer('rating')->nullable(); // Đánh giá (1-5 sao)
             $table->text('review')->nullable(); // Nhận xét của khách hàng
-            $table->decimal('distance_traveled', 10, 2)->nullable(); // Quãng đường đã đi
+            $table->decimal('distance_traveled', 15, 2)->nullable(); // Quãng đường đã đi
             $table->json('route_data')->nullable(); // Dữ liệu lộ trình (GPS tracking)
             $table->datetime('cancelled_at')->nullable(); // Thời gian hủy
             $table->string('cancelled_by')->nullable(); // user, admin, system
