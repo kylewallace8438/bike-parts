@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 // Auth::routes();\
 // Route::get('/auth/google/callback', [GoogleAuthController::class, 'handleGoogleCallback']);
-// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('san-pham', [App\Http\Controllers\ProductController::class, 'index'])->name('san-pham');
 // Route::get('/san-pham', [App\Http\Controllers\ProductController::class, 'index'])->name('san-pham');
 // Route::get('/san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'getProduct']);
 // Route::get('/lien-he', [App\Http\Controllers\ProductController::class, 'index'])->name('lien-he');
