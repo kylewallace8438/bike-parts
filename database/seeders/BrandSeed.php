@@ -16,8 +16,7 @@ class BrandSeed extends Seeder
             ['name' => 'KTM'],
         ];
         foreach ($brands as $brand) {
-            $brand = new Brand;
-            $brand->fill(['name' => 'KTM'])->save();
+            Brand::updateOrCreate(['name' => $brand['name']], $brand);
         }
     }
 }
