@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Shopify\ApiClient;
 use App\Shopify\Interfaces\ApiClientInterface;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Shopify\ApiVersion;
 use Shopify\Auth\FileSessionStorage;
@@ -26,6 +27,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Blade::directive('money', function ($amount) {
+            return "<?php echo is_numeric($amount) ? number_format($amount, 0, ',', '.') . ' ₫' : '0 ₫'; ?>";
+        });
+        Blade::directive('sale_off', function ($expression) {
+            return "<?php echo sale_off_percentage(...[$expression]); ?>";
+        });
         Context::initialize(
             apiKey: config('shopify.SHOPIFY_API_KEY'),
             apiSecretKey: config('shopify.SHOPIFY_API_SECRET'),
