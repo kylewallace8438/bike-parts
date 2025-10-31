@@ -1,4 +1,4 @@
-@extends('layouts.v3.layout')
+@extends('layouts.layout')
 @section('title')
     <title>Trang chủ - Kwapp Store</title>
 @endsection
@@ -33,14 +33,14 @@
     <!-- preloader start -->
     <div class="preloader"></div>
     <!-- preloader end -->
-    @include('layouts.v3.components.top_notification')
-    @include('layouts.v3.components.header')
-    @include('layouts.v3.components.menu_main')
+    {{-- <x-top-notification /> --}}
+    <x-common.header />
+    <x-common.menu-main />
     <main>
-        @include('layouts.v3.components.breadcrumb', ['list' => [
+        <x-common.breadcrumb :list="[
             ['name' => 'Trang chủ', 'link' => route('home')],
-            ['name' => 'Chi tiết sản phẩm', 'link' => route('product', ['slug' => $product->slug])]
-        ]])
+            ['name' => 'Chi tiết sản phẩm', 'link' => route('product', ['slug' => $product['slug']])],
+        ]" />
         <!-- pro-detail-page start -->
         <section class="product-details-page pro-style2 bg-color section-ptb">
             <div class="container">
@@ -60,67 +60,36 @@
                                     <div class="product-img-top" data-animate="animate__fadeIn">
                                         <button class="full-view"><i class="feather-maximize"></i></button>
                                         <div class="style2-slider-big slick-slider">
-                                            @if ($product->featured_image_url)
-                                            <div class="slick-slide">
-                                                <a href="{{ $product->featured_image_url }}" class="product-single">
-                                                    <img src="{{ $product->featured_image_url }}"
-                                                        data-zoom="{{ $product->featured_image_url }}" class="img-fluid zoom"
-                                                        alt="p-1">
-                                                </a>
-                                            </div>
-                                            @endif
-                                            @foreach ($product->images as $image)
+                                            @forelse ($product['images'] as $image)
                                                 <div class="slick-slide">
                                                     <a href="{{ $image['url'] }}" class="product-single">
-                                                        <img src="{{ $image['url'] }}"
-                                                            data-zoom="{{ $image['url'] }}" class="img-fluid zoom"
+                                                        <img src="{{ $image['url'] }}" data-zoom="{{ $image['url'] }}"
+                                                            class="img-fluid zoom" alt="{{ $image['altText'] }}">
+                                                    </a>
+                                                </div>
+                                            @empty
+                                                <div class="slick-slide">
+                                                    <a href="https://placeholder.com/600x400" class="product-single">
+                                                        <img src="https://placeholder.com/600x400" data-zoom="https://placeholder.com/600x400"
+                                                            class="img-fluid zoom" alt="Placeholder Image">
+                                                    </a>
+                                                </div>
+                                            @endforelse
+                                        </div>
+                                    </div>
+                                    <!-- small slick-slider start -->
+                                    <div class="pro-slider" data-animate="animate__fadeIn">
+                                        <div class="style2-slider-small pro-detail-slider">
+                                            @foreach ($product['images'] as $image)
+                                                <div class="slick-slide">
+                                                    <a href="javascript:void(0)" class="product-single--thumbnail">
+                                                        <img src="{{ $image['url'] }}" class="img-fluid"
                                                             alt="{{ $image['altText'] }}">
                                                     </a>
                                                 </div>
                                             @endforeach
 
 
-                                        </div>
-                                    </div>
-                                    <!-- small slick-slider start -->
-                                    <div class="pro-slider" data-animate="animate__fadeIn">
-                                        <div class="style2-slider-small pro-detail-slider">
-                                            <div class="slick-slide">
-                                                <a href="javascript:void(0)" class="product-single--thumbnail">
-                                                    <img src="image/home1/product/product-1.jpg" class="img-fluid"
-                                                        alt="product-87.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="slick-slide">
-                                                <a href="javascript:void(0)" class="product-single--thumbnail">
-                                                    <img src="image/home1/product/product-2.jpg" class="img-fluid"
-                                                        alt="product-88.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="slick-slide">
-                                                <a href="javascript:void(0)" class="product-single--thumbnail">
-                                                    <img src="image/home1/product/product-3.jpg" class="img-fluid"
-                                                        alt="product-89.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="slick-slide">
-                                                <a href="javascript:void(0)" class="product-single--thumbnail">
-                                                    <img src="image/home1/product/product-4.jpg" class="img-fluid"
-                                                        alt="product-90.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="slick-slide">
-                                                <a href="javascript:void(0)" class="product-single--thumbnail">
-                                                    <img src="image/home1/product/product-5.jpg" class="img-fluid"
-                                                        alt="product-91.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="slick-slide">
-                                                <a href="javascript:void(0)" class="product-single--thumbnail">
-                                                    <img src="image/home1/product/product-6.jpg" class="img-fluid"
-                                                        alt="product-92.jpg">
-                                                </a>
-                                            </div>
                                         </div>
                                     </div>
                                     <!-- small slick-slider end -->
@@ -148,14 +117,14 @@
                                         <div class="product-info" data-animate="animate__fadeIn">
                                             <!-- product-title start -->
                                             <div class="product-title">
-                                                <h2>Earbuds</h2>
+                                                <h2>{{ $product['title'] }}</h2>
                                             </div>
                                             <!-- product-title end -->
                                         </div>
                                         <div class="product-info" data-animate="animate__fadeIn">
                                             <div class="pro-prlb pro-sale">
                                                 <div class="price-box">
-                                                    <span class="new-price">$11.00</span>
+                                                    <span class="new-price">@money($product['min_price'])</span>
                                                     <span class="old-price">$19.00</span>
                                                     <span class="percent-count">42</span>
                                                 </div>
@@ -163,21 +132,21 @@
                                         </div>
                                         <div class="product-info" data-animate="animate__fadeIn">
                                             <div class="product-inventory">
-                                                <div class="stock-inventory stock-more">
+                                                {{-- <div class="stock-inventory stock-more">
                                                     <p class="text-success">Hurry up! only
                                                         <span class="available-stock bg-success">77</span>
                                                         <span>products left in stock!</span>
                                                     </p>
-                                                </div>
+                                                </div> --}}
                                                 <div class="product-variant">
-                                                    <h6>Availability:</h6>
+                                                    <h6>Tình trạng:</h6>
                                                     <span class="stock-qty in-stock text-success">
-                                                        <span>In stock<i class="bi bi-check2"></i></span>
+                                                        <span>Còn hàng<i class="bi bi-check2"></i></span>
                                                     </span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="product-info" data-animate="animate__fadeIn">
+                                        {{-- <div class="product-info" data-animate="animate__fadeIn">
                                             <div class="pro-detail-action">
                                                 <form method="get" class="cart">
                                                     <div class="product-variant-option">
@@ -210,11 +179,11 @@
                                                     </div>
                                                 </form>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="product-info" data-animate="animate__fadeIn">
                                             <form method="post" class="cart">
                                                 <div class="product-quantity-action">
-                                                    <h6>Quantity:</h6>
+                                                    <h6>Số lượng:</h6>
                                                     <div class="product-quantity">
                                                         <div class="cart-plus-minus">
                                                             <button class="dec qtybutton minus"><i
@@ -233,10 +202,10 @@
                                                 <div class="pro-detail-button">
                                                     <button type="button" onclick="location. href='cart-page.html'"
                                                         class="btn add-to-cart ajax-spin-cart">
-                                                        <span class="cart-title">Add to cart</span>
+                                                        <span class="cart-title">Thêm vào giỏ</span>
                                                     </button>
                                                     <a href="cart-empty.html" class="btn btn-cart btn-theme">
-                                                        <span>Buy now</span>
+                                                        <span>Mua ngay</span>
                                                     </a>
                                                 </div>
                                                 <!-- pro-deatail button start -->
@@ -248,7 +217,7 @@
                                                             <span class="add-wishlist"><i
                                                                     class="feather-heart"></i></span>
                                                         </span>
-                                                        <span class="wishlist-text">Wishlist</span>
+                                                        <span class="wishlist-text">Danh sách yêu thích</span>
                                                     </a>
                                                 </div>
                                                 <!-- pro-deatail wishlist end -->
@@ -256,8 +225,8 @@
                                         </div>
                                         <div class="product-info" data-animate="animate__fadeIn">
                                             <div class="form-group">
-                                                <a href="#deliver-modal" data-bs-toggle="modal">Delivery &amp; return</a>
-                                                <a href="#que-modal" data-bs-toggle="modal">Ask a question</a>
+                                                <a href="#deliver-modal" data-bs-toggle="modal">Chính sách</a>
+                                                <a href="#que-modal" data-bs-toggle="modal">Đặt câu hỏi</a>
                                             </div>
                                         </div>
                                         <div class="modal fade deliver-modal" id="deliver-modal" tabindex="-1"
@@ -492,17 +461,17 @@
                                             <ul class="nav nav-tabs" role="tablist">
                                                 <li role="presentation">
                                                     <a href="#pro-dec" class="active" data-bs-toggle="tab">
-                                                        <h6>Description</h6>
+                                                        <h6>Mô tả</h6>
                                                     </a>
                                                 </li>
                                                 <li role="presentation">
                                                     <a href="#pro-add-info" data-bs-toggle="tab">
-                                                        <h6>Additional info</h6>
+                                                        <h6>Thông tin bổ sung</h6>
                                                     </a>
                                                 </li>
                                                 <li role="presentation">
                                                     <a href="#pro-custom-content" data-bs-toggle="tab">
-                                                        <h6>Other content</h6>
+                                                        <h6>Nội dung khác</h6>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -510,14 +479,8 @@
                                         <div class="description-review-text tab-content">
                                             <div class="tab-pane active" id="pro-dec" data-animate="animate__fadeIn">
                                                 <div class="product-description">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                                        aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                                        culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                    <h6>About this item</h6>
+                                                    <p>{{ $product['description'] }}</p>
+                                                    {{-- <h6>About this item</h6>
                                                     <ul>
                                                         <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
                                                         <li>Sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -531,7 +494,7 @@
                                                             pain of itself.</li>
                                                         <li>Because it is pain, but occasionally circumstances occur in
                                                             which toil and pain can procure him some great pleasure.</li>
-                                                    </ul>
+                                                    </ul> --}}
                                                 </div>
                                             </div>
                                             <div class="tab-pane" id="pro-add-info" data-animate="animate__fadeIn">
@@ -599,1294 +562,27 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="section-capture">
-                            <div class="section-title">
-                                <div class="section-cont-title">
-                                    <h2><span>Customer love</span></h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="pro-reviews">
-                            <div class="spr-container">
-                                <div class="spr-header">
-                                    <h2 class="spr-header-title">Customer reviews</h2>
-                                    <div class="product-ratting">
-                                        <span class="pro-ratting">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        </span>
-                                        <span class="spr-summary-caption">
-                                            <span class="spr-summary-actions-togglereviews">Based on 3 reviews</span>
-                                        </span>
-                                        <span class="spr-summary-actions">
-                                            <a href="#add-review" data-bs-toggle="collapse"
-                                                class="spr-summary-actions-newreview">Write a review</a>
-                                        </span>
-                                    </div>
-                                    <!-- product-ratting end -->
-                                </div>
-                                <div class="spr-content">
-                                    <!-- spar-from start -->
-                                    <div class="spr-form collapse" id="add-review">
-                                        <form method="post" class="new-review-form">
-                                            <h3 class="spr-form-title">Write a review</h3>
-                                            <fieldset class="spr-form-contact">
-                                                <div class="spr-form-contact-name">
-                                                    <label class="spr-form-label">Name</label>
-                                                    <input type="text" name="q"
-                                                        class="spr-form-input spr-form-input-text "
-                                                        placeholder="Enter your name">
-                                                </div>
-                                                <div class="spr-form-contact-email">
-                                                    <label class="spr-form-label">Email address</label>
-                                                    <input type="email" name="q"
-                                                        class="spr-form-input spr-form-input-email"
-                                                        placeholder="john.smith@example.com">
-                                                </div>
-                                            </fieldset>
-                                            <fieldset class="spr-form-review">
-                                                <div class="spr-form-review-rating">
-                                                    <label class="spr-form-label">Rating</label>
-                                                    <div class="product-ratting">
-                                                        <span class="pro-ratting">
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="spr-form-review-title">
-                                                    <label class="spr-form-label">Review title</label>
-                                                    <input type="text" name="q"
-                                                        class="spr-form-input spr-form-input-text "
-                                                        placeholder="Give your review a title">
-                                                </div>
-                                                <div class="spr-form-review-body">
-                                                    <label class="spr-form-label">Body of review
-                                                        <span>
-                                                            <span
-                                                                class="spr-form-review-body-charactersremaining">(1500)</span>
-                                                        </span>
-                                                    </label>
-                                                    <div class="spr-form-input">
-                                                        <textarea class="spr-form-input spr-form-input-textarea" placeholder="Write your comments here" rows="10"></textarea>
-                                                    </div>
-                                                </div>
-                                            </fieldset>
-                                            <fieldset class="spr-form-actions">
-                                                <input type="submit" name="q"
-                                                    class="spr-button spr-button-primary button button-primary btn btn-primary"
-                                                    value="Submit Review">
-                                            </fieldset>
-                                        </form>
-                                    </div>
-                                    <!-- spar-from end -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <x-product.review />
         </section>
         <!-- product video-review end -->
-        <!-- product-tranding start -->
-        <section class="product-tab-area section-ptb">
-            <div class="container">
-                <div class="collection-category">
-                    <div class="section-capture">
-                        <div class="section-title">
-                            <h2 data-animate="animate__fadeIn"><span>Recent products</span></h2>
-                        </div>
-                    </div>
-                    <div class="collection-wrap">
-                        <div class="collection-slider swiper" id="new-product">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide" data-animate="animate__fadeIn">
-                                    <div class="single-product-wrap">
-                                        <div class="product-image">
-                                            <a href="product-template.html" class="pro-img">
-                                                <img src="image/home1/product/product-1.jpg"
-                                                    class="img-fluid img1 resp-img1" alt="p-1">
-                                                <img src="image/home1/product/product-2.jpg"
-                                                    class="img-fluid img2 resp-img2" alt="p-2">
-                                            </a>
-                                            <div class="product-action">
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                            </div>
-                                            <div class="product-cart">
-                                                <button type="button" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h6><a href="product-template.html">Earbuds</a></h6>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="new-price">$65.00</span>
-                                                <span class="old-price">$70.00</span>
-                                            </div>
-                                            <div class="product-ratting">
-                                                <span class="review-ratting">
-                                                    <span class="review-star">
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                    </span>
-                                                    <span class="review-caption">No reviews</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                                    It is a long established fact that a will be distracted by the readable
-                                                    of at</p>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="javascript:void(0)" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                    <span class="tooltip-text">add to cart</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" data-animate="animate__fadeIn">
-                                    <div class="single-product-wrap">
-                                        <div class="product-image">
-                                            <a href="product-template.html" class="pro-img">
-                                                <img src="image/home1/product/product-4.jpg"
-                                                    class="img-fluid img1 resp-img1" alt="product-4">
-                                                <img src="image/home1/product/product-5.jpg"
-                                                    class="img-fluid img2 resp-img2" alt="product-5">
-                                            </a>
-                                            <div class="product-label pro-new-sale">
-                                                <span class="product-label-title">30%</span>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                            </div>
-                                            <div class="product-cart">
-                                                <button type="button" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h6><a href="product-template.html">Sony earbuds</a></h6>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="new-price">$100.00</span>
-                                                <span class="old-price">$120.00</span>
-                                            </div>
-                                            <div class="product-ratting">
-                                                <span class="review-ratting">
-                                                    <span class="review-star">
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                    </span>
-                                                    <span class="review-caption">No reviews</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                                    It is a long established fact that a will be distracted by the readable
-                                                    of at</p>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="javascript:void(0)" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                    <span class="tooltip-text">add to cart</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" data-animate="animate__fadeIn">
-                                    <div class="single-product-wrap">
-                                        <div class="product-image">
-                                            <a href="product-template.html" class="pro-img">
-                                                <img src="image/home1/product/product-7.jpg"
-                                                    class="img-fluid img1 resp-img1" alt="product-7">
-                                                <img src="image/home1/product/product-8.jpg"
-                                                    class="img-fluid img2 resp-img2" alt="product-8">
-                                            </a>
-                                            <div class="product-action">
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                            </div>
-                                            <div class="product-cart">
-                                                <button type="button" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h6><a href="product-template.html">Sandisk ssd </a></h6>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="new-price">$305.00</span>
-                                                <span class="old-price">$320.00</span>
-                                            </div>
-                                            <div class="product-ratting">
-                                                <span class="review-ratting">
-                                                    <span class="review-star">
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                    </span>
-                                                    <span class="review-caption">No reviews</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                                    It is a long established fact that a will be distracted by the readable
-                                                    of at</p>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="javascript:void(0)" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                    <span class="tooltip-text">add to cart</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" data-animate="animate__fadeIn">
-                                    <div class="single-product-wrap">
-                                        <div class="product-image">
-                                            <a href="product-template.html" class="pro-img">
-                                                <img src="image/home1/product/product-13.jpg"
-                                                    class="img-fluid img1 resp-img1" alt="product-13">
-                                                <img src="image/home1/product/product-14.jpg"
-                                                    class="img-fluid img2 resp-img2" alt="product-14">
-                                            </a>
-                                            <div class="product-action">
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                            </div>
-                                            <div class="product-cart">
-                                                <button type="button" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h6><a href="product-template.html">Router wifi6</a></h6>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="new-price">$450.00</span>
-                                                <span class="old-price">$480.00</span>
-                                            </div>
-                                            <div class="product-ratting">
-                                                <span class="review-ratting">
-                                                    <span class="review-star">
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                    </span>
-                                                    <span class="review-caption">No reviews</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                                    It is a long established fact that a will be distracted by the readable
-                                                    of at</p>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="javascript:void(0)" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                    <span class="tooltip-text">add to cart</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" data-animate="animate__fadeIn">
-                                    <div class="single-product-wrap">
-                                        <div class="product-image">
-                                            <a href="product-template.html" class="pro-img">
-                                                <img src="image/home1/product/product-18.jpg"
-                                                    class="img-fluid img1 resp-img1" alt="product-18">
-                                                <img src="image/home1/product/product-19.jpg"
-                                                    class="img-fluid img2 resp-img2" alt="product-19">
-                                            </a>
-                                            <div class="product-action">
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                            </div>
-                                            <div class="product-cart">
-                                                <button type="button" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h6><a href="product-template.html">Asus rog</a></h6>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="new-price">$29.00</span>
-                                                <span class="old-price">$40.00</span>
-                                            </div>
-                                            <div class="product-ratting">
-                                                <span class="review-ratting">
-                                                    <span class="review-star">
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                    </span>
-                                                    <span class="review-caption">No reviews</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                                    It is a long established fact that a will be distracted by the readable
-                                                    of at</p>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="javascript:void(0)" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                    <span class="tooltip-text">add to cart</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" data-animate="animate__fadeIn">
-                                    <div class="single-product-wrap">
-                                        <div class="product-image">
-                                            <a href="product-template.html" class="pro-img">
-                                                <img src="image/home1/product/product-31.jpg"
-                                                    class="img-fluid img1 resp-img1" alt="product-31">
-                                                <img src="image/home1/product/product-32.jpg"
-                                                    class="img-fluid img2 resp-img2" alt="product-32">
-                                            </a>
-                                            <div class="product-action">
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                            </div>
-                                            <div class="product-cart">
-                                                <button type="button" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h6><a href="product-template.html">IPad mini6</a></h6>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="new-price">$1200</span>
-                                                <span class="old-price">$1250</span>
-                                            </div>
-                                            <div class="product-ratting">
-                                                <span class="review-ratting">
-                                                    <span class="review-star">
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                    </span>
-                                                    <span class="review-caption">No reviews</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                                    It is a long established fact that a will be distracted by the readable
-                                                    of at</p>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="javascript:void(0)" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                    <span class="tooltip-text">add to cart</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" data-animate="animate__fadeIn">
-                                    <div class="single-product-wrap">
-                                        <div class="product-image">
-                                            <a href="product-template.html" class="pro-img">
-                                                <img src="image/home1/product/product-35.jpg"
-                                                    class="img-fluid img1 resp-img1" alt="product-31">
-                                                <img src="image/home1/product/product-36.jpg"
-                                                    class="img-fluid img2 resp-img2" alt="product-32">
-                                            </a>
-                                            <div class="product-label pro-new-sale">
-                                                <span class="product-label-title">15%</span>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                            </div>
-                                            <div class="product-cart">
-                                                <button type="button" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h6><a href="product-template.html">IPad mini</a></h6>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="new-price">$29.00</span>
-                                                <span class="old-price">$40.00</span>
-                                            </div>
-                                            <div class="product-ratting">
-                                                <span class="review-ratting">
-                                                    <span class="review-star">
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                    </span>
-                                                    <span class="review-caption">No reviews</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                                    It is a long established fact that a will be distracted by the readable
-                                                    of at</p>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="javascript:void(0)" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                    <span class="tooltip-text">add to cart</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" data-animate="animate__fadeIn">
-                                    <div class="single-product-wrap">
-                                        <div class="product-image">
-                                            <a href="product-template.html" class="pro-img">
-                                                <img src="image/home1/product/product-37.jpg"
-                                                    class="img-fluid img1 resp-img1" alt="product-37">
-                                                <img src="image/home1/product/product-38.jpg"
-                                                    class="img-fluid img2 resp-img2" alt="product-38">
-                                            </a>
-                                            <div class="product-label pro-new-sale">
-                                                <span class="product-label-title">15%</span>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                            </div>
-                                            <div class="product-cart">
-                                                <button type="button" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h6><a href="product-template.html">Nokia 1434</a></h6>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="new-price">$1200.00</span>
-                                                <span class="old-price">$1230.00</span>
-                                            </div>
-                                            <div class="product-ratting">
-                                                <span class="review-ratting">
-                                                    <span class="review-star">
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                    </span>
-                                                    <span class="review-caption">No reviews</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                                    It is a long established fact that a will be distracted by the readable
-                                                    of at</p>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="javascript:void(0)" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                    <span class="tooltip-text">add to cart</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" data-animate="animate__fadeIn">
-                                    <div class="single-product-wrap">
-                                        <div class="product-image">
-                                            <a href="product-template.html" class="pro-img">
-                                                <img src="image/home1/product/product-40.jpg"
-                                                    class="img-fluid img1 resp-img1" alt="product-40">
-                                                <img src="image/home1/product/product-41.jpg"
-                                                    class="img-fluid img2 resp-img2" alt="product-41">
-                                            </a>
-                                            <div class="product-action">
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                            </div>
-                                            <div class="product-cart">
-                                                <button type="button" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h6><a href="product-template.html">Nokia 110</a></h6>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="new-price">$80.00</span>
-                                                <span class="old-price">$95.00</span>
-                                            </div>
-                                            <div class="product-ratting">
-                                                <span class="review-ratting">
-                                                    <span class="review-star">
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                    </span>
-                                                    <span class="review-caption">No reviews</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                                    It is a long established fact that a will be distracted by the readable
-                                                    of at</p>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="javascript:void(0)" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                    <span class="tooltip-text">add to cart</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" data-animate="animate__fadeIn">
-                                    <div class="single-product-wrap">
-                                        <div class="product-image">
-                                            <a href="product-template.html" class="pro-img">
-                                                <img src="image/home1/product/product-43.jpg"
-                                                    class="img-fluid img1 resp-img1" alt="product-43">
-                                                <img src="image/home1/product/product-44.jpg"
-                                                    class="img-fluid img2 resp-img2" alt="product-44">
-                                            </a>
-                                            <div class="product-action">
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                            </div>
-                                            <div class="product-cart">
-                                                <button type="button" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h6><a href="product-template.html">Gaming laptop</a></h6>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="new-price">$1500.00</span>
-                                                <span class="old-price">$1560.00</span>
-                                            </div>
-                                            <div class="product-ratting">
-                                                <span class="review-ratting">
-                                                    <span class="review-star">
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                    </span>
-                                                    <span class="review-caption">No reviews</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                                    It is a long established fact that a will be distracted by the readable
-                                                    of at</p>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="javascript:void(0)" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                    <span class="tooltip-text">add to cart</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" data-animate="animate__fadeIn">
-                                    <div class="single-product-wrap">
-                                        <div class="product-image">
-                                            <a href="product-template.html" class="pro-img">
-                                                <img src="image/home1/product/product-51.jpg"
-                                                    class="img-fluid img1 resp-img1" alt="product-51">
-                                                <img src="image/home1/product/product-52.jpg"
-                                                    class="img-fluid img2 resp-img2" alt="product-52">
-                                            </a>
-                                            <div class="product-action">
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                            </div>
-                                            <div class="product-cart">
-                                                <button type="button" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h6><a href="product-template.html">HP color printer</a></h6>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="new-price">$1230</span>
-                                                <span class="old-price">$1250</span>
-                                            </div>
-                                            <div class="product-ratting">
-                                                <span class="review-ratting">
-                                                    <span class="review-star">
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                    </span>
-                                                    <span class="review-caption">No reviews</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                                    It is a long established fact that a will be distracted by the readable
-                                                    of at</p>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="javascript:void(0)" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                    <span class="tooltip-text">add to cart</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" data-animate="animate__fadeIn">
-                                    <div class="single-product-wrap">
-                                        <div class="product-image">
-                                            <a href="product-template.html" class="pro-img">
-                                                <img src="image/home1/product/product-54.jpg"
-                                                    class="img-fluid img1 resp-img1" alt="product-54">
-                                                <img src="image/home1/product/product-55.jpg"
-                                                    class="img-fluid img2 resp-img2" alt="product-55">
-                                            </a>
-                                            <div class="product-action">
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                            </div>
-                                            <div class="product-cart">
-                                                <button type="button" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h6><a href="product-template.html">Smartwatch</a></h6>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="new-price">$180.00</span>
-                                                <span class="old-price">$200.00</span>
-                                            </div>
-                                            <div class="product-ratting">
-                                                <span class="review-ratting">
-                                                    <span class="review-star">
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                    </span>
-                                                    <span class="review-caption">No reviews</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                                    It is a long established fact that a will be distracted by the readable
-                                                    of at</p>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="javascript:void(0)" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                    <span class="tooltip-text">add to cart</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" data-animate="animate__fadeIn">
-                                    <div class="single-product-wrap">
-                                        <div class="product-image">
-                                            <a href="product-template.html" class="pro-img">
-                                                <img src="image/home1/product/product-58.jpg"
-                                                    class="img-fluid img1 resp-img1" alt="product-58">
-                                                <img src="image/home1/product/product-59.jpg"
-                                                    class="img-fluid img2 resp-img2" alt="product-59">
-                                            </a>
-                                            <div class="product-label pro-new-sale">
-                                                <span class="product-label-title">15%</span>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                            </div>
-                                            <div class="product-cart">
-                                                <button type="button" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h6><a href="product-template.html">Smartwatch unisex</a></h6>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="new-price">$320.00</span>
-                                                <span class="old-price">$350.00</span>
-                                            </div>
-                                            <div class="product-ratting">
-                                                <span class="review-ratting">
-                                                    <span class="review-star">
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                    </span>
-                                                    <span class="review-caption">No reviews</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                                    It is a long established fact that a will be distracted by the readable
-                                                    of at</p>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="javascript:void(0)" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                    <span class="tooltip-text">add to cart</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide" data-animate="animate__fadeIn">
-                                    <div class="single-product-wrap">
-                                        <div class="product-image">
-                                            <a href="product-template.html" class="pro-img">
-                                                <img src="image/home1/product/product-60.jpg"
-                                                    class="img-fluid img1 resp-img1" alt="product-60">
-                                                <img src="image/home1/product/product-61.jpg"
-                                                    class="img-fluid img2 resp-img2" alt="product-61">
-                                            </a>
-                                            <div class="product-label pro-new-sale">
-                                                <span class="product-label-title">15%</span>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                            </div>
-                                            <div class="product-cart">
-                                                <button type="button" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h6><a href="product-template.html">Mouse</a></h6>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="new-price">$80.00</span>
-                                                <span class="old-price">$82.00</span>
-                                            </div>
-                                            <div class="product-ratting">
-                                                <span class="review-ratting">
-                                                    <span class="review-star">
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                        <i class="feather-star"></i>
-                                                    </span>
-                                                    <span class="review-caption">No reviews</span>
-                                                </span>
-                                            </div>
-                                            <div class="product-description">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                                    It is a long established fact that a will be distracted by the readable
-                                                    of at</p>
-                                            </div>
-                                            <div class="product-action">
-                                                <a href="javascript:void(0)" class="add-to-cart">
-                                                    <span class="product-icon">
-                                                        <span class="product-bag-icon"><i
-                                                                class="feather-shopping-bag"></i></span>
-                                                        <span class="product-loader-icon"><i
-                                                                class="feather-loader"></i></span>
-                                                        <span class="product-check-icon"><i
-                                                                class="feather-check"></i></span>
-                                                    </span>
-                                                    <span class="tooltip-text">add to cart</span>
-                                                </a>
-                                                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
-                                                    <span class="product-icon"><i class="feather-eye"></i></span>
-                                                    <span class="tooltip-text">quickview</span>
-                                                </a>
-                                                <a href="wishlist-product.html" class="add-to-wishlist">
-                                                    <span class="product-icon"><i class="feather-heart"></i></span>
-                                                    <span class="tooltip-text">wishlist</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="collection-button" data-animate="animate__fadeIn">
-                                <a href="collection.html" class="btn-style3">See all(90)</a>
-                            </div>
-                        </div>
-                        <div class="swiper-buttons">
-                            <div class="swiper-buttons-wrap">
-                                <button class="swiper-prev swiper-prev-new"><i class="feather-arrow-left"></i></button>
-                                <button class="swiper-next swiper-next-new"><i class="feather-arrow-right"></i></button>
-                            </div>
-                        </div>
-                        <div class="swiper-dots">
-                            <div class="swiper-pagination swiper-pagination-new"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- product-tranding end -->
-        @include('layouts.v3.components.newsletter')
+        @php
+            $last_view_products = Session::get('last_viewed_products') ?? [];
+            $last_view_products = Arr::reject($last_view_products, function ($item) use ($product) {
+                return $item['shopify_id'] == $product->shopify_id;
+            });
+        @endphp
+        @if (count($last_view_products) > 0)
+            <x-product.recent :products="$last_view_products" />
+        @endif
+        <x-common.newsletter />
     </main>
-    @include('layouts.v3.components.footer')
-    @include('layouts.v3.components.mobile_vega')
-    @include('layouts.v3.components.product_modal')
-    @include('layouts.v3.components.mobile_menu')
-    @include('layouts.v3.components.search_modal')
-    @include('layouts.v3.components.cart_drawer')
-    @include('layouts.v3.components.bottom_menu')
-    @include('layouts.v3.components.quickview_modal')
+    <x-common.footer />
+    <x-common.mobile-vega />
+    <x-common.mobile-menu />
+    <x-common.search-modal />
+    <x-common.cart-drawer />
+    <x-common.bottom-menu />
+    {{-- <x-common.quickview-modal /> --}}
     <!-- fullscreen start -->
     <div class="bg-screen"></div>
     <!-- fullscreen end -->

@@ -28,7 +28,6 @@ class ProductController extends Controller
             return $item['shopify_id'];
         })->toArray();
         Session::put('last_viewed_products', $last_viewed_products);
-        Log::info('Last viewed products: ' . count(Session::get('last_viewed_products', [])));
         return view('product', [
             'product' => $product
         ]);

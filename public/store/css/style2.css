@@ -124,8 +124,8 @@
 /*------------------------------------------------------------------
 [1. Google font ]
 */
-@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 /*------------------------------------------------------------------
 [2. Root ]
 */
@@ -134,7 +134,7 @@
     --body-font-color: #808080;
     --body-font-size: 16px;
     --body-bgcolor: #ffffff;
-    --body-font-family: "Sen", serif;
+    --body-font-family: "Inconsolata", serif;
     --body-font-weight: 500;
     --body-font-style: normal;
     --body-font-line-height: normal;
@@ -142,14 +142,14 @@
 
     /* heading */
     --heading-font-color: #222222;
-    --heading-font-family: "Sen", serif;
+    --heading-font-family: "Inconsolata", serif;
     --heading-font-weight: 600;
     --heading-font-style: normal;
     --heading-font-line-height: normal;
 
     /* section-heading */
     --section-heading-font-color: #333333;
-    --section-heading-font-family: "Sen", serif;
+    --section-heading-font-family: "Inconsolata", serif;
     --section-heading-font-text: none;
     --section-heading-font-weight: 700;
     --section-heading-font-style: normal;
@@ -157,7 +157,7 @@
 
     /* paragraph */
     --paragraph-font-color: #333333;
-    --paragraph-font-family: "Sen", serif;
+    --paragraph-font-family: "Inconsolata", serif;
     --paragraph-font-line-height: 32px;
 
     /* general color */
@@ -1691,7 +1691,7 @@ ul.social-icon li a {
 ul.social-icon li a span.icon-social svg {
     fill: var(--paragraph-font-color);
     width: 15px;
-    height: 15px;    
+    height: 15px;
     -webkit-transition: fill 0.3s ease-in-out;
     -o-transition: fill 0.3s ease-in-out;
     transition: fill 0.3s ease-in-out;
@@ -2320,7 +2320,7 @@ ul.form-fill li.form-fill-li {
     width: calc(100% - 30px);
     margin: 25px 0px 0px 30px;
 }
-ul.form-fill li.name, 
+ul.form-fill li.name,
 ul.form-fill li.email {
     width: calc(50% - 30px);
 }
@@ -2331,7 +2331,7 @@ ul.form-fill li.form-fill-li label {
     cursor: auto;
     margin: 0px 0px 12px;
 }
-ul.form-fill li.form-fill-li input, 
+ul.form-fill li.form-fill-li input,
 ul.form-fill li.form-fill-li textarea {
     width: 100%;
 }
@@ -2346,13 +2346,13 @@ ul.form-fill li.form-fill-li input {
         width: calc(100% - 12px);
         margin: 25px 0px 0px 12px;
     }
-    ul.form-fill li.name, 
+    ul.form-fill li.name,
     ul.form-fill li.email {
         width: calc(50% - 12px);
     }
 }
 @media (max-width: 600px) {
-    ul.form-fill li.name, 
+    ul.form-fill li.name,
     ul.form-fill li.email {
         width: calc(100% - 12px);
     }
@@ -2463,7 +2463,7 @@ ul.form-fill li.form-fill-li input {
     }
 }
 
-/* email-text css */ 
+/* email-text css */
 .notification-bar ul.notification-content li.noti-email-wrap .emailtext {
     display: flex;
     align-items: center;
@@ -2537,7 +2537,7 @@ span.header-sale-lable {
     text-transform: uppercase;
     font-weight: 400;
     border-radius: 2px;
-    line-height: 1.1;   
+    line-height: 1.1;
 }
 span.header-sale-lable::before {
     content: "";
@@ -2844,10 +2844,10 @@ span.header-sale-lable::before {
 }
 .loading-container {
     display:block;
-    width: 100%; 
+    width: 100%;
     height:100%;
     position: absolute;
-    top:0px; 
+    top:0px;
     left:0px;
     z-index: 100;
     background-color: var(--body-bgcolor);
@@ -2863,13 +2863,13 @@ span.header-sale-lable::before {
 }
 .loding-animation-holder{
     position: relative;
-    width: 100px; 
+    width: 100px;
     height:100px;
     transform:rotate(45deg);
 }
 .loading-animator {
     position:relative;
-    width: 50%; 
+    width: 50%;
     height:50%;
     float: left;
     background-color: var(--primary-font-color);
@@ -2895,10 +2895,10 @@ span.header-sale-lable::before {
     animation-delay:0.4s;
 }
 .middle-circle {
-    width: 5px; 
+    width: 5px;
     height: 5px;
     position: absolute;
-    top: 47.5px; 
+    top: 47.5px;
     left: 47.5px;
     border-radius: 100%;
     border:1px solid var(--heading-font-color);
@@ -4460,7 +4460,7 @@ button.wt-field-btn span.wt-field-text {
 .currency-wrap .local-currency form ul.acc-currency li {
     border-top: 1px solid #e2e2e2;
     background-color: #fff;
-} 
+}
 .currency-wrap .local-currency form ul.acc-currency li:first-child {
     border: none;
 }
@@ -4592,7 +4592,7 @@ button.wt-field-btn span.wt-field-text {
 .language-wrap .local-language form ul.acc-language li {
     border-top: 1px solid #e2e2e2;
     background-color: #fff;
-} 
+}
 .language-wrap .local-language form ul.acc-language li:first-child {
     border: none;
 }
@@ -5143,7 +5143,7 @@ button.wt-field-btn span.wt-field-text {
     }
    .header-support .vega-menu-area a.browse-cat.browse-cat-lg {
         display: flex;
-    } 
+    }
 }
 @media (max-width: 600px) {
     .header-support .vega-menu-area a.browse-cat {
@@ -6267,7 +6267,7 @@ button.wt-field-btn span.wt-field-text {
   border-radius: var(--sti-img-border-radius);
 }
 .newsletter-area::before {
-  background-color: #ffffff; 
+  background-color: #ffffff;
   content: '';
   position: absolute;
   right: 0px;
@@ -7114,8 +7114,8 @@ ul.deal-content li.deal-content-wrap .deal-content-text .deal-content-button {
     transform: scaleX(1);
 }
 .service-area ul.single-service li.service-content .ser-block a.service-icon span i {
-    background:-moz-linear-gradient(top, #db78fed9 0%, #3c1cf4 100%); 
-    background: -webkit-linear-gradient(top, #db78fed9 0%,#3c1cf4 100%); 
+    background:-moz-linear-gradient(top, #db78fed9 0%, #3c1cf4 100%);
+    background: -webkit-linear-gradient(top, #db78fed9 0%,#3c1cf4 100%);
     background: linear-gradient(to bottom, #db78fed9 0%,#3c1cf4 100%);
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -7599,7 +7599,7 @@ ul.deal-content li.deal-content-wrap .deal-content-text .deal-content-button {
 }
 @media (max-width: 350px) {
     .copyright ul.copyright-ul li.copyright-li .copyright-menu a:first-child {
-        margin: 0px 0px 10px 0px; 
+        margin: 0px 0px 10px 0px;
     }
 }
 
