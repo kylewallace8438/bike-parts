@@ -117,7 +117,7 @@
                                                 <ul class="product-view-ul">
                                                     @forelse ($products as $product)
                                                         <li class="pro-item-li" data-animate="animate__fadeIn">
-                                                            <x-single-product-wrap :product="$product"/>
+                                                            <x-product.single-wrap :product="$product"/>
                                                         </li>
                                                     @empty
                                                         No product found.
@@ -515,7 +515,7 @@
 <x-common.search-modal />
 <x-common.cart-drawer />
 <x-common.bottom-menu />
-<x-quickview-modal />
+<x-product.quickview-modal />
 <!-- fullscreen start -->
 <div class="bg-screen"></div>
 <!-- fullscreen end -->

@@ -76,21 +76,23 @@ services:
   # MySQL Service
   mysql:
     image: mysql:8.0
+    user: "1000:1000"
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - .data/mysql:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
       - ./.docker/mysql:/var/lib/mysql-init
     ports:
       - "${MYSQL_FORWARD_PORT}:3306"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_PASSWORD}"]
-      interval: 5s
+      interval: 10s
       timeout: 5s
       retries: 5
+      start_period: 30s
     restart: unless-stopped
     networks:
       - laravel
@@ -99,7 +101,7 @@ services:
   redis:
     image: redis:alpine
     volumes:
-      - .data/redis:/data
+      - redis_data:/data
     ports:
       - "${REDIS_FORWARD_PORT}:6379"
     healthcheck:
@@ -112,8 +114,8 @@ services:
       - laravel
 
 volumes:
-  mysql-data:
-  redis-data:
+  mysql_data:
+  redis_data:
   frontend_node_modules:
 
 networks:

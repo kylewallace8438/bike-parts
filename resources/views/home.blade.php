@@ -24,8 +24,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('store/css/style2.css') }}">
 @endsection
 @section('content')
-
-@section('content')
 <!-- screen-bg start -->
 <div class="screen-bg"></div>
 <!-- screen-bg end -->
@@ -7018,7 +7016,6 @@
 <!-- service-area end-->
 </main>
 <!-- main end -->
-@endsection
 <x-common.footer />
 <x-common.mobile-vega />
 <x-common.mobile-menu />

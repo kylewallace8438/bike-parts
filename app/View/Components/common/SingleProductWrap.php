@@ -23,6 +23,6 @@ class SingleProductWrap extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.common.single-product-wrap');
+        return view('components.product.single-wrap');
     }
 }

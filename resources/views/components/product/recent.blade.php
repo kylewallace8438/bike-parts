@@ -12,7 +12,7 @@
                     <div class="swiper-wrapper">
                     @foreach($recent_products as $product)
                     <div class="swiper-slide" data-animate="animate__fadeIn">
-                        <x-single-product-wrap :product="$product" />
+                        <x-product.single-wrap :product="$product" />
                     </div>
                     @endforeach
                     </div>
