@@ -36,9 +36,9 @@ services:
   workspace:
     build:
       context: ./.docker/workspace
+    command: tail -f /dev/null
     volumes:
       - ./:/var/www
-      - frontend_node_modules:/var/www/frontend/node_modules  # Prevent node_modules from being overwritten
     depends_on:
       mysql:
         condition: service_healthy
