@@ -12,12 +12,12 @@
                                  <div class="search-bar">
                                      <div class="form-search">
                                          <input type="search" name="search-input" class="search-input" value=""
-                                             placeholder="Search our store" required="">
+                                             placeholder="Tìm kiếm sản phẩm" required="">
                                          <button type="button" onclick="location.href='search.html'" class="search-btn"
                                              disabled=""><i class="feather-search"></i></button>
                                      </div>
                                      <div class="search-results">
-                                         <p class="search-for">Search for <span class="search-text">a</span></p>
+                                         <p class="search-for">Tìm kiếm <span class="search-text">a</span></p>
                                          <ul>
                                              <li>
                                                  <a href="product-template.html">
@@ -62,8 +62,8 @@
                                                  </a>
                                              </li>
                                          </ul>
-                                         <p class="search-more"><a href="search.html">See all results (12)</a></p>
-                                         <p class="search-fail">Search not found</p>
+                                         <p class="search-more"><a href="search.html">Xem tất cả kết quả (12)</a></p>
+                                         <p class="search-fail">Không tìm thấy kết quả</p>
                                      </div>
                                  </div>
                              </form>

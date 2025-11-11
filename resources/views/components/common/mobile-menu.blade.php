@@ -12,7 +12,7 @@
                       <ul class="main-menu">
                           <li class="menu-link">
                               <a href="#menu-home" class="link-title" data-bs-toggle="collapse" aria-expanded="false">
-                                  <span class="sp-link-title">Home</span>
+                                  <span class="sp-link-title">Trang chủ</span>
                                   <span class="menu-arrow"><i class="feather-plus"></i></span>
                               </a>
                               <div class="menu-dropdown menu-single collapse" id="menu-home">
@@ -38,7 +38,7 @@
                           <li class="menu-link">
                               <a href="#menu-shop-banner" class="link-title" data-bs-toggle="collapse"
                                   aria-expanded="false">
-                                  <span class="sp-link-title">Shop</span>
+                                  <span class="sp-link-title">Cửa hàng</span>
                                   <span class="menu-arrow"><i class="feather-plus"></i></span>
                               </a>
                               <div class="menu-dropdown menu-banner collapse" id="menu-shop-banner">
@@ -50,7 +50,7 @@
                                                       alt="menubanner-1">
                                               </a>
                                               <a href="collection.html" class="collection-title">
-                                                  <span>New collection</span>
+                                                  <span>Bộ sưu tập mới</span>
                                               </a>
                                           </div>
                                       </li>
@@ -61,7 +61,7 @@
                                                       alt="menubanner-2">
                                               </a>
                                               <a href="collection.html" class="collection-title">
-                                                  <span>Best collection</span>
+                                                  <span>Bộ sưu tập bán chạy</span>
                                               </a>
                                           </div>
                                       </li>
@@ -72,7 +72,7 @@
                                                       alt="menubanner-3">
                                               </a>
                                               <a href="collection.html" class="collection-title">
-                                                  <span>Sale collection</span>
+                                                  <span>Bộ sưu tập giảm giá</span>
                                               </a>
                                           </div>
                                       </li>
@@ -82,7 +82,7 @@
                           <li class="menu-link">
                               <a href="#menu-collection" class="link-title" data-bs-toggle="collapse"
                                   aria-expanded="false">
-                                  <span class="sp-link-title">Collection</span>
+                                  <span class="sp-link-title">Bộ sưu tập</span>
                                   <span class="menu-arrow"><i class="feather-plus"></i></span>
                               </a>
                               <div class="menu-dropdown menu-mega collapse" id="menu-collection">
@@ -90,40 +90,40 @@
                                       <li class="menumega-li">
                                           <a href="#collection-page" class="menumega-title" data-bs-toggle="collapse"
                                               aria-expanded="false">
-                                              <span class="sp-link-title">Collection page</span>
+                                              <span class="sp-link-title">Trang bộ sưu tập</span>
                                               <span class="menu-arrow"><i class="feather-plus"></i></span>
                                           </a>
                                           <div class="menumegasup-dropdown collapse" id="collection-page">
                                               <ul class="menumegasup-ul">
                                                   <li class="menumegasup-li">
                                                       <a href="collection-without.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Collection</span>
+                                                          <span class="sp-link-title">Bộ sưu tập</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="collection.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Collection left</span>
+                                                          <span class="sp-link-title">Bộ sưu tập trái</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="collection-right.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Collection right</span>
+                                                          <span class="sp-link-title">Bộ sưu tập phải</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="collection-list-without.html"
                                                           class="menumegasup-title">
-                                                          <span class="sp-link-title">Collection list</span>
+                                                          <span class="sp-link-title">Danh sách bộ sưu tập</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="collection-list.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Collection list left</span>
+                                                          <span class="sp-link-title">Danh sách bộ sưu tập trái</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="collection-list-right.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Collection list right</span>
+                                                          <span class="sp-link-title">Danh sách bộ sưu tập phải</span>
                                                       </a>
                                                   </li>
                                               </ul>
@@ -132,14 +132,14 @@
                                       <li class="menumega-li">
                                           <a href="#menu-product" class="menumega-title" data-bs-toggle="collapse"
                                               aria-expanded="false">
-                                              <span class="sp-link-title">Product page</span>
+                                              <span class="sp-link-title">Trang sản phẩm</span>
                                               <span class="menu-arrow"><i class="feather-plus"></i></span>
                                           </a>
                                           <div class="menumegasup-dropdown collapse" id="menu-product">
                                               <ul class="menumegasup-ul">
                                                   <li class="menumegasup-li">
                                                       <a href="product-template.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Product layout</span>
+                                                          <span class="sp-link-title">Bố cục sản phẩm</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
@@ -178,44 +178,44 @@
                                       <li class="menumega-li">
                                           <a href="#menu-shop1" class="menumega-title" data-bs-toggle="collapse"
                                               aria-expanded="false">
-                                              <span class="sp-link-title">Shop page</span>
+                                              <span class="sp-link-title">Trang cửa hàng</span>
                                               <span class="menu-arrow"><i class="feather-plus"></i></span>
                                           </a>
                                           <div class="menumegasup-dropdown collapse" id="menu-shop1">
                                               <ul class="menumegasup-ul">
                                                   <li class="menumegasup-li">
                                                       <a href="cart-page.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Cart page</span>
+                                                          <span class="sp-link-title">Trang giỏ hàng</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="cart-empty.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Cart empty</span>
+                                                          <span class="sp-link-title">Giỏ hàng trống</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="wishlist-empty.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Wishlist empty</span>
+                                                          <span class="sp-link-title">Danh sách yêu thích trống</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="wishlist-product.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Wishlist product</span>
+                                                          <span class="sp-link-title">Sản phẩm yêu thích</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="return-policy.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Order & returns</span>
+                                                          <span class="sp-link-title">Đơn hàng & hoàn trả</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="login-account.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Manage account</span>
+                                                          <span class="sp-link-title">Quản lý tài khoản</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="collection.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Saved items</span>
+                                                          <span class="sp-link-title">Sản phẩm đã lưu</span>
                                                       </a>
                                                   </li>
                                               </ul>
@@ -224,39 +224,39 @@
                                       <li class="menumega-li">
                                           <a href="#menu-shop2" class="menumega-title" data-bs-toggle="collapse"
                                               aria-expanded="false">
-                                              <span class="sp-link-title">Account page</span>
+                                              <span class="sp-link-title">Trang tài khoản</span>
                                               <span class="menu-arrow"><i class="feather-plus"></i></span>
                                           </a>
                                           <div class="menumegasup-dropdown collapse" id="menu-shop2">
                                               <ul class="menumegasup-ul">
                                                   <li class="menumegasup-li">
                                                       <a href="order-history.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Order</span>
+                                                          <span class="sp-link-title">Đơn hàng</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="profile.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Profile</span>
+                                                          <span class="sp-link-title">Hồ sơ</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="pro-address.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Address</span>
+                                                          <span class="sp-link-title">Địa chỉ</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="change-password.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">Change password</span>
+                                                          <span class="sp-link-title">Đổi mật khẩu</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="pro-tickets.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">My ticket</span>
+                                                          <span class="sp-link-title">Phiếu hỗ trợ của tôi</span>
                                                       </a>
                                                   </li>
                                                   <li class="menumegasup-li">
                                                       <a href="login-account.html" class="menumegasup-title">
-                                                          <span class="sp-link-title">My account</span>
+                                                          <span class="sp-link-title">Tài khoản của tôi</span>
                                                       </a>
                                                   </li>
                                               </ul>
@@ -268,7 +268,7 @@
                           <li class="menu-link">
                               <a href="#menu-blog" class="link-title" data-bs-toggle="collapse"
                                   aria-expanded="false">
-                                  <span class="sp-link-title">Blog</span>
+                                  <span class="sp-link-title">Tin tức</span>
                                   <span class="menu-arrow"><i class="feather-plus"></i></span>
                               </a>
                               <div class="menu-dropdown menu-single collapse" id="menu-blog">
@@ -309,14 +309,14 @@
                           <li class="menu-link">
                               <a href="#menu-sub" class="link-title" data-bs-toggle="collapse"
                                   aria-expanded="false">
-                                  <span class="sp-link-title">Pages</span>
+                                  <span class="sp-link-title">Trang</span>
                                   <span class="menu-arrow"><i class="feather-plus"></i></span>
                               </a>
                               <div class="menu-dropdown menu-sub collapse" id="menu-sub">
                                   <ul class="ul">
                                       <li class="menusub-li">
                                           <a href="about-us.html" class="menusub-title">
-                                              <span class="sp-link-title">About us</span>
+                                              <span class="sp-link-title">Về chúng tôi</span>
                                           </a>
                                       </li>
                                       <li class="menusub-li">
@@ -327,14 +327,14 @@
                                       <li class="menusub-li">
                                           <a href="#menu-sup-contact" class="menusub-title" data-bs-toggle="collapse"
                                               aria-expanded="false">
-                                              <span class="sp-link-title">Contact us</span>
+                                              <span class="sp-link-title">Liên hệ</span>
                                               <span class="menu-arrow"><i class="feather-plus"></i></span>
                                           </a>
                                           <div class="menusup-dropdown collapse" id="menu-sup-contact">
                                               <ul class="menusup-ul">
                                                   <li class="menusup-li">
                                                       <a href="contact-us.html" class="menusup-title">
-                                                          <span class="sp-link-title">Contact us</span>
+                                                          <span class="sp-link-title">Liên hệ</span>
                                                       </a>
                                                   </li>
                                                   <li class="menusup-li">
@@ -348,14 +348,14 @@
                                       <li class="menusub-li">
                                           <a href="#menu-sup-checkout" class="menusub-title"
                                               data-bs-toggle="collapse" aria-expanded="false">
-                                              <span class="sp-link-title">Checkout</span>
+                                              <span class="sp-link-title">Thanh toán</span>
                                               <span class="menu-arrow"><i class="feather-plus"></i></span>
                                           </a>
                                           <div class="menusup-dropdown collapse" id="menu-sup-checkout">
                                               <ul class="menusup-ul">
                                                   <li class="menusup-li">
                                                       <a href="checkout-style1.html" class="menusup-title">
-                                                          <span class="sp-link-title">Checkout</span>
+                                                          <span class="sp-link-title">Thanh toán</span>
                                                       </a>
                                                   </li>
                                                   <li class="menusup-li">
@@ -373,45 +373,45 @@
                                       </li>
                                       <li class="menusub-li">
                                           <a href="cancellation.html" class="menusub-title">
-                                              <span class="sp-link-title">Cancellation</span>
+                                              <span class="sp-link-title">Hủy đơn</span>
                                           </a>
                                       </li>
                                       <li class="menusub-li">
                                           <a href="faq.html" class="menusub-title">
-                                              <span class="sp-link-title">Faq's</span>
+                                              <span class="sp-link-title">Câu hỏi thường gặp</span>
                                           </a>
                                       </li>
                                       <li class="menusub-li">
                                           <a href="order-complete.html" class="menusub-title">
-                                              <span class="sp-link-title">Order complete</span>
+                                              <span class="sp-link-title">Hoàn tất đơn hàng</span>
                                           </a>
                                       </li>
                                       <li class="menusub-li">
                                           <a href="#menu-sup-policy" class="menusub-title" data-bs-toggle="collapse"
                                               aria-expanded="false">
-                                              <span class="sp-link-title">Policy</span>
+                                              <span class="sp-link-title">Chính sách</span>
                                               <span class="menu-arrow"><i class="feather-plus"></i></span>
                                           </a>
                                           <div class="menusup-dropdown collapse" id="menu-sup-policy">
                                               <ul class="menusup-ul">
                                                   <li class="menusup-li">
                                                       <a href="privacy-policyt.html" class="menusup-title">
-                                                          <span class="sp-link-title">Privacy policy</span>
+                                                          <span class="sp-link-title">Chính sách bảo mật</span>
                                                       </a>
                                                   </li>
                                                   <li class="menusup-li">
                                                       <a href="payment-policy.html" class="menusup-title">
-                                                          <span class="sp-link-title">Payment policy</span>
+                                                          <span class="sp-link-title">Chính sách thanh toán</span>
                                                       </a>
                                                   </li>
                                                   <li class="menusup-li">
                                                       <a href="return-policy.html" class="menusup-title">
-                                                          <span class="sp-link-title">Return policy</span>
+                                                          <span class="sp-link-title">Chính sách hoàn trả</span>
                                                       </a>
                                                   </li>
                                                   <li class="menusup-li">
                                                       <a href="shipping-policy.html" class="menusup-title">
-                                                          <span class="sp-link-title">Shipping policy</span>
+                                                          <span class="sp-link-title">Chính sách vận chuyển</span>
                                                       </a>
                                                   </li>
                                               </ul>
@@ -419,17 +419,17 @@
                                       </li>
                                       <li class="menusub-li">
                                           <a href="sitemap.html" class="menusub-title">
-                                              <span class="sp-link-title">Sitemap</span>
+                                              <span class="sp-link-title">Sơ đồ trang</span>
                                           </a>
                                       </li>
                                       <li class="menusub-li">
                                           <a href="terms-condition.html" class="menusub-title">
-                                              <span class="sp-link-title">Terms & condition</span>
+                                              <span class="sp-link-title">Điều khoản & điều kiện</span>
                                           </a>
                                       </li>
                                       <li class="menusub-li">
                                           <a href="track-page.html" class="menusub-title">
-                                              <span class="sp-link-title">Track page</span>
+                                              <span class="sp-link-title">Theo dõi đơn hàng</span>
                                           </a>
                                       </li>
                                       <li class="menusub-li">
@@ -439,7 +439,7 @@
                                       </li>
                                       <li class="menusub-li">
                                           <a href="coming-soon.html" class="menusub-title">
-                                              <span class="sp-link-title">Coming soon</span>
+                                              <span class="sp-link-title">Sắp ra mắt</span>
                                           </a>
                                       </li>
                                   </ul>
@@ -449,7 +449,7 @@
                               <div class="contact-num">
                                   <div class="contact-wrap service-line">
                                       <span class="contact-details"><i class="feather-headphones"></i></span>
-                                      <a href="tel:+2031234567890">(210) 123 456 7890 <span>( Available 24/7
+                                      <a href="tel:+2031234567890">(210) 123 456 7890 <span>( Có sẵn 24/7
                                               )</span></a>
                                   </div>
                               </div>

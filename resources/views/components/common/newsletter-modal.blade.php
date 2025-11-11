@@ -10,13 +10,13 @@
                              alt="popup">
                      </div>
                      <div class="newsletter-content">
-                         <h2>15% off</h2>
-                         <p>On your first purchase</p>
+                         <h2>Giảm 15%</h2>
+                         <p>Cho đơn hàng đầu tiên của bạn</p>
                          <div class="newsletter-form">
                              <form method="post" class="news-form">
                                  <div class="news-wrap">
-                                     <input type="email" name="q" placeholder="Enter your email" required>
-                                     <button type="button" class="btn-style2">Subscribe</button>
+                                     <input type="email" name="q" placeholder="Nhập email của bạn" required>
+                                     <button type="button" class="btn-style2">Đăng ký</button>
                                  </div>
                              </form>
                          </div>
