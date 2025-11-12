@@ -4,7 +4,7 @@
         <div class="collection-category">
             <div class="section-capture">
                 <div class="section-title">
-                    <h2 data-animate="animate__fadeIn"><span>Recent products</span></h2>
+                    <h2 data-animate="animate__fadeIn"><span>Sản phẩm mới</span></h2>
                 </div>
             </div>
             <div class="collection-wrap">
@@ -17,7 +17,7 @@
                     @endforeach
                     </div>
                     <div class="collection-button" data-animate="animate__fadeIn">
-                        <a href="collection.html" class="btn-style3">See all(90)</a>
+                        <a href="collection.html" class="btn-style3">Xem tất cả(90)</a>
                     </div>
                 </div>
                 <div class="swiper-buttons">

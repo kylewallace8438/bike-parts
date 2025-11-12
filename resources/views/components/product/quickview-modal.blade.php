@@ -4,8 +4,8 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="modal-title fs-5" id="exampleModalLiveLabel">Quickview</h6>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h6 class="modal-title fs-5" id="exampleModalLiveLabel">Xem nhanh</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
                 </div>
                 <div class="modal-body">
                     <!-- quickview-sliderstart -->
@@ -88,10 +88,10 @@
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star-half-alt"></i>
                                 </span>
-                                <span class="spr-badge-caption">No reviews</span>
+                                <span class="spr-badge-caption">Chưa có đánh giá</span>
                                 <span class="slash">/</span>
                                 <div class="product-count-sale">
-                                    <span class="count">16</span> sold in last <span class="time">2</span> hours
+                                    <span class="count">16</span> đã bán trong <span class="time">2</span> giờ qua
                                 </div>
                             </div>
                             <!-- product-rating end -->
@@ -107,9 +107,9 @@
                                     and typesetting industry</p>
                             </div>
                             <div class="product-variant">
-                                <h6>Availability:</h6>
+                                <h6>Tình trạng:</h6>
                                 <span class="stock-qty in-stock text-success">
-                                    <span>In stock<i class="bi bi-check2"></i></span>
+                                    <span>Còn hàng<i class="bi bi-check2"></i></span>
                                 </span>
                             </div>
                             <div class="pro-detail-action">
@@ -117,7 +117,7 @@
                                     <div class="swatch-variant">
                                         <div class="swatch clearfix Color">
                                             <div class="header">
-                                                <h6><span>Color</span></h6>
+                                                <h6><span>Màu sắc</span></h6>
                                             </div>
                                             <div class="variant-wrap">
                                                 <div class="variant-property">
@@ -145,7 +145,7 @@
                                     <div class="pro-detail-button">
                                         <div class="product-quantity-button">
                                             <div class="product-quantity-action">
-                                                <h6>Quantity:</h6>
+                                                <h6>Số lượng:</h6>
                                                 <div class="product-quantity">
                                                     <div class="cart-plus-minus">
                                                         <button class="dec qtybutton minus"><i
@@ -158,11 +158,11 @@
                                             </div>
                                             <button type="button" onclick="location. href='cart-page.html'"
                                                 class="btn add-to-cart ajax-spin-cart">
-                                                <span class="cart-title">Add to cart</span>
+                                                <span class="cart-title">Thêm vào giỏ</span>
                                             </button>
                                         </div>
                                         <a href="cart-empty.html" class="btn btn-cart btn-theme">
-                                            <span>Buy now</span>
+                                            <span>Mua ngay</span>
                                         </a>
                                     </div>
                                 </form>
@@ -174,7 +174,7 @@
                                         <span class="wishlist-icon action-wishlist tile-actions--btn wishlist-btn">
                                             <span class="add-wishlist"><i class="bi bi-heart"></i></span>
                                         </span>
-                                        <span class="wishlist-text">Wishlist</span>
+                                        <span class="wishlist-text">Yêu thích</span>
                                     </a>
                                 </div>
                                 <!-- pro-deatail wishlist end -->

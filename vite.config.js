@@ -7,7 +7,7 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/app/products-sidebar.js',
+                'resources/app/product-all.js',
             ],
             refresh: true,
         }),

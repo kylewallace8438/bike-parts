@@ -182,10 +182,14 @@
                  <li class="copyright-li ft-payment">
                      <div class="copyright-payment">
                          <a href="JavaScript:void(0)" class="payment-icon">
-                             <img src="{{ asset('store/image/home2/payment/paypal.png') }}" class="img-fluid" alt="paypal">
-                             <img src="{{ asset('store/image/home2/payment/master.png') }}" class="img-fluid" alt="master">
-                             <img src="{{ asset('store/image/home2/payment/american.png') }}" class="img-fluid" alt="visa">
-                             <img src="{{ asset('store/image/home2/payment/paypal.png') }}" class="img-fluid" alt="american">
+                             <img src="{{ asset('store/image/home2/payment/paypal.png') }}" class="img-fluid"
+                                 alt="paypal">
+                             <img src="{{ asset('store/image/home2/payment/master.png') }}" class="img-fluid"
+                                 alt="master">
+                             <img src="{{ asset('store/image/home2/payment/american.png') }}" class="img-fluid"
+                                 alt="visa">
+                             <img src="{{ asset('store/image/home2/payment/paypal.png') }}" class="img-fluid"
+                                 alt="american">
                          </a>
                      </div>
                  </li>

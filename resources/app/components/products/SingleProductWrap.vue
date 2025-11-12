@@ -1,4 +1,5 @@
-<div class="single-product-wrap">
+<template>
+    <div class="single-product-wrap">
     <div class="product-image">
         <a href="{{ route('product', ['slug' => $product['slug']]) }}" class="pro-img">
             @if ($product['featured_image_url'])
@@ -81,3 +82,4 @@
         </div>
     </div>
 </div>
+</template>
