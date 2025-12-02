@@ -1,3 +1,5 @@
+@props(['list' => []])
+
 <!-- breadcrumb start -->
 <section class="breadcrumb-area">
     <div class="container">

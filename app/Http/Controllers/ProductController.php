@@ -13,7 +13,8 @@ class ProductController extends Controller
     {
         $products = Product::paginate(12);
         return view('products', [
-            'products' => $products
+            'products' => $products,
+            'sale_banner' => false
         ]);
     }
 

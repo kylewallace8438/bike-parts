@@ -29,9 +29,14 @@
 <!-- screen-bg end -->
 <!-- preloader start -->
 <div class="preloader"></div>
-<x-common.newsletter-modal />
+@if (isset($show_newsletter_modal) && $show_newsletter_modal)
+<x-common.newsletter-modal/>
+@endif
 <!-- preloader end -->
-<x-common.top-notification />
+@php
+    $message = 'Miễn phí vận chuyển cho đơn hàng trên 5 triệu đồng!';
+@endphp
+<x-common.top-notification :message="$message"/>
 <x-common.header />
 <x-common.menu-main />
 <!-- main start -->
@@ -191,7 +196,7 @@
                             <div class="swiper-wrapper">
                                 @foreach($top_products as $product)
                                 <div class="swiper-slide" data-animate="animate__fadeIn">
-                                    <x-common.single-product-wrap :product="$product" />
+                                    <x-product.single-product-wrap :product="$product" />
                                 </div>
                                 @endforeach
                             </div>

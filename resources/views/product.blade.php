@@ -37,10 +37,15 @@
     <x-common.header />
     <x-common.menu-main />
     <main>
-        <x-common.breadcrumb :list="[
-            ['name' => 'Trang chủ', 'link' => route('home')],
-            ['name' => 'Chi tiết sản phẩm', 'link' => route('product', ['slug' => $product['slug']])],
-        ]" />
+        @php
+            $list = [
+                ['name' => 'Trang chủ', 'link' => route('home')],
+                ['name' => 'Sản phẩm', 'link' => route('products')],
+                ['name' => $product['title'], 'link' => route('product', ['slug' => $product['slug']])],
+            ];
+        @endphp
+        <x-common.breadcrumb :list="$list">
+        </x-common.breadcrumb>
         <!-- pro-detail-page start -->
         <section class="product-details-page pro-style2 bg-color section-ptb">
             <div class="container">
@@ -70,7 +75,8 @@
                                             @empty
                                                 <div class="slick-slide">
                                                     <a href="https://placeholder.com/600x400" class="product-single">
-                                                        <img src="https://placeholder.com/600x400" data-zoom="https://placeholder.com/600x400"
+                                                        <img src="https://placeholder.com/600x400"
+                                                            data-zoom="https://placeholder.com/600x400"
                                                             class="img-fluid zoom" alt="Placeholder Image">
                                                     </a>
                                                 </div>
