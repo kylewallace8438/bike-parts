@@ -10,7 +10,7 @@
                 </li>
                 <li class="grid-wrapper">
                     <!-- currency detils start -->
-                    <div class="currency-wrap">
+                    {{-- <div class="currency-wrap">
                         <div class="currency-wrapper">
                             <div class="local-currency">
                                 <form method="post" action="javascript:void(0)" class="localization-form"
@@ -56,7 +56,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- currency details end -->
                     <!-- language detils start -->
                     <div class="language-wrap">
@@ -73,32 +73,12 @@
                                     <ul class="acc-language collapse" id="menu-language-resp">
                                         <li class="active">
                                             <a href="javascript:void(0)">
-                                                <span class="language-code">Hindi</span>
+                                                <span class="language-code">Vietnamese</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="javascript:void(0)">
                                                 <span class="language-code">English</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">
-                                                <span class="language-code">العربية</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">
-                                                <span class="language-code">Chinesh</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">
-                                                <span class="language-code">Spanish</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">
-                                                <span class="language-code">Dutch</span>
                                             </a>
                                         </li>
                                     </ul>
