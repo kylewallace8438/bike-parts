@@ -14,6 +14,15 @@ class BrandSeed extends Seeder
     {
         $brands = [
             ['name' => 'KTM'],
+            ['name' => 'Honda'],
+            ['name' => 'Yamaha'],
+            ['name' => 'Suzuki'],
+            ['name' => 'Ducati'],
+            ['name' => 'BMW'],
+            ['name' => 'Harley-Davidson'],
+            ['name' => 'Triumph'],
+            ['name' => 'Kawasaki'],
+            ['name' => 'Aprilia'],
         ];
         foreach ($brands as $brand) {
             Brand::updateOrCreate(['name' => $brand['name']], $brand);

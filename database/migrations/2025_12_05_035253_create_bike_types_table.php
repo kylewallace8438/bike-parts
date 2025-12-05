@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('bike_parts', function (Blueprint $table) {
-            $table->index(['category_id']);
+        Schema::create('bike_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('type')->unique();
+            $table->timestamps();
         });
     }
 
@@ -21,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('bike_parts', function (Blueprint $table) {
-            $table->index(['category_id']);
-        });
+        Schema::dropIfExists('bike_types');
     }
 };

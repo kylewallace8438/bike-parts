@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\BikeAvailabilityController;
 use App\Http\Controllers\Api\MaintenanceHistoryController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\PlateController;
 use App\Http\Controllers\ShopifyProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,9 +25,13 @@ Route::post('register', [AuthController::class, 'register']);
 Route::get('/auth/google', [GoogleAuthController::class, 'redirectToGoogle']);
 
 Route::middleware('auth:sanctum')->get('/user', [AuthController::class, 'user']);
-Route::get('products', [ProductController::class, 'getProducts']);
-Route::get('products/{id}', [ProductController::class, 'getProduct']);
-Route::get('products/{slug}', [ProductController::class, 'getProduct']);
+
+Route::prefix('products')->group(function () {
+    Route::get('/', [ProductController::class, 'getProducts']);
+    Route::get('/{id}', [ProductController::class, 'getProduct']);
+    Route::get('/{slug}', [ProductController::class, 'getProduct']);
+});
+
 Route::get('search/{brand_id}', [BikeController::class, 'showBrandCategory']);
 Route::get('search/{brand}/{category_id}', [BikeController::class, 'handleSearchKTM']);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -39,7 +44,7 @@ Route::prefix('rental')->group(function () {
     Route::get('bikes/{id}', [RentalBikeController::class, 'show']);
     Route::get('bikes/{id}/availability', [RentalBikeController::class, 'checkAvailability']);
     Route::get('bike-types', [RentalBikeController::class, 'getTypes']);
-    Route::get('locations', [RentalBikeController::class, 'getLocations']);
+    // Route::get('locations', [RentalBikeController::class, 'getLocations']);
 
     // Availability routes
     Route::get('bikes/{bikeId}/availability-schedule', [BikeAvailabilityController::class, 'index']);
@@ -97,3 +102,5 @@ Route::prefix('maintenance')->group(function () {
         });
     });
 });
+
+Route::post('plate/lookup', [PlateController::class, 'lookupPlate']);

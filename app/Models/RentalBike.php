@@ -12,7 +12,7 @@ class RentalBike extends Model
     protected $fillable = [
         'name',
         'model',
-        'brand',
+        'brand_id',
         'description',
         'color',
         'size',

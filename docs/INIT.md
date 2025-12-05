@@ -1,0 +1,4 @@
+- RUN `BrandSeed`
+- RUN `KTMBikeSeed`
+- RUN `GarageSeeder`
+- RUN `php artisan app:ktm-category-scrape`
