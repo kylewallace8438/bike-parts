@@ -7,7 +7,7 @@
                  <ul class="footer-ul">
                      <li class="footer-li footer-logo" data-animate="animate__fadeIn">
                          <div class="footer-content">
-                             <a href="index2.html" class="theme-logo">
+                             <a href="{{ route('home') }}" class="theme-logo">
                                  <img src="{{ asset('store/image/home2/logo.png') }}" class="img-fluid" alt="logo">
                              </a>
                              <ul class="ftcontact-ul">
@@ -33,9 +33,9 @@
                          <div class="footer-content">
                              <ul class="ftcontact-ul">
                                  <li class="ftcontact-li">
-                                     <h6 class="ft-title">Contact us</h6>
+                                     <h6 class="ft-title">{{ __('footer.contact_us') }}</h6>
                                      <a href="#collapse-account" data-bs-toggle="collapse" class="ft-title">
-                                         <span class="ftmenu-title">Contact us</span>
+                                         <span class="ftmenu-title">{{ __('footer.contact_us') }}</span>
                                      </a>
                                      <div class="ft-location">
                                          <i class="feather-mail"></i>
@@ -79,86 +79,56 @@
                          </div>
                      </li>
                      <li class="footer-li footer-menu" data-animate="animate__fadeIn">
-                         <h6 class="ft-title">Information</h6>
+                         <h6 class="ft-title">{{ __('footer.infomation') }}</h6>
                          <a href="#collapse-information" data-bs-toggle="collapse" class="ft-title">
-                             <span class="ftmenu-title">Information</span>
+                             <span class="ftmenu-title">{{ __('footer.infomation') }}</span>
                              <span class="ftmenu-icon"><i class="feather-plus"></i></span>
                          </a>
                          <ul class="ftlink-ul collapse" id="collapse-information">
                              <li class="ftlink-li">
-                                 <a href="about-us.html">About us</a>
+                                 <a href="about-us.html">{{ __('footer.about_us') }}</a>
                              </li>
                              <li class="ftlink-li">
-                                 <a href="contact-us.html">Contact us</a>
+                                 <a href="contact-us.html">{{ __('footer.contact_us') }}</a>
                              </li>
                              <li class="ftlink-li">
-                                 <a href="blog-grid.html">Blog</a>
+                                 <a href="blog-grid.html">{{ __('footer.blog') }}</a>
                              </li>
                              <li class="ftlink-li">
-                                 <a href="faq.html">Faq's</a>
+                                 <a href="faq.html">{{ __('footer.faq') }}</a>
                              </li>
                              <li class="ftlink-li">
-                                 <a href="cart-page.html">My cart</a>
+                                 <a href="cart-page.html">{{ __('footer.my_cart') }}</a>
                              </li>
                              <li class="ftlink-li">
-                                 <a href="wishlist-product.html">My wishlist</a>
+                                 <a href="wishlist-product.html">{{ __('footer.my_wishlist') }}</a>
                              </li>
                          </ul>
                      </li>
                      <li class="footer-li footer-menu" data-animate="animate__fadeIn">
-                         <h6 class="ft-title">My account</h6>
+                         <h6 class="ft-title">{{ __('footer.my_account') }}</h6>
                          <a href="#collapse-category" data-bs-toggle="collapse" class="ft-title">
-                             <span class="ftmenu-title">My account</span>
+                             <span class="ftmenu-title">{{ __('footer.my_account') }}</span>
                              <span class="ftmenu-icon"><i class="feather-plus"></i></span>
                          </a>
-                         <ul class="ftlink-ul collapse" id="collapse-category">
+                         <ul class="ftlink-ul collapse" id="collapse-information">
                              <li class="ftlink-li">
-                                 <a href="about-us-2.html">About us 2</a>
-                             </li>
-                             <li class="ftlink-li">
-                                 <a href="contact-us-2.html">Contact us 2</a>
-                             </li>
-                             <li class="ftlink-li">
-                                 <a href="return-policy.html">Refund policy</a>
-                             </li>
-                             <li class="ftlink-li">
-                                 <a href="shipping-policy.html">Shipping & return</a>
-                             </li>
-                             <li class="ftlink-li">
-                                 <a href="contact-us-2.html">Store location</a>
-                             </li>
-                             <li class="ftlink-li">
-                                 <a href="product-template.html">Saved items</a>
+                                 <a href="#">{{ __('footer.my_account') }}</a>
                              </li>
                          </ul>
                      </li>
                      <li class="footer-li footer-menu" data-animate="animate__fadeIn">
-                         <h6 class="ft-title">Categories</h6>
+                         <h6 class="ft-title">{{ __('footer.categories') }}</h6>
                          <a href="#collapse-followed" data-bs-toggle="collapse" class="ft-title">
-                             <span class="ftmenu-title">Categories</span>
+                             <span class="ftmenu-title">{{ __('footer.categories') }}</span>
                              <span class="ftmenu-icon"><i class="feather-plus"></i></span>
                          </a>
-                         <ul class="ftlink-ul collapse" id="collapse-followed">
+                         <ul class="ftlink-ul collapse" id="collapse-information">
                              <li class="ftlink-li">
-                                 <a href="product-template.html">Computer</a>
-                             </li>
-                             <li class="ftlink-li">
-                                 <a href="product-template2.html">Smart phone</a>
-                             </li>
-                             <li class="ftlink-li">
-                                 <a href="product-template3.html">Earbuds</a>
-                             </li>
-                             <li class="ftlink-li">
-                                 <a href="product-template4.html">DSLR camera</a>
-                             </li>
-                             <li class="ftlink-li">
-                                 <a href="product-template5.html">Smart watch</a>
-                             </li>
-                             <li class="ftlink-li">
-                                 <a href="product-template6.html">Party speaker</a>
+                                 <a href="about-us.html">{{ __('footer.about_us') }}</a>
                              </li>
                          </ul>
-                     </li>
+                    </li>
                  </ul>
              </div>
          </div>

@@ -54,12 +54,6 @@
                         <div class="pro-details-pos pro-details-left-pos">
                             <!-- Product slider start -->
                             <div class="product-detail-slider product-details-lr product-details product-details-sticky">
-                                {{-- <a href="product-template.html" class="next-prev-product prev">
-                                    <span>Trước</span>
-                                </a>
-                                <a href="product-template3.html" class="next-prev-product next">
-                                    <span>Sau</span>
-                                </a> --}}
                                 <!-- Product slider start -->
                                 <div class="product-detail-img product-detail-img-right">
                                     <div class="product-img-top" data-animate="animate__fadeIn">
@@ -107,20 +101,6 @@
                                 <div class="product-details-info">
                                     <div class="pro-nprist">
                                         <div class="product-info" data-animate="animate__fadeIn">
-                                            <!-- product-ratting start -->
-                                            <div class="product-ratting">
-                                                <span class="pro-ratting">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                </span>
-                                                <span class="spr-badge-caption">3 Reviews</span>
-                                            </div>
-                                            <!-- product-ratting end -->
-                                        </div>
-                                        <div class="product-info" data-animate="animate__fadeIn">
                                             <!-- product-title start -->
                                             <div class="product-title">
                                                 <h2>{{ $product['title'] }}</h2>
@@ -145,9 +125,9 @@
                                                     </p>
                                                 </div> --}}
                                                 <div class="product-variant">
-                                                    <h6>Tình trạng:</h6>
+                                                    <h6>{{ __('product.status') }}:</h6>
                                                     <span class="stock-qty in-stock text-success">
-                                                        <span>Còn hàng<i class="bi bi-check2"></i></span>
+                                                        <span>{{ __('product.in_stock') }}<i class="bi bi-check2"></i></span>
                                                     </span>
                                                 </div>
                                             </div>
@@ -189,7 +169,7 @@
                                         <div class="product-info" data-animate="animate__fadeIn">
                                             <form method="post" class="cart">
                                                 <div class="product-quantity-action">
-                                                    <h6>Số lượng:</h6>
+                                                    <h6>{{ __('product.quantity') }}:</h6>
                                                     <div class="product-quantity">
                                                         <div class="cart-plus-minus">
                                                             <button class="dec qtybutton minus"><i
@@ -208,10 +188,10 @@
                                                 <div class="pro-detail-button">
                                                     <button type="button" onclick="location. href='cart-page.html'"
                                                         class="btn add-to-cart ajax-spin-cart">
-                                                        <span class="cart-title">Thêm vào giỏ</span>
+                                                        <span class="cart-title">{{ __('product.add_to_cart') }}</span>
                                                     </button>
                                                     <a href="cart-empty.html" class="btn btn-cart btn-theme">
-                                                        <span>Mua ngay</span>
+                                                        <span>{{ __('product.buy_now') }}</span>
                                                     </a>
                                                 </div>
                                                 <!-- pro-deatail button start -->
@@ -223,7 +203,7 @@
                                                             <span class="add-wishlist"><i
                                                                     class="feather-heart"></i></span>
                                                         </span>
-                                                        <span class="wishlist-text">Danh sách yêu thích</span>
+                                                        <span class="wishlist-text">{{ __('product.wishlist') }}</span>
                                                     </a>
                                                 </div>
                                                 <!-- pro-deatail wishlist end -->
@@ -231,8 +211,8 @@
                                         </div>
                                         <div class="product-info" data-animate="animate__fadeIn">
                                             <div class="form-group">
-                                                <a href="#deliver-modal" data-bs-toggle="modal">Chính sách</a>
-                                                <a href="#que-modal" data-bs-toggle="modal">Đặt câu hỏi</a>
+                                                <a href="#deliver-modal" data-bs-toggle="modal">{{ __('product.policy') }}</a>
+                                                <a href="#que-modal" data-bs-toggle="modal">{{ __('product.ask_question') }}</a>
                                             </div>
                                         </div>
                                         <div class="modal fade deliver-modal" id="deliver-modal" tabindex="-1"
@@ -345,26 +325,26 @@
                                                 <div class="pro-social">
                                                     <ul class="social-icon">
                                                         <li>
-                                                            <a href="https://www.facebook.com/" class="facebook"><i
+                                                            <a href="https://www.facebook.com/" class="facebook" target="_blank"><i
                                                                     class="fab fa-facebook-f"></i></a>
                                                         </li>
                                                         <li>
-                                                            <a href="https://twitter.com/" class="twitter"><i
+                                                            <a href="https://twitter.com/" class="twitter" target="_blank"><i
                                                                     class="fab fa-twitter"></i></a>
                                                         </li>
                                                         <li>
-                                                            <a href="https://web.telegram.org" class="twitter"><i
+                                                            <a href="https://web.telegram.org" class="twitter" target="_blank"><i
                                                                     class="fab fa-telegram"></i></a>
                                                         </li>
                                                         <li>
-                                                            <a href="https://in.pinterest.com/" class="pinterest"><i
+                                                            <a href="https://in.pinterest.com/" class="pinterest" target="_blank"><i
                                                                     class="fab fa-pinterest-p"></i></a>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="product-info" data-animate="animate__fadeIn">
+                                        <!-- <div class="product-info" data-animate="animate__fadeIn">
                                             <div class="product-payment-image">
                                                 <ul class="payment-icon">
                                                     <li>
@@ -458,7 +438,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                                 <div class="product-description-tab" data-animate="animate__fadeIn">
@@ -595,4 +575,9 @@
     <!-- back-to-top start -->
     <a href="javascript:void(0)" id="top" class="scroll"><span><i class="feather-arrow-up"></i></span></a>
     <!-- back-to-top end -->
+@endsection
+@section('scripts')
+<script>
+    const product = {!! json_encode($product) !!};
+</script>
 @endsection

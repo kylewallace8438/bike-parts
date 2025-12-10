@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -10,11 +11,12 @@ use Illuminate\Support\Facades\Route;
 
 // Auth::routes();\
 // Route::get('/auth/google/callback', [GoogleAuthController::class, 'handleGoogleCallback']);
-Route::get('dang-nhap', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-Route::get('dang-ki', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('san-pham', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
-Route::get('san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'getProduct'])->name('product');
+Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
+Route::get('products/{slug}', [App\Http\Controllers\ProductController::class, 'getProduct'])->name('product');
+Route::post('lang', [HomeController::class, 'changeLanguage'])->name('change.language');
 // Route::get('/san-pham', [App\Http\Controllers\ProductController::class, 'index'])->name('san-pham');
 // Route::get('/san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'getProduct']);
 // Route::get('/lien-he', [App\Http\Controllers\ProductController::class, 'index'])->name('lien-he');

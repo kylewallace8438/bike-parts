@@ -1,4 +1,4 @@
-@props(['message' => []])
+@props(['message' => ''])
 
 <!-- top notification start -->
 <div class="top-notification-bar">
@@ -62,24 +62,22 @@
                     <div class="language-wrap">
                         <div class="language-wrapper">
                             <div class="local-language">
-                                <form method="post" action="javascript:void(0)" class="localization-form"
+                                <form method="post" action="{{ route('change.language') }}" class="localization-form"
                                     enctype="multipart/form-data">
-                                    <button class="language-title">
-                                        <span class="language-code">English</span>
-                                    </button>
-                                    <button class="language-title language-title-lg">
-                                        <span class="language-code">English</span>
+                                    @csrf
+                                    <button type="button" class="language-title" data-bs-toggle="collapse" data-bs-target="#menu-language-resp">
+                                        <span class="language-code">{{ app()->getLocale() == 'en' ? 'English' : 'Vietnamese' }}</span>
                                     </button>
                                     <ul class="acc-language collapse" id="menu-language-resp">
-                                        <li class="active">
-                                            <a href="javascript:void(0)">
+                                        <li>
+                                            <button type="submit" name="locale" value="vi" class="pt-2 pb-2 ps-4 pe-4">
                                                 <span class="language-code">Vietnamese</span>
-                                            </a>
+                                            </button>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0)">
+                                            <button type="submit" name="locale" value="en" class="pt-2 pb-2 ps-4 pe-4">
                                                 <span class="language-code">English</span>
-                                            </a>
+                                            </button>
                                         </li>
                                     </ul>
                                 </form>

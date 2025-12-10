@@ -30,7 +30,7 @@
                                 <div class="search-bar">
                                     <div class="form-search">
                                         <input type="search" name="search-input" class="search-input" value=""
-                                            placeholder="Search for product..." required="">
+                                            placeholder="{{ __('header.search_placeholder') }}" required="">
                                         <button type="button" onclick="location.href='search.html'" class="search-btn"
                                             disabled=""><i class="feather-search"></i></button>
                                     </div>
@@ -80,8 +80,8 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                        <p class="search-more"><a href="search.html">See all results (12)</a></p>
-                                        <p class="search-fail">Search not found</p>
+                                        <p class="search-more"><a href="search.html">{{ __('header.search_result') }} (12)</a></p>
+                                        <p class="search-fail">{{ __('header.search_fail') }}</p>
                                     </div>
                                     <a href="#" class="search-btn"><i class="feather-search"></i></a>
                                 </div>

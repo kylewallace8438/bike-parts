@@ -24,7 +24,6 @@
     <!-- style css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('store/css/style1.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('store/css/style2.css') }}">
-    @vite(['resources/app/product-sidebar.js'])
 @endsection
 
 @section('content')
