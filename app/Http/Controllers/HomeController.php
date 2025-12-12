@@ -25,10 +25,8 @@ class HomeController extends Controller
     public function index()
     {
         $top_products = Product::orderBy('created_at', 'desc')->take(5)->get();
-        $message = app()->getLocale() == 'vi' ? 'Miễn phí vận chuyển cho đơn hàng trên 5 triệu đồng!' : 'Free shipping for orders over 5 million VND!';
         return view('home', [
-            'top_products' => $top_products,
-            'message' => $message
+            'top_products' => $top_products
         ]);
     }
 

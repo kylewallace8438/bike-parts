@@ -8,8 +8,8 @@
                         <span><i class="feather-box"></i></span>
                     </a>
                     <div class="service-text">
-                        <h6>Free shipping</h6>
-                        <p>Orders over $100</p>
+                        <h6>{{ __('home.free_shipping.title') }}</h6>
+                        <p>{{ __('home.free_shipping.subtitle') }}</p>
                     </div>
                 </div>
             </li>
@@ -19,8 +19,8 @@
                         <span><i class="feather-dollar-sign"></i></span>
                     </a>
                     <div class="service-text">
-                        <h6>Payment secure</h6>
-                        <p>100% payment safe</p>
+                        <h6>{{ __('home.payment_secure.title') }}</h6>
+                        <p>{{ __('home.payment_secure.subtitle') }}</p>
                     </div>
                 </div>
             </li>
@@ -30,8 +30,8 @@
                         <span><i class="feather-headphones"></i></span>
                     </a>
                     <div class="service-text">
-                        <h6>Support 24/7</h6>
-                        <p>Top quality support</p>
+                        <h6>{{ __('home.support.title') }}</h6>
+                        <p>{{ __('home.support.subtitle') }}</p>
                     </div>
                 </div>
             </li>
@@ -41,8 +41,8 @@
                         <span><i class="feather-refresh-cw"></i></span>
                     </a>
                     <div class="service-text">
-                        <h6>Free returns</h6>
-                        <p>Within 30 days</p>
+                        <h6>{{ __('home.free_return.title') }}</h6>
+                        <p>{{ __('home.free_return.subtitle') }}</p>
                     </div>
                 </div>
             </li>
@@ -52,8 +52,8 @@
                         <span><i class="feather-award"></i></span>
                     </a>
                     <div class="service-text">
-                        <h6>Best price</h6>
-                        <p>Guaranteed</p>
+                        <h6>{{ __('home.best_price.title') }}</h6>
+                        <p>{{ __('home.best_price.subtitle') }}</p>
                     </div>
                 </div>
             </li>

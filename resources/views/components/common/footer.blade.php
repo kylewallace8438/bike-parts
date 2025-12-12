@@ -86,7 +86,7 @@
                          </a>
                          <ul class="ftlink-ul collapse" id="collapse-information">
                              <li class="ftlink-li">
-                                 <a href="about-us.html">{{ __('footer.about_us') }}</a>
+                                 <a href="{{ route('about_us') }}">{{ __('footer.about_us') }}</a>
                              </li>
                              <li class="ftlink-li">
                                  <a href="contact-us.html">{{ __('footer.contact_us') }}</a>
@@ -125,7 +125,7 @@
                          </a>
                          <ul class="ftlink-ul collapse" id="collapse-information">
                              <li class="ftlink-li">
-                                 <a href="about-us.html">{{ __('footer.about_us') }}</a>
+                                 <a href="{{ route('about_us') }}">{{ __('footer.about_us') }}</a>
                              </li>
                          </ul>
                     </li>

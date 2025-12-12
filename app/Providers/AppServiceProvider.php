@@ -33,6 +33,15 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('sale_off', function ($expression) {
             return "<?php echo sale_off_percentage(...[$expression]); ?>";
         });
+        
+        // Share message variable across all views
+        view()->composer('*', function ($view) {
+            $message = app()->getLocale() == 'vi' 
+                ? 'Miễn phí vận chuyển cho đơn hàng trên 5 triệu đồng!' 
+                : 'Free shipping for orders over 5 million VND!';
+            $view->with('message', $message);
+        });
+        
         Context::initialize(
             apiKey: config('shopify.SHOPIFY_API_KEY'),
             apiSecretKey: config('shopify.SHOPIFY_API_SECRET'),

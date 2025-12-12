@@ -315,7 +315,7 @@
                               <div class="menu-dropdown menu-sub collapse" id="menu-sub">
                                   <ul class="ul">
                                       <li class="menusub-li">
-                                          <a href="about-us.html" class="menusub-title">
+                                          <a href="{{ route('about_us') }}" class="menusub-title">
                                               <span class="sp-link-title">Về chúng tôi</span>
                                           </a>
                                       </li>

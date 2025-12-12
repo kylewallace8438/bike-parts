@@ -17,6 +17,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
 Route::get('products/{slug}', [App\Http\Controllers\ProductController::class, 'getProduct'])->name('product');
 Route::post('lang', [HomeController::class, 'changeLanguage'])->name('change.language');
+Route::get('about-us', [App\Http\Controllers\AboutUsController::class, 'index'])->name('about_us');
 // Route::get('/san-pham', [App\Http\Controllers\ProductController::class, 'index'])->name('san-pham');
 // Route::get('/san-pham/{slug}', [App\Http\Controllers\ProductController::class, 'getProduct']);
 // Route::get('/lien-he', [App\Http\Controllers\ProductController::class, 'index'])->name('lien-he');

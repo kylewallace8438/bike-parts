@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enum\RentalBikeType;
 use Illuminate\Database\Seeder;
 use App\Models\RentalBike;
 
@@ -19,7 +20,7 @@ class RentalBikeSeeder extends Seeder
                 'brand_id' => rand(1, 10),
                 'description' => 'High-performance street bike perfect for trail adventures. Features advanced suspension and durable frame.',
                 'color' => 'Matte Black',
-                'type' => 'street',
+                'type' => RentalBikeType::NAKED,
                 'hourly_rate' => 75000,
                 'daily_rate' => 450000,
                 'weekly_rate' => 2800000,
@@ -46,7 +47,7 @@ class RentalBikeSeeder extends Seeder
                 'brand_id' => rand(1, 10),
                 'description' => 'Comfortable city bike ideal for urban commuting and leisure rides. Lightweight aluminum frame with ergonomic design.',
                 'color' => 'Sky Blue',
-                'type' => 'hybrid',
+                'type' => RentalBikeType::ADV,
                 'hourly_rate' => 55000,
                 'daily_rate' => 320000,
                 'weekly_rate' => 2100000,
