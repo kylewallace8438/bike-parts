@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BikeModel;
 use App\Models\BikePart;
 use App\Models\Brand;
-use App\Models\Category;
+use App\Models\BikePartCategory;
 use App\Shopify\Interfaces\ApiClientInterface;
 use Illuminate\Http\Request;
 use Shopify\Clients\Graphql;
@@ -32,7 +32,7 @@ class BikeController extends Controller
     }
     public function handleSearchKTM(Request $request, $brand, $category_id)
     {
-        $category = Category::where('id', $category_id)->first();
+        $category = BikePartCategory::where('id', $category_id)->first();
         $bike_model = $category->bike()->first();
         $bike_parts = BikePart::where('category_id', $category_id)->get();
 

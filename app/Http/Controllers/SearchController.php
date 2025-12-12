@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BikePart;
-use App\Models\Category;
+use App\Models\BikePartCategory;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -12,7 +12,7 @@ class SearchController extends Controller
     {
         $brand_id = 1;
         $bike_model_id = 1;
-        $categories = Category::select(['id', 'name', 'slug', 'brand_id', 'bike_model_id', 'image_url', 'translate'])
+        $categories = BikePartCategory::select(['id', 'name', 'slug', 'brand_id', 'bike_model_id', 'image_url', 'translate'])
             ->where('brand_id', $brand_id)
             ->where('bike_model_id', $bike_model_id)
             ->get();
@@ -25,7 +25,7 @@ class SearchController extends Controller
     public function searchKTMCategory(Request $request, $category_id)
     {
 
-        $category = Category::where('id', $category_id)->first();
+        $category = BikePartCategory::where('id', $category_id)->first();
         $bike_model = $category->bike()->first();
         $bike_parts = BikePart::where('category_id', $category_id)->get();
 

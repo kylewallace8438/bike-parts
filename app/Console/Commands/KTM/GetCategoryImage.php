@@ -3,7 +3,7 @@
 namespace App\Console\Commands\KTM;
 
 use App\Models\Brand;
-use App\Models\Category;
+use App\Models\BikePartCategory;
 use App\Models\Crawl\KTMPartScrapeSingle;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
@@ -31,7 +31,7 @@ class GetCategoryImage extends Command
     public function handle()
     {
         $ktm_brand = Brand::where('slug', 'ktm')->first();
-        Category::where('brand_id', $ktm_brand->id)
+        BikePartCategory::where('brand_id', $ktm_brand->id)
             ->chunkById(5, function ($categories) {
                 foreach ($categories as $category) {
                     $ktmPartScrape = new KTMPartScrapeSingle;

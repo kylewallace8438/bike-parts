@@ -4,7 +4,7 @@ namespace App\Console\Commands\KTM;
 
 use App\Models\BikePart;
 use App\Models\Brand;
-use App\Models\Category;
+use App\Models\BikePartCategory;
 use App\Models\Crawl\KTMPartScrapeSingle;
 use Illuminate\Console\Command;
 use Spatie\Crawler\Crawler;
@@ -31,7 +31,7 @@ class PartScrapeSingle extends Command
     public function handle()
     {
         $ktm_brand = Brand::where('slug', 'ktm')->first();
-        $category = Category::where('brand_id', $ktm_brand->id)->where('id', 83)->first();
+        $category = BikePartCategory::where('brand_id', $ktm_brand->id)->where('id', 83)->first();
         $ktmPartScrape = new KTMPartScrapeSingle;
         Crawler::create()
             ->setMaximumDepth(0)

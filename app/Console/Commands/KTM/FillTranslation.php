@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands\KTM;
 
-use App\Models\Category;
+use App\Models\BikePartCategory;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
@@ -78,7 +78,7 @@ class FillTranslation extends Command
             'side panels' => 'Tấm vỏ bên',
         ];
         foreach ($data as $key => $value) {
-            Category::where('slug', Str::slug($key))->update([
+            BikePartCategory::where('slug', Str::slug($key))->update([
                 'translate' => $value,
             ]);
         }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Category extends Model
+class BikePartCategory extends Model
 {
     public $fillable = [
         'name', 'slug', 'brand_id', 'image_url', 'crawl_url', 'bike_model_id', 'translate',

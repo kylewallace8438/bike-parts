@@ -22,6 +22,6 @@ class BikeModel extends Model
 
     public function categories()
     {
-        return $this->belongsTo(Category::class, 'bike_model_id', 'id');
+        return $this->belongsTo(BikePartCategory::class, 'bike_model_id', 'id');
     }
 }

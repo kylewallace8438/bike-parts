@@ -4,7 +4,7 @@ namespace App\Console\Commands\KTM;
 
 use App\Models\BikeModel;
 use App\Models\Brand;
-use App\Models\Category;
+use App\Models\BikePartCategory;
 use App\Models\Crawl\KTMCategoryScrape;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
@@ -116,7 +116,7 @@ class CategoryScrape extends Command
                 foreach ($ktmCategoryCategories as $c) {
                     $string = substr($c['name'], strpos($c['name'], 'for'), strlen($c['name']));
                     $c['name'] = str_replace($string, '', $c['name']);
-                    Category::updateOrCreate([
+                    BikePartCategory::updateOrCreate([
                         'brand_id' => $brand->id,
                         'bike_model_id' => $bikeModel->id,
                         'name' => $c['name'],

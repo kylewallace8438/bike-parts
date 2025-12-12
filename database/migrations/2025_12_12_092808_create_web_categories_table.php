@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('web_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug');
-            $table->unsignedBigInteger('brand_id');
-            $table->unsignedBigInteger('bike_model_id');
-            $table->string('image_url')->nullable();
-            $table->string('crawl_url')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('web_categories');
     }
 };

@@ -4,7 +4,7 @@ namespace App\Console\Commands\Test;
 
 use App\Models\BikePart;
 use App\Models\Brand;
-use App\Models\Category;
+use App\Models\BikePartCategory;
 use App\Models\Crawl\KTMPartScrape;
 use Illuminate\Console\Command;
 use Spatie\Crawler\Crawler;
@@ -31,7 +31,7 @@ class TestPartScrape extends Command
     public function handle()
     {
         $ktm_brand = Brand::where('slug', 'ktm')->first();
-        $categories = Category::where('brand_id', $ktm_brand->id)->where('id', 3)->get();
+        $categories = BikePartCategory::where('brand_id', $ktm_brand->id)->where('id', 3)->get();
         foreach ($categories as $category) {
             $ktmPartScrape = new KTMPartScrape;
             $this->info('category_id: '.$category->id);
