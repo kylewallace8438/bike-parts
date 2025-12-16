@@ -20,4 +20,6 @@ return [
         'title' => 'Giá tốt nhất',
         'subtitle' => 'Đảm bảo giá cả cạnh tranh',
     ],
+    'our_blog' => 'Bài viết',
+    'latest_news' => 'Tin mới',
 ];

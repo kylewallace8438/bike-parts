@@ -20,4 +20,6 @@ return [
         'title' => 'Best Price',
         'subtitle' => 'Guaranteed competitive pricing',
     ],
+    'our_blog' => 'Our blog',
+    'latest_news' => 'Latest news',
 ];

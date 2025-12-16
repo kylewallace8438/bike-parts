@@ -37,4 +37,9 @@ class Product extends Model
         'min_price' => 'decimal:2',
         'max_price' => 'decimal:2',
     ];
+
+    public function product_categories()
+    {
+        return $this->belongsToMany(ProductCategory::class, 'product_category_product', 'product_id', 'category_id', 'shopify_id', 'id');
+    }
 }

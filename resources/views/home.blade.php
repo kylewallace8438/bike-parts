@@ -130,7 +130,7 @@
         <x-common.banner-area />
         <x-product.trending-area />
         <x-common.newsletter-area />
-        <x-common.blog-section />
+        <x-common.blog-section :blogs="$blogs" />
         <x-common.service-area />
     </main>
     <!-- main end -->

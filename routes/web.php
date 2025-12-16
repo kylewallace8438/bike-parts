@@ -16,6 +16,8 @@ Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'sh
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
 Route::get('products/{slug}', [App\Http\Controllers\ProductController::class, 'getProduct'])->name('product');
+Route::get('blogs', [App\Http\Controllers\BlogController::class, 'index'])->name('blogs');
+Route::get('blogs/{slug}', [App\Http\Controllers\BlogController::class, 'getBlog'])->name('blog');
 Route::post('lang', [HomeController::class, 'changeLanguage'])->name('change.language');
 Route::get('about-us', [App\Http\Controllers\AboutUsController::class, 'index'])->name('about_us');
 // Route::get('/san-pham', [App\Http\Controllers\ProductController::class, 'index'])->name('san-pham');
@@ -26,3 +28,6 @@ Route::get('about-us', [App\Http\Controllers\AboutUsController::class, 'index'])
 // Route::get('search/ktm', [App\Http\Controllers\SearchController::class, 'searchKTM'])->name('search.ktm');
 // Route::get('search/ktm/{category_id}', [App\Http\Controllers\SearchController::class, 'searchKTMCategory'])->name('search.ktm.category');
 // Route::post('search/ktm', [App\Http\Controllers\SearchController::class, 'handleSearchKTM'] )->name('search.handle.ktm');
+
+Auth::routes();
+

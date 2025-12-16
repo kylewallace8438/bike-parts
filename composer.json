@@ -10,6 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "binshops/laravel-blog": "^10.0",
         "darkaonline/l5-swagger": "^9.0",
         "laravel/framework": "^11.31",
         "laravel/horizon": "^5.31",
