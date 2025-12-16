@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Product;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class RecentProduct extends Component
+class TrendingArea extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class RecentProduct extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.product.recent');
+        return view('components.product.trending-area');
     }
 }
