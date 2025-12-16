@@ -4,29 +4,29 @@
             <div class="item">
                 <div class="slider-image">
                     <div class="slide-img">
-                        <img src="{{ asset('store/image/home2/slider/slider1.jpg') }}" class="img-fluid desk-img" alt="slider-1">
+                        <img src="{{ asset('store/image/home2/slider/1.png') }}" class="img-fluid desk-img" alt="slider-1">
                         <img src="{{ asset('store/image/home2/slider/mobile-slider1.jpg') }}" class="img-fluid resp-img" alt="mobile-slider1">
                     </div>
                     <div class="container-fluid slider-text-info">
                         <div class="slider-text-content">
-                            <span class="sub-title">Elevate Your Gaming Skills</span>
+                            <span class="sub-title">Customize your bike</span>
                             <h2><span>Best gaming keyboard</span></h2>
-                            <div class="pricemain">
+                            {{-- <div class="pricemain">
                                 <span class="product-price">From</span>
                                 <span class="product-price2">$899.99</span>
                                 <span class="product-price3">$999.99</span>
-                            </div>
-                            <a href="collection.html" class="btn-shop btn btn-style">
+                            </div> --}}
+                            <a href="{{ route('products') }}" class="btn-shop btn btn-style">
                                 <span class="shopnow">Shop now</span>
                             </a>
-                            <a href="collection.html" class="btn-collection btn btn-style">
+                            {{-- <a href="{{ route('products') }}" class="btn-collection btn btn-style">
                                 <span class="shopnow">collection</span>
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="item">
+            {{-- <div class="item">
                 <div class="slider-image">
                     <div class="slide-img">
                         <img src="{{ asset('store/image/home2/slider/slider2.jpg') }}" class="img-fluid desk-img" alt="slider-2">
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
     <!-- main-slider end -->
