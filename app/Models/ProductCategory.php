@@ -7,13 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class ProductCategory extends Model
 {
     protected $table = 'product_categories';
-    public $fillable = [
+    
+    protected $fillable = [
         'slug',
         'translation',
     ];
 
+    protected $casts = [
+        'translation' => 'array',
+    ];
+
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'product_category_product', 'category_id', 'product_id', 'id', 'shopify_id');
+        return $this->belongsToMany(Product::class, 'product_category_product', 'product_category_id', 'product_shopify_id', 'id', 'shopify_id');
     }
 }

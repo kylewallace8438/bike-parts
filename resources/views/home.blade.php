@@ -77,7 +77,7 @@
     </section> --}}
         <!-- category-slider end -->
         <x-common.offer-area />
-        <x-product.product-tab-area />
+        {{-- <x-product.product-tab-area :productByCategories="$productByCategories" /> --}}
         <!-- banner3 start -->
         <section class="banner3 section-pb">
             <div class="container-fluid">

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductCategoryResource;
 use App\Models\BlogPost;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use BinshopsBlog\Models\BinshopsBlogPost;
 use Illuminate\Http\Request;
 
@@ -28,11 +30,9 @@ class HomeController extends Controller
     {
         $top_products = Product::orderBy('created_at', 'desc')->take(5)->get();
         $blogs = BlogPost::isPulished()->orderBy('posted_at', 'desc')->take(5)->get();
-        $productByCategories = [];
         return view('home', [
             'top_products' => $top_products,
             'blogs' => $blogs,
-            'productByCategories' => $productByCategories,
         ]);
     }
 
