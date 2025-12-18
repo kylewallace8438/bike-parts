@@ -27,16 +27,6 @@
 @endsection
 
 @section('content')
-    <!-- screen-bg start -->
-    <div class="screen-bg"></div>
-    <!-- screen-bg end -->
-    <!-- preloader start -->
-    <div class="preloader"></div>
-    <!-- preloader end -->
-    {{-- <x-top-notification /> --}}
-    <x-common.top-notification :message="$message" />
-    <x-common.header />
-    <x-common.menu-main />
     <main>
         <!-- breadcrumb start -->
         <section class="breadcrumb-area">
@@ -329,18 +319,5 @@
         </section>
         <!-- news-letter end -->
     </main>
-    <x-common.footer />
-    <x-common.mobile-vega />
-    <x-common.mobile-menu />
-    <x-common.search-modal />
-    <x-common.cart-drawer />
-    <x-common.bottom-menu />
-    {{-- <x-common.quickview-modal /> --}}
-    <!-- fullscreen start -->
-    <div class="bg-screen"></div>
-    <!-- fullscreen end -->
-    <!-- back-to-top start -->
-    <a href="javascript:void(0)" id="top" class="scroll"><span><i class="feather-arrow-up"></i></span></a>
-    <!-- back-to-top end -->
 @endsection
 

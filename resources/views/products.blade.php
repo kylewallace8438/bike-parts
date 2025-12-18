@@ -27,15 +27,6 @@
 @endsection
 
 @section('content')
-    <!-- screen-bg start -->
-    <div class="screen-bg"></div>
-    <!-- screen-bg end -->
-    <!-- preloader start -->
-    <div class="preloader"></div>
-    <!-- preloader end -->
-    <x-common.top-notification />
-    <x-common.header />
-    <x-common.menu-main />
     <!-- main start -->
     <main>
         {{-- <x-breadcrumb :list="[
@@ -628,18 +619,4 @@
         {{-- <x-newsletter /> --}}
 
     </main>
-    <!-- main end -->
-    <x-common.footer />
-    <x-common.mobile-vega />
-    <x-common.mobile-menu />
-    <x-common.search-modal />
-    <x-common.cart-drawer />
-    <x-common.bottom-menu />
-    <x-product.quickview-modal />
-    <!-- fullscreen start -->
-    <div class="bg-screen"></div>
-    <!-- fullscreen end -->
-    <!-- back-to-top start -->
-    <a href="javascript:void(0)" id="top" class="scroll"><span><i class="feather-arrow-up"></i></span></a>
-    <!-- back-to-top end -->
 @endsection

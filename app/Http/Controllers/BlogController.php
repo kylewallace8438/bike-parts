@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use BinshopsBlog\Models\BinshopsBlogPost;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -14,7 +15,7 @@ class BlogController extends Controller
 
     public function getBlog($slug)
     {
-        // Logic to fetch and display a single blog post by slug
-        // return view('blogs.show', ['slug' => $slug]);
+        $blog = BinshopsBlogPost::where('slug', $slug)->firstOrFail();
+        return view('blog', ['blog' => $blog]);
     }
 }
