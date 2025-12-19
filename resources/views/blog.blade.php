@@ -4,9 +4,9 @@
 @endsection
 @section('meta')
     <meta name="description"
-        content="A best clean, modern, stylish, creative, responsive theme for different eCommerce business or industries.">
+        content="{{ $blog->short_description }}">
     <meta name="keywords" content="">
-    <meta name="author" content="spacingtech_webify">
+    <meta name="author" content="kwapp">
 @endsection
 @section('styles')
     <!-- plugin css -->
@@ -27,28 +27,15 @@
 @endsection
 @section('content')
     <main>
-        <!-- breadcrumb start -->
-        <section class="breadcrumb-area">
-            <div class="container">
-                <div class="col">
-                    <div class="row">
-                        <div class="breadcrumb-index">
-                            <!-- breadcrumb-list start -->
-                            <ul class="breadcrumb-ul">
-                                <li class="breadcrumb-li">
-                                    <a class="breadcrumb-link" href="index1.html">Home</a>
-                                </li>
-                                <li class="breadcrumb-li">
-                                    <span class="breadcrumb-text">news</span>
-                                </li>
-                            </ul>
-                            <!-- breadcrumb-list end -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- breadcrumb end -->
+        @php
+            $list = [
+                ['name' => 'Trang chủ', 'link' => route('home')],
+                ['name' => 'Sản phẩm', 'link' => route('products')],
+                ['name' => $blog->title, 'link' => route('blog', ['slug' => $blog->slug])],
+            ];
+        @endphp
+         <x-common.breadcrumb :list="$list">
+        </x-common.breadcrumb>
         <!-- article-area start -->
         <section class="article-area section-pt">
             <div class="container">
@@ -181,7 +168,7 @@
                                         <div class="blog-image">
                                             <a href="article-post-right.html" class="banner-img"
                                                 data-animate="animate__fadeIn">
-                                                <img src="image/home1/blog//blog-big.jpg" class="img-fluid"
+                                                <img src="{{ $blog->image_url('large') }}" class="img-fluid"
                                                     alt="article-01">
                                             </a>
                                             <ul>
@@ -202,11 +189,10 @@
                                     <!-- blog title start -->
                                     <div class="blog-post-opt blog-post-title">
                                         <div class="blog-revert">
-                                            <h6 class="post-title" data-animate="animate__fadeIn">Wel illum qui dolorem
-                                                eum fugiat?</h6>
+                                            <h6 class="post-title" data-animate="animate__fadeIn">{{ $blog->title }}</h6>
                                             <!-- blog-info start -->
                                             <div class="post-info" data-animate="animate__fadeIn">
-                                                <span>By Spacing Tech</span>
+                                                <span>{{ $blog->subtitle }}</span>
                                             </div>
                                             <!-- blog-info end -->
                                         </div>
@@ -216,37 +202,7 @@
                                     <div class="blog-post-opt blog-post-content">
                                         <div class="blog-content">
                                             <div class="blog-wrap-desc" data-animate="animate__fadeIn">
-                                                <p class="blog-desc" data-animate="animate__fadeIn">Lorem ipsum dolor sit
-                                                    amet, consectetuer adipiscing elit doli. Aenean commodo ligula eget
-                                                    dolor. Aenean massa. Cumtipsu sociis natoque penatibus et magnis dis
-                                                    parturient montesti, nascetur ridiculus mus. Donec quam felis, ultricies
-                                                    nec, pellentesque eutu, pretiumem. Nulla consequat massa quis enim.
-                                                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
-                                                    enim justotuio, rhoncus ut loret, imperdiet a, venenatis vitae, justo.
-                                                    Nullam dictum felis eu pede mollis pretium. Intege</p>
-                                                <p class="blog-desc" data-animate="animate__fadeIn">Lorem ipsum dolor sit
-                                                    amet, consectetuer adipiscing elit doli. Aenean commodo ligula eget
-                                                    dolor. Aenean massa. Cumtipsu sociis natoque penatibus et magnis dis
-                                                    parturient montesti, nascetur ridiculus mus. Donec quam felis, ultricies
-                                                    nec, pellentesque eutu, pretiumem. Nulla consequat massa quis enim.
-                                                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
-                                                    enim justotuio, rhoncus ut loret, imperdiet a, venenatis vitae, justo.
-                                                    Nullam dictum.</p>
-                                                <div>
-                                                    <blockquote>Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                                        doli. Aenean commodo ligula eget dolor. Aenean massa. Cumtipsu
-                                                        sociis natoque penatibus et magnis dis parturient montesti, nascetur
-                                                        ridiculus mus. Donec quam felis, ultricies nec,</blockquote>
-                                                </div>
-                                                <p class="blog-desc" data-animate="animate__fadeIn">Lorem ipsum dolor sit
-                                                    amet, consectetuer adipiscing elit doli. Aenean commodo ligula eget
-                                                    dolor. Aenean massa. Cumtipsu sociis natoque penatibus et magnis dis
-                                                    parturient montesti, nascetur ridiculus mus. Donec quam felis, ultricies
-                                                    nec, pellentesque eutu, pretiumem. Nulla consequat massa quis enim.
-                                                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
-                                                    enim justotuio, rhoncus ut loret, imperdiet a, venenatis vitae, justo.
-                                                    Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras
-                                                    dapibus.</p>
+                                                {!! $blog->post_body !!}
                                             </div>
                                         </div>
                                     </div>
@@ -276,7 +232,7 @@
                                             <ul class="social-icon" data-animate="animate__fadeIn">
                                                 <!-- facebook-icon start -->
                                                 <li>
-                                                    <a href="javascript:void(0)">
+                                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('blog', ['slug' => $blog->slug]) }}" target="_blank" rel="noopener noreferrer">
                                                         <span class="icon-social facebook"><svg
                                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                                                 <path
