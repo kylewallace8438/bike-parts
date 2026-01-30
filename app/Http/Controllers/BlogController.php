@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlogPost;
 use BinshopsBlog\Models\BinshopsBlogPost;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class BlogController extends Controller
     public function index()
     {
         // Logic to fetch and display list of blog posts
-        // return view('blogs.index');
+        $blogs = BlogPost::isPublished()->paginate(10);
+        return view('blogs', ['blogs' => $blogs]);
     }
 
     public function getBlog($slug)

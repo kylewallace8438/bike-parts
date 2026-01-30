@@ -8,7 +8,7 @@ class BlogPost extends BinshopsBlogPost
 {
     protected $table = 'binshops_blog_posts';
     
-    public function scopeIsPulished($query)
+    public function scopeIsPublished($query)
     {
         return $query->where('is_published', 1);
     }

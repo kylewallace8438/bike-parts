@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $top_products = Product::orderBy('created_at', 'desc')->take(5)->get();
-        $blogs = BlogPost::isPulished()->orderBy('posted_at', 'desc')->take(5)->get();
+        $blogs = BlogPost::isPublished()->orderBy('posted_at', 'desc')->take(5)->get();
         return view('home', [
             'top_products' => $top_products,
             'blogs' => $blogs,
