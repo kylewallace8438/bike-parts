@@ -43,7 +43,7 @@
                         <div class="pro-grli-wrapper left-side-wrap">
                             <div class="pro-grli-wrap product-grid">
                                 <div class="collection-img-wrap" data-animate="animate__fadeIn">
-                                    <h6 class="st-title">Collection left (23)</h6>
+                                    <h6 class="st-title">Products (23)</h6>
                                     <!-- collection info start -->
                                     <div class="collection-info">
                                         @if (isset($sale_banner) && $sale_banner)
@@ -61,14 +61,14 @@
                                         <button class="filter-button" type="button"><i
                                                 class="fa-solid fa-filter"></i><span>Filter</span></button>
                                     </div>
-                                    <div class="product-view-mode">
+                                    {{-- <div class="product-view-mode">
                                         <!-- shop-item-filter-list start -->
-                                        <a href="javascript:void(0)" class="list-change-view grid-three active"
+                                        <a href="javascript:void(0)" class="list-change-view grid-three"
                                             data-grid-view="3"><i class="fa-solid fa-border-all"></i></a>
                                         <a href="javascript:void(0)" data-grid-view="1" class="list-change-view list-one"><i
                                                 class="fa-solid fa-list"></i></a>
                                         <!-- shop-item-filter-list end -->
-                                    </div>
+                                    </div> --}}
                                     <!-- product-short start -->
                                     <div class="product-short">
                                         <label for="SortBy">Sort by:</label>

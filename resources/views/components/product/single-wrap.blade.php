@@ -23,7 +23,7 @@
                 <span class="tooltip-text">Xem nhanh</span>
             </a>
         </div>
-        <div class="product-cart">
+        {{-- <div class="product-cart">
             <button type="button" class="add-to-cart">
                 <span class="product-icon">
                     <span class="product-bag-icon"><i class="feather-shopping-bag"></i></span>
@@ -31,7 +31,7 @@
                     <span class="product-check-icon"><i class="feather-check"></i></span>
                 </span>
             </button>
-        </div>
+        </div> --}}
     </div>
     <div class="product-caption">
         <div class="product-content">
@@ -44,7 +44,7 @@
                     <span class="old-price">@money($product['max_price'])</span>
                 @endif
             </div>
-            <div class="product-ratting">
+            {{-- <div class="product-ratting">
                 <span class="review-ratting">
                     <span class="review-star">
                         <i class="feather-star"></i>
@@ -55,10 +55,11 @@
                     </span>
                     <span class="review-caption">Chưa có đánh giá</span>
                 </span>
-            </div>
+            </div> --}}
             <div class="product-description">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry It is a long established
-                    fact that a will be distracted by the readable of at</p>
+                @foreach ($product['tags'] as $tag)
+                    <span class="badge bg-secondary">{{ $tag }}</span>
+                @endforeach
             </div>
             <div class="product-action">
                 <a href="javascript:void(0)" class="add-to-cart">
@@ -69,14 +70,14 @@
                     </span>
                     <span class="tooltip-text">Thêm vào giỏ</span>
                 </a>
-                <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
+                {{-- <a href="#quickview-modal" data-bs-toggle="modal" class="quick-view">
                     <span class="product-icon"><i class="feather-eye"></i></span>
                     <span class="tooltip-text">Xem nhanh</span>
                 </a>
                 <a href="wishlist-product.html" class="add-to-wishlist">
                     <span class="product-icon"><i class="feather-heart"></i></span>
                     <span class="tooltip-text">Yêu thích</span>
-                </a>
+                </a> --}}
             </div>
         </div>
     </div>

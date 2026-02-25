@@ -1344,11 +1344,9 @@
     color: var(--primary-font-color);
 }
 .single-product-wrap .product-content .product-description {
-    display: none;
     margin: 7px 0px 0px 0px;
 }
 .single-product-wrap .product-content .product-action {
-    display: none;
     margin: 13px 0px 0px;
 }
 @media (max-width: 767px) {

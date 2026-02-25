@@ -30,6 +30,8 @@ class HomeController extends Controller
     {
         $top_products = Product::orderBy('created_at', 'desc')->take(5)->get();
         $blogs = BlogPost::isPublished()->orderBy('posted_at', 'desc')->take(5)->get();
+        \Debugbar::info($top_products);  // Shows in Messages tab
+
         return view('home', [
             'top_products' => $top_products,
             'blogs' => $blogs,
