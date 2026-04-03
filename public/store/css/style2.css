@@ -6225,7 +6225,7 @@ button.wt-field-btn span.wt-field-text {
         justify-content: center;
     }
     .single-product-wrap .product-content {
-        padding: 10px 0 0 0;
+        /* padding: 10px 0 0 0; */
     }
     .single-product-wrap .product-content .carttext {
         display: none;

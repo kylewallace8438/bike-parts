@@ -56,7 +56,7 @@
                     <span class="review-caption">Chưa có đánh giá</span>
                 </span>
             </div> --}}
-            <div class="product-description">
+            <div class="product-description d-flex gap-1 flex-wrap">
                 @foreach ($product['tags'] as $tag)
                     <span class="badge bg-secondary">{{ $tag }}</span>
                 @endforeach
@@ -65,8 +65,6 @@
                 <a href="javascript:void(0)" class="add-to-cart">
                     <span class="product-icon">
                         <span class="product-bag-icon"><i class="feather-shopping-bag"></i></span>
-                        <span class="product-loader-icon"><i class="feather-loader"></i></span>
-                        <span class="product-check-icon"><i class="feather-check"></i></span>
                     </span>
                     <span class="tooltip-text">Thêm vào giỏ</span>
                 </a>
