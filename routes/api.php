@@ -24,7 +24,21 @@ Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
 Route::get('/auth/google', [GoogleAuthController::class, 'redirectToGoogle']);
 
-Route::middleware('auth:sanctum')->get('/user', [AuthController::class, 'user']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', [AuthController::class, 'user']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
+
+    // Maintenance history routes
+    Route::group(['prefix' => 'history'], function () {
+        Route::get('/me', [MaintenanceHistoryController::class, 'getMyHistory']);
+        Route::post('/', [MaintenanceHistoryController::class, 'store']);
+        Route::get('/{id}', [MaintenanceHistoryController::class, 'show']);
+        Route::put('/{id}', [MaintenanceHistoryController::class, 'update']);
+        Route::delete('/{id}', [MaintenanceHistoryController::class, 'destroy']);
+    });
+});
+
 
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductController::class, 'getProducts']);
@@ -80,27 +94,5 @@ Route::prefix('rental')->group(function () {
     });
 });
 
-// Maintenance History System Routes
-Route::prefix('maintenance')->group(function () {
-    // Public routes - lookup maintenance history by plate
-    Route::get('plate/{bikePlate}', [MaintenanceHistoryController::class, 'getByPlate']);
-
-    // Protected routes - require authentication
-    Route::middleware('auth:sanctum')->group(function () {
-        Route::get('/', [MaintenanceHistoryController::class, 'index']);
-        Route::get('/{id}', [MaintenanceHistoryController::class, 'show']);
-        Route::get('/due/list', [MaintenanceHistoryController::class, 'getDueForMaintenance']);
-        Route::get('/statistics/overview', [MaintenanceHistoryController::class, 'getStatistics']);
-        Route::get('/statistics/average-costs', [MaintenanceHistoryController::class, 'getAverageCosts']);
-
-        // Admin only routes
-        Route::middleware('admin')->group(function () {
-            Route::post('/', [MaintenanceHistoryController::class, 'store']);
-            Route::put('/{id}', [MaintenanceHistoryController::class, 'update']);
-            Route::delete('/{id}', [MaintenanceHistoryController::class, 'destroy']);
-            Route::post('/rental-bike/{rentalBikeId}', [MaintenanceHistoryController::class, 'createFromRentalBike']);
-        });
-    });
-});
 
 Route::post('plate/lookup', [PlateController::class, 'lookupPlate']);

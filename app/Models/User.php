@@ -66,4 +66,24 @@ class User extends Authenticatable
 
         return false;
     }
+
+    public function contact()
+    {
+        return $this->hasOne(UserContact::class);
+    }
+
+    public function maintenanceHistories()
+    {
+        return $this->hasMany(MaintenanceHistory::class, 'maintainer_id', 'id');
+    }
+
+    protected static function booted(): void
+    {
+        static::creating(function (User $user) {
+            if (isset($user->role) && !$user->role) {
+                $user->role = \App\Enum\UserRole::USER();
+            }
+        });
+    }
 }
+

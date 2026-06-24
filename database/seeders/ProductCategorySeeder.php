@@ -28,7 +28,7 @@ class ProductCategorySeeder extends Seeder
                 ]
             ],
             [
-                'slug' => 'maintainance',
+                'slug' => 'maintenance',
                 'translation' => [
                     'en' => 'Maintenance',
                     'vi' => 'Bảo trì',
