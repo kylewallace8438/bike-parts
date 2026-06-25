@@ -20,9 +20,10 @@ class DatabaseSeeder extends Seeder
         // Seed rental bikes first, then maintenance history
         $this->call([
             BrandSeed::class,
-            KTMBikeSeed::class,
+            // KTMBikeSeed::class,
             GarageSeeder::class,
             RentalBikeSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
