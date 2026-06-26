@@ -11,8 +11,8 @@
     "require": {
         "php": "^8.2",
         "binshops/laravel-blog": "^10.0",
+        "endroid/qr-code": "^5.0",
         "laravel/framework": "^12.0",
-        "endroid/qr-code": "^6.0",
         "laravel/horizon": "^5.31",
         "laravel/sanctum": "^4.1",
         "laravel/socialite": "^5.21",
