@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('garages', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('namer'); // Tên gara
             $table->string('location'); // Vị trí gara
             $table->double('longitude', 10, 7)->nullable(); // Kinh độ

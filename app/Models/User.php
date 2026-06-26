@@ -77,6 +77,11 @@ class User extends Authenticatable
         return $this->hasMany(MaintenanceHistory::class, 'maintainer_id', 'id');
     }
 
+    public function garages()
+    {
+        return $this->hasMany(Garage::class);
+    }
+
     protected static function booted(): void
     {
         static::creating(function (User $user) {
