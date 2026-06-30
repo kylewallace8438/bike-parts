@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
             BrandSeed::class,
             // KTMBikeSeed::class,
             GarageSeeder::class,
-            RentalBikeSeeder::class,
             UserSeeder::class,
         ]);
     }

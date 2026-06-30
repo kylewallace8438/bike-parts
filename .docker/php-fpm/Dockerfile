@@ -1,5 +1,5 @@
 # php-fpm/Dockerfile
-FROM php:8.2-fpm
+FROM php:8.5-fpm
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -20,8 +20,10 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-# Install Redis extension
-RUN pecl install redis && docker-php-ext-enable redis
+# Install Redis extension (using PECL with increased timeout)
+RUN pear config-set php_ini /usr/local/etc/php/php.ini && \
+    pecl channel-update pecl.php.net && \
+    echo "" | pecl install redis
 
 # Copy entrypoint script
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh

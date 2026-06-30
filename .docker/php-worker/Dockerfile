@@ -1,5 +1,5 @@
 # php-worker/Dockerfile
-FROM php:8.2-cli
+FROM php:8.5-cli
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -15,8 +15,10 @@ RUN apt-get update && apt-get install -y \
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
-# Install Redis extension
-RUN pecl install redis && docker-php-ext-enable redis
+# Install Redis extension (using PECL with increased timeout)
+RUN pear config-set php_ini /usr/local/etc/php/php.ini && \
+    pecl channel-update pecl.php.net && \
+    echo "" | pecl install redis
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -30,4 +32,3 @@ WORKDIR /var/www
 
 # Default command
 CMD ["/usr/bin/supervisord"]
-
