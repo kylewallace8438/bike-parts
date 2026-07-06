@@ -1,5 +1,5 @@
 # php-fpm/Dockerfile
-FROM php:8.5-fpm
+FROM php:8.2-fpm
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \

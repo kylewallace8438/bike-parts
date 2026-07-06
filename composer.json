@@ -3,34 +3,27 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
-    "keywords": [
-        "laravel",
-        "framework"
-    ],
+    "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
-        "php": "^8.5",
-        "binshops/laravel-blog": "^10.0",
-        "endroid/qr-code": "^5.0",
-        "laravel/framework": "^13.0",
-        "laravel/horizon": "^5.31",
-        "laravel/sanctum": "^4.1",
-        "laravel/socialite": "^5.21",
-        "laravel/tinker": "^2.9",
+        "php": "^8.2",
+        "cloudinary/cloudinary_php": "^3.1",
+        "endroid/qr-code": "^6.0",
+        "laravel/framework": "^12.0",
+        "laravel/horizon": "^5.47",
+        "laravel/sanctum": "^4.0",
+        "laravel/tinker": "^2.10.1",
         "laravel/ui": "^4.6",
-        "shopify/shopify-api": "*",
-        "simplesoftwareio/simple-qrcode": "^4.2",
-        "spatie/crawler": "^8.3"
+        "shopify/shopify-api": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
-        "fruitcake/laravel-debugbar": "^3.16",
-        "laravel/pail": "^1.1",
-        "laravel/pint": "^1.21",
-        "laravel/sail": "^1.26",
+        "laravel/pail": "^1.2.2",
+        "laravel/pint": "^1.13",
+        "laravel/sail": "^1.41",
         "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.1",
-        "phpunit/phpunit": "^11.0.1"
+        "nunomaduro/collision": "^8.6",
+        "phpunit/phpunit": "^11.5.3"
     },
     "autoload": {
         "psr-4": {
@@ -42,10 +35,7 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        },
-        "files": [
-            "app/Helpers/SaleOffCalculator.php"
-        ]
+        }
     },
     "scripts": {
         "post-autoload-dump": [

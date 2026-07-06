@@ -1,5 +1,5 @@
 # workspace/Dockerfile
-FROM php:8.5-cli
+FROM php:8.2-cli
 
 # Install Node.js 22
 RUN apt-get update && apt-get install -y ca-certificates curl gnupg
