@@ -34,9 +34,8 @@ class MaintenanceHistoryApiTest extends TestCase
             'description' => 'Test bike for maintenance',
             'brand' => 'Trek',
             'model' => 'X-Caliber',
-            'qr_code' => 'BIKE_TEST_001',
-            'rental_price_per_hour' => 50000,
-            'rental_price_per_day' => 300000,
+            'hourly_rate' => 50000,
+            'daily_rate' => 300000,
             'status' => 'available',
             'is_active' => true,
         ]);

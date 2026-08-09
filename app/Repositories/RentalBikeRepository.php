@@ -42,14 +42,6 @@ class RentalBikeRepository
     }
 
     /**
-     * Find rental bike by QR code
-     */
-    public function findByQrCode(string $qrCode): ?RentalBike
-    {
-        return $this->model->where('qr_code', $qrCode)->first();
-    }
-
-    /**
      * Create a new rental bike
      */
     public function create(array $data): RentalBike
@@ -368,8 +360,7 @@ class RentalBikeRepository
             ->where(function ($q) use ($query) {
                 $q->where('name', 'like', '%' . $query . '%')
                     ->orWhere('model', 'like', '%' . $query . '%')
-                    ->orWhere('description', 'like', '%' . $query . '%')
-                    ->orWhere('qr_code', 'like', '%' . $query . '%');
+                    ->orWhere('description', 'like', '%' . $query . '%');
             })
             ->orderBy('created_at', 'desc')
             ->paginate($perPage);

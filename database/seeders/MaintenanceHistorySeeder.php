@@ -85,7 +85,7 @@ class MaintenanceHistorySeeder extends Seeder
                 }
 
                 MaintenanceHistory::create([
-                    'bike_plate' => $bike->qr_code,
+                    'bike_plate' => 'BIKE_' . str_pad($bike->id, 3, '0', STR_PAD_LEFT),
                     'bike_model' => $bike->model ?? 'Unknown Model',
                     'bike_brand' => $bike->brand ?? 'Unknown Brand',
                     'rental_bike_id' => $bike->id,

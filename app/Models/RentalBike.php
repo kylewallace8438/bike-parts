@@ -27,7 +27,6 @@ class RentalBike extends Model
         'condition',
         'battery_level',
         'location',
-        'qr_code',
         'last_maintenance_date',
         'next_maintenance_date',
         'total_ride_hours',

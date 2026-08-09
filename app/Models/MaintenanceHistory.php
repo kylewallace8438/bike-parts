@@ -231,7 +231,7 @@ class MaintenanceHistory extends Model
     public static function createFromRentalBike(RentalBike $bike, array $maintenanceData): self
     {
         return self::create(array_merge([
-            'bike_plate' => $bike->qr_code, // Assuming QR code is used as plate
+            'bike_plate' => 'BIKE_' . str_pad($bike->id, 3, '0', STR_PAD_LEFT),
             'bike_model' => $bike->model,
             'bike_brand' => $bike->brand,
             'rental_bike_id' => $bike->id,

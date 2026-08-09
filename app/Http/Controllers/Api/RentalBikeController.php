@@ -136,9 +136,7 @@ class RentalBikeController extends Controller
             'battery_level' => 'nullable|integer|min:0|max:100',
         ]);
 
-        $bike = RentalBike::create(array_merge($request->validated(), [
-            'qr_code' => 'BIKE_' . strtoupper(uniqid()),
-        ]));
+        $bike = RentalBike::create($request->validated());
 
         return response()->json([
             'success' => true,

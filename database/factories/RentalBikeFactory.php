@@ -78,7 +78,6 @@ class RentalBikeFactory extends Factory
             'condition' => $this->faker->randomElement($conditions),
             'battery_level' => $isElectric ? $this->faker->numberBetween(20, 100) : null,
             'location' => $this->faker->randomElement($locations),
-            'qr_code' => 'BIKE_' . strtoupper($this->faker->unique()->bothify('???###')),
             'last_maintenance_date' => $this->faker->dateTimeBetween('-60 days', '-5 days'),
             'next_maintenance_date' => $this->faker->dateTimeBetween('+30 days', '+120 days'),
             'total_ride_hours' => $this->faker->numberBetween(0, 200),

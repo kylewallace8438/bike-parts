@@ -10,7 +10,7 @@ class BlogController extends Controller
     public function index()
     {
         // Logic to fetch and display list of blog posts
-        // return view('blogs.index');
+        return view('blogs');
     }
 
     public function getBlog($slug)

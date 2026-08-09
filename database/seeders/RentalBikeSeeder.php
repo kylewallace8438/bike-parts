@@ -38,7 +38,6 @@ class RentalBikeSeeder extends Seeder
                     'https://example.com/bikes/ktm-duke-390-3.jpg'
                 ],
                 'status' => 'available',
-                'qr_code' => 'BIKE_001',
                 'is_active' => true,
             ],
             [
@@ -64,14 +63,13 @@ class RentalBikeSeeder extends Seeder
                     'https://example.com/bikes/specialized-sirrus-2.jpg'
                 ],
                 'status' => 'available',
-                'qr_code' => 'BIKE_002',
                 'is_active' => true,
             ],
         ];
 
         foreach ($bikes as $bikeData) {
             RentalBike::updateOrCreate([
-                'qr_code' => $bikeData['qr_code']
+                'name' => $bikeData['name']
             ], $bikeData);
         }
 

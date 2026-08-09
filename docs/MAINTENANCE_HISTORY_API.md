@@ -96,8 +96,7 @@ GET /api/maintenance/plate/{bikePlate}
           "next_maintenance_due": "2025-12-08",
           "rental_bike": {
             "id": 1,
-            "name": "Mountain Explorer Pro",
-            "qr_code": "BIKE_001"
+            "name": "Mountain Explorer Pro"
           }
         }
       ],
@@ -333,7 +332,7 @@ Content-Type: application/json
 ## Integration với Rental System
 
 Khi tạo maintenance record cho rental bike:
-- Tự động lấy `bike_plate` từ `qr_code`
+- Tự động tạo `bike_plate` từ bike id
 - Tự động cập nhật `mileage_at_maintenance` và `hours_at_maintenance`
 - Tự động cập nhật `last_maintenance_date` và `next_maintenance_date` trong rental_bikes table
 

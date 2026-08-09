@@ -286,8 +286,8 @@
                                     </div>
                                 </li>
                                 <li class="menu-link">
-                                    <a href="blog-grid.html" class="link-title">
-                                        <span class="sp-link-title">{{ __('menu.blog') }}</span>
+                                    <a href="{{ route('blogs') }}" class="link-title">
+                                        <span class="sp-link-title">{{ __('menu.blog') }} </span>
                                     </a>
                                 </li>
                                 <li class="menu-link">

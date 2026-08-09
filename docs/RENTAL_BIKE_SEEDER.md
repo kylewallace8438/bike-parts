@@ -81,7 +81,7 @@ Seeder này tạo dữ liệu test cho hệ thống rental bikes với 10 xe đ�
 ## Tính năng đặc biệt
 
 ### Dữ liệu realistic:
-- QR codes unique (BIKE_001 đến BIKE_010)
+- Dữ liệu xe đạp thực tế với tên và model unique
 - Lịch sử bảo trì và lịch trình tiếp theo
 - Tổng giờ thuê và quãng đường đi
 - Địa điểm đa dạng trong Hà Nội và TP.HCM
@@ -149,7 +149,7 @@ Thứ tự này đảm bảo MaintenanceHistory có thể reference đến renta
 ## Test Data Quality
 
 - **Realistic pricing**: Giá dựa trên loại xe thực tế
-- **Proper relationships**: QR codes unique, maintenance dates logical
+- **Proper relationships**: Bike names unique, maintenance dates logical
 - **Diverse locations**: Nhiều địa điểm trong các thành phố lớn
 - **Feature accuracy**: Features phù hợp với từng loại xe
 - **Status distribution**: Phân bố trạng thái giống thực tế

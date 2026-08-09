@@ -32,7 +32,6 @@ Lưu trữ thông tin các xe đạp cho thuê.
 - condition (string) - excellent, good, fair, poor
 - battery_level (integer, nullable) - Mức pin cho xe đạp điện (0-100)
 - location (string, nullable) - Vị trí hiện tại của xe
-- qr_code (string, unique, nullable) - Mã QR để thuê xe
 - last_maintenance_date (date, nullable) - Ngày bảo trì cuối cùng
 - next_maintenance_date (date, nullable) - Ngày bảo trì tiếp theo
 - total_ride_hours (integer) - Tổng số giờ đã được thuê
