@@ -48,4 +48,9 @@ class MaintenanceService
         return $query->paginate($limit);
     }
 
+    public function get(int $id)
+    {
+        return MaintenanceHistory::with('images')->find($id);
+    }
+
 }

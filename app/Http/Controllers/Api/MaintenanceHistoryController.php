@@ -67,6 +67,8 @@ class MaintenanceHistoryController extends Controller
     public function show(int $id)
     {
         // Logic to retrieve a specific bike history record
+        $history = $this->maintenanceService->get($id);
+        return new MaintenanceResource($history);
     }
 
     public function update(Request $request, int $id)
