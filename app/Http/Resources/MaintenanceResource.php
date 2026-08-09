@@ -24,7 +24,6 @@ class MaintenanceResource extends JsonResource
             'maintainer' => $this->whenLoaded('maintainer') ? new UserCommonResource($this->maintainer) : null,
             'plate' => $this->plate,
             'images' => $this->whenLoaded('images') ? MaintenanceImageResource::collection($this->images) : null,
-            'qr' => $this->whenLoaded('qrLog') ? $this->qrLog?->qr_path : null,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];

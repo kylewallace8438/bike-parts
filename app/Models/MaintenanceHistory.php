@@ -38,9 +38,4 @@ class MaintenanceHistory extends Model
     {
         return $this->belongsTo(User::class, 'maintainer_id', 'id');
     }
-
-    public function qrLog()
-    {
-        return $this->hasOne(QrLog::class, 'maintenance_id', 'id');
-    }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateMaintenanceHistoryRequest;
 use App\Http\Resources\MaintenanceResource;
-use App\Services\QrService;
 use App\Services\MaintenanceService;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;

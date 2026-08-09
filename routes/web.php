@@ -55,7 +55,3 @@ Route::get("about-us", [
 // Route::post('search/ktm', [App\Http\Controllers\SearchController::class, 'handleSearchKTM'] )->name('search.handle.ktm');
 
 Auth::routes();
-
-Route::get("qr/{uuid}", [\App\Http\Controllers\QrController::class, "serve"])
-    ->name("qr.serve")
-    ->middleware("throttle:3,1");
