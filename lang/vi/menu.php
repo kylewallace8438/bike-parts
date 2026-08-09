@@ -10,4 +10,5 @@ return [
     'about_us' => 'Về chúng tôi',
     'contact_us' => 'Liên hệ',
     'bike_parts' => 'Phụ tùng xe',
+    'products' => 'Sản phẩm',
 ];

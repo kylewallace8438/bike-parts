@@ -28,20 +28,34 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $top_products = Product::orderBy('created_at', 'desc')->take(5)->get();
-        $blogs = BlogPost::isPulished()->orderBy('posted_at', 'desc')->take(5)->get();
-        return view('home', [
-            'top_products' => $top_products,
-            'blogs' => $blogs,
+        $top_products = Product::select([
+            "shopify_id",
+            "slug",
+            "title",
+            "min_price",
+            "max_price",
+            "currency_code",
+        ])
+            ->orderBy("created_at", "desc")
+            ->take(5)
+            ->get();
+        $blogs = BlogPost::isPublished()
+            ->orderBy("posted_at", "desc")
+            ->take(5)
+            ->get();
+
+        return view("home", [
+            "top_products" => $top_products,
+            "blogs" => $blogs,
         ]);
     }
 
     public function changeLanguage(Request $request)
     {
-        $locale = $request->get('locale');
-        if (in_array($locale, ['en', 'vi'])) {
+        $locale = $request->get("locale");
+        if (in_array($locale, ["en", "vi"])) {
             app()->setLocale($locale);
-            session(['locale' => $locale]);
+            session(["locale" => $locale]);
         }
         return redirect()->back();
     }

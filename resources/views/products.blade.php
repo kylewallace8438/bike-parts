@@ -9,21 +9,8 @@
     <meta name="author" content="kwapp store">
 @endsection
 @section('styles')
-    <!-- plugin css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('store/css/plugin.css') }}">
-    <!-- collection css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('store/css/collection.css') }}">
-    <!-- feather -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('store/css/feather.css') }}">
-    <!-- blog css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('store/css/blog.css') }}">
-    <!-- other-pages css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('store/css/other-pages.css') }}">
-    <!-- product-page css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('store/css/product-page.css') }}">
-    <!-- style css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('store/css/style1.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('store/css/style2.css') }}">
+    <x-common.style></x-common.style>
 @endsection
 
 @section('content')
@@ -43,7 +30,7 @@
                         <div class="pro-grli-wrapper left-side-wrap">
                             <div class="pro-grli-wrap product-grid">
                                 <div class="collection-img-wrap" data-animate="animate__fadeIn">
-                                    <h6 class="st-title">Collection left (23)</h6>
+                                    <h6 class="st-title">Products (23)</h6>
                                     <!-- collection info start -->
                                     <div class="collection-info">
                                         @if (isset($sale_banner) && $sale_banner)
@@ -61,14 +48,14 @@
                                         <button class="filter-button" type="button"><i
                                                 class="fa-solid fa-filter"></i><span>Filter</span></button>
                                     </div>
-                                    <div class="product-view-mode">
+                                    {{-- <div class="product-view-mode">
                                         <!-- shop-item-filter-list start -->
-                                        <a href="javascript:void(0)" class="list-change-view grid-three active"
+                                        <a href="javascript:void(0)" class="list-change-view grid-three"
                                             data-grid-view="3"><i class="fa-solid fa-border-all"></i></a>
                                         <a href="javascript:void(0)" data-grid-view="1" class="list-change-view list-one"><i
                                                 class="fa-solid fa-list"></i></a>
                                         <!-- shop-item-filter-list end -->
-                                    </div>
+                                    </div> --}}
                                     <!-- product-short start -->
                                     <div class="product-short">
                                         <label for="SortBy">Sort by:</label>

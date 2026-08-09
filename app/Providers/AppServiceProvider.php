@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
             scopes: config('shopify.SHOPIFY_APP_SCOPES'),
             hostName: config('shopify.SHOPIFY_APP_HOST_NAME'),
             sessionStorage: new FileSessionStorage('/tmp/php_sessions'),
-            apiVersion: ApiVersion::LATEST,
+            apiVersion: '2026-04',
             isEmbeddedApp: false,
             isPrivateApp: false,
         );

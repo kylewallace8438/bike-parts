@@ -1,9 +1,9 @@
 @extends('layouts.layout')
 @section('title')
-    <title>Bài viết - Kwapp Store</title>
+    <title>Blogs - Kwapp Store</title>
 @endsection
 @section('meta')
-    <meta name="description" content="">
+    <meta name="description" content="123">
     <meta name="keywords" content="">
     <meta name="author" content="kwapp">
 @endsection
@@ -26,10 +26,16 @@
 @endsection
 @section('content')
     <main>
-        <x-common.breadcrumb :list="[
-            ['name' => 'Home', 'link' => route('home')],
-            ['name' => 'Blogs', 'link' => route('blogs')],
-        ]" />
+        <!-- breadcrumb start -->
+        @php
+            $list = [
+                ['name' => 'Trang chủ', 'link' => route('home')],
+                ['name' => 'Blogs', 'link' => route('blogs')],
+            ];
+        @endphp
+        <x-common.breadcrumb :list="$list">
+        </x-common.breadcrumb>
+        <!-- breadcrumb end -->
         <!-- article-area start -->
         <section class="article-area section-pt">
             <div class="container">
@@ -40,12 +46,14 @@
                                 <!-- blog sidebar start -->
                                 <div class="blog-sidebar-wrap">
                                     <!-- blog-sidebar search start -->
-                                    <div class="blog-post-sidebar blog-search" data-animate="animate__fadeIn">
-                                        <h6 class="blog-sidebar-title" data-animate="animate__fadeIn">Search</h6>
+                                    <div class="blog-post-sidebar blog-search animate__fadeIn animate__animated"
+                                        data-animate="animate__fadeIn">
+                                        <h6 class="blog-sidebar-title animate__fadeIn animate__animated"
+                                            data-animate="animate__fadeIn">Search</h6>
                                         <div class="search-post">
                                             <form method="get">
                                                 <input type="search" name="q" class="input-text"
-                                                    placeholder="Search blog" required autocomplete="off">
+                                                    placeholder="Search blog" required="" autocomplete="off">
                                                 <a href="search-blog.html" class="btn-search"><i
                                                         class="feather-search"></i></a>
                                             </form>
@@ -54,16 +62,19 @@
                                     <!-- blog-sidebar search end -->
                                     <!-- blog-sidebar recent-post start -->
                                     <div class="blog-post-sidebar blog-recent-post">
-                                        <h6 class="blog-sidebar-title" data-animate="animate__fadeIn">Recent post</h6>
+                                        <h6 class="blog-sidebar-title animate__fadeIn animate__animated"
+                                            data-animate="animate__fadeIn">Recent post</h6>
                                         <div class="sidbar-inner sidbar-inner-wrap">
                                             <div class="post-image">
-                                                <a href="article-post-right.html" class="banner-img"
+                                                <a href="article-post-right.html"
+                                                    class="banner-img animate__fadeIn animate__animated"
                                                     data-animate="animate__fadeIn">
-                                                    <img src="{{ asset('store/image/home1/blog/blog-big.jpg') }}" class="img-fluid"
+                                                    <img src="image/home1/blog/blog-big.jpg" class="img-fluid"
                                                         alt="blog1">
                                                 </a>
                                             </div>
-                                            <div class="recent-blog-content" data-animate="animate__fadeIn">
+                                            <div class="recent-blog-content animate__fadeIn animate__animated"
+                                                data-animate="animate__fadeIn">
                                                 <h6>
                                                     <a href="article-post-right.html">Stay connected to the future with our
                                                         electronic range.</a>
@@ -71,10 +82,11 @@
                                                 <span>Jan 06, 2025</span>
                                             </div>
                                         </div>
-                                        <div class="sidbar-inner" data-animate="animate__fadeIn">
+                                        <div class="sidbar-inner animate__fadeIn animate__animated"
+                                            data-animate="animate__fadeIn">
                                             <div class="post-image">
                                                 <a href="article-post-right.html" class="banner-img">
-                                                    <img src="{{ asset('store/image/home1/blog/blog-mini-1.jpg') }}" class="img-fluid"
+                                                    <img src="image/home1/blog/blog-mini-1.jpg" class="img-fluid"
                                                         alt="blog-1">
                                                 </a>
                                             </div>
@@ -84,10 +96,59 @@
                                                 <span>Feb 08, 2025</span>
                                             </div>
                                         </div>
+                                        <div class="sidbar-inner animate__fadeIn animate__animated"
+                                            data-animate="animate__fadeIn">
+                                            <div class="post-image">
+                                                <a href="article-post-right.html" class="banner-img">
+                                                    <img src="image/home1/blog/blog-mini-2.jpg" class="img-fluid"
+                                                        alt="blog-2">
+                                                </a>
+                                            </div>
+                                            <div class="recent-blog-content">
+                                                <h6>
+                                                    <a href="article-post-right.html">We offer warranty, but with our
+                                                        services, you won’t need it</a>
+                                                </h6>
+                                                <span>Oct 23, 2025</span>
+                                            </div>
+                                        </div>
+                                        <div class="sidbar-inner animate__fadeIn animate__animated"
+                                            data-animate="animate__fadeIn">
+                                            <div class="post-image">
+                                                <a href="article-post-right.html" class="banner-img">
+                                                    <img src="image/home1/blog/blog-mini-3.jpg" class="img-fluid"
+                                                        alt="blog-3">
+                                                </a>
+                                            </div>
+                                            <div class="recent-blog-content">
+                                                <h6>
+                                                    <a href="article-post-right.html">We’re licensed and our team trained
+                                                        per the industry standard</a>
+                                                </h6>
+                                                <span>Mar 26, 2025</span>
+                                            </div>
+                                        </div>
+                                        <div class="sidbar-inner animate__fadeIn animate__animated"
+                                            data-animate="animate__fadeIn">
+                                            <div class="post-image">
+                                                <a href="article-post-right.html" class="banner-img">
+                                                    <img src="image/home1/blog/blog-mini-4.jpg" class="img-fluid"
+                                                        alt="blog-4">
+                                                </a>
+                                            </div>
+                                            <div class="recent-blog-content">
+                                                <h6>
+                                                    <a href="article-post-right.html">Stay connected to the future with our
+                                                        electronic range.</a>
+                                                </h6>
+                                                <span>May 06, 2025</span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <!-- blog-sidebar recent-post end -->
                                     <!-- blog-sidebar tag start -->
-                                    <div class="blog-post-sidebar blog-tags" data-animate="animate__fadeIn">
+                                    <div class="blog-post-sidebar blog-tags animate__fadeIn animate__animated"
+                                        data-animate="animate__fadeIn">
                                         <h6 class="blog-sidebar-title">Tag</h6>
                                         <div class="sidebartag">
                                             <ul class="sidebar-tag">
@@ -112,31 +173,35 @@
                             <div class="blog-grid-wrap blog-article">
                                 <div class="blog-grid-view">
                                     <ul class="blog-area-wrap">
-                                        <li class="blog-slider" data-animate="animate__fadeIn">
+                                        @forelse ($blogs as $blog)
+                                            <li class="blog-slider animate__fadeIn animate__animated"
+                                            data-animate="animate__fadeIn">
                                             <div class="blog-post">
                                                 <div class="blog-main-img">
-                                                    <a href="article-post.html" class="blog-img banner-img">
-                                                        <img src="{{ asset('store/image/home1/blog/blog-1.jpg') }}" class="blog-img img-fluid"
+                                                    <a href="{{ route('blog', ['slug' => $blog->slug]) }}" class="blog-img banner-img">
+                                                        <img src="{{ $blog->image_url() }}" class="blog-img img-fluid"
                                                             alt="blog-1">
                                                     </a>
                                                 </div>
                                                 <div class="blog-post-content">
                                                     <div class="blogtitle-like">
-                                                        <h6 class="blog-title">Stay connected to the future with our
-                                                            electronic range.</h6>
+                                                        <h6 class="blog-title">{{ $blog->title }}</h6>
                                                         <a class="blog-comment" href="article.html">
                                                             <span class="icon"><i class="feather-heart"></i></span>
                                                             <span class="count">0</span>
                                                         </a>
                                                     </div>
-                                                    <p class="blog-desc">It is a long established fact that a reader will
-                                                        be by the readable content at its layout.</p>
+                                                    <p class="blog-desc">{{ $blog->short_description }}</p>
                                                     <a href="blog-details.html" class="video-btn">
                                                     </a>
-                                                    <span class="date-time">03 Oct 2025</span>
+                                                    <span class="date-time">{{ $blog->posted_at->format('d M Y') }}</span>
                                                 </div>
                                             </div>
                                         </li>
+                                        @empty
+                                            
+                                        @endforelse
+                                        
                                     </ul>
                                     <div class="paginatoin-area" data-animate="animate__fadeIn">
                                         <ul class="pagination-page-box">
@@ -144,8 +209,17 @@
                                                     class="theme-glink">1</a></li>
                                             <li class="number"><a href="javascript:void(0)" class="gradient-text">2</a>
                                             </li>
-                                            <li class="page-next"><a href="javascript:void(0)" class="theme-glink"><i
-                                                        class="fa -solid fa-angle-right"></i></a></li>
+                                            <li class="page-next"><a href="javascript:void(0)" class="theme-glink"><svg
+                                                        class="svg-inline--fa fa-angle-right fa-w-8 -solid"
+                                                        aria-hidden="true" focusable="false" data-prefix="fa"
+                                                        data-icon="angle-right" role="img"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"
+                                                        data-fa-i2svg="">
+                                                        <path fill="currentColor"
+                                                            d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z">
+                                                        </path>
+                                                    </svg><!-- <i class="fa -solid fa-angle-right"></i> Font Awesome fontawesome.com --></a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>

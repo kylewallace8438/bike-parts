@@ -1308,7 +1308,7 @@
 [8.5. Product-content css ]
 */
 .single-product-wrap .product-content {
-    padding: 23px 30px 33px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1338,17 +1338,15 @@
     font-size: 16px;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 .single-product-wrap .product-content .product-title h6 a:hover {
     color: var(--primary-font-color);
 }
 .single-product-wrap .product-content .product-description {
-    display: none;
     margin: 7px 0px 0px 0px;
 }
 .single-product-wrap .product-content .product-action {
-    display: none;
     margin: 13px 0px 0px;
 }
 @media (max-width: 767px) {

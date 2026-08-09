@@ -10,11 +10,13 @@
             <div class="collection-wrap">
                 <div class="collection-slider swiper" id="new-product">
                     <div class="swiper-wrapper">
-                    @foreach($recent_products as $product)
+                    @forelse($recent_products as $product)
                     <div class="swiper-slide" data-animate="animate__fadeIn">
                         <x-product.single-wrap :product="$product" />
                     </div>
-                    @endforeach
+                    @empty
+                    <p>No recent products available.</p>
+                    @endforelse
                     </div>
                     <div class="collection-button" data-animate="animate__fadeIn">
                         <a href="collection.html" class="btn-style3">Xem tất cả(90)</a>

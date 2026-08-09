@@ -11,7 +11,7 @@ jobs:
     runs-on: self-hosted
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Pull latest code (optional if checkout done)
       run: cd ~/projects/bike-parts && git pull origin main
     - name: Build

@@ -20,10 +20,10 @@ Where to look (high-value files & folders):
 - `app/Services/ShopifyProductAdapter.php` — primary example of an adapter pattern used to map Shopify JSON -> `App\Models\Product`.
 - `app/Shopify/ApiClient.php` — HTTP client for Shopify interactions.
 - `app/Console/Commands/` — custom Artisan commands (DB import, Shopify import helpers).
-- `app/Models/` — domain models: `Product.php`, `BikeModel.php`, `BikePart.php`, `RentalBike.php`, etc.
+- `app/Models/` — domain models: `Product.php`, `BikeModel.php`, `BikePart.php`, etc.
 - `routes/api.php` — canonical list of API endpoints and middleware usage (`auth:sanctum`, admin middleware groups).
 - `resources/app/components/` — Vue components and UI conventions (Vite build with `laravel-vite-plugin`).
-- `docs/` — human-authored docs with actionable examples: `SHOPIFY_ADAPTER.md`, `DATABASE_IMPORT.md`, `BIKE_RENTAL_API.md`.
+- `docs/` — human-authored docs with actionable examples: `SHOPIFY_ADAPTER.md`, `DATABASE_IMPORT.md`.
 
 Project-specific patterns and rules (do not invent alternatives):
 
