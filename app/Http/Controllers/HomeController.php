@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $top_products = Product::select([
-            "shopify_id",
+            "id",
             "slug",
             "title",
             "min_price",

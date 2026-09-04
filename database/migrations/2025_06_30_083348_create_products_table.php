@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->bigInteger('shopify_id')->primary()->unique();
+            $table->id();
             $table->string('slug');
             $table->timestamps();
         });

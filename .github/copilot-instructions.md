@@ -17,20 +17,16 @@ Quick commands (project root):
 
 Where to look (high-value files & folders):
 
-- `app/Services/ShopifyProductAdapter.php` — primary example of an adapter pattern used to map Shopify JSON -> `App\Models\Product`.
-- `app/Shopify/ApiClient.php` — HTTP client for Shopify interactions.
-- `app/Console/Commands/` — custom Artisan commands (DB import, Shopify import helpers).
+- `app/Console/Commands/` — custom Artisan commands (DB import helpers).
 - `app/Models/` — domain models: `Product.php`, `BikeModel.php`, `BikePart.php`, etc.
 - `routes/api.php` — canonical list of API endpoints and middleware usage (`auth:sanctum`, admin middleware groups).
 - `resources/app/components/` — Vue components and UI conventions (Vite build with `laravel-vite-plugin`).
-- `docs/` — human-authored docs with actionable examples: `SHOPIFY_ADAPTER.md`, `DATABASE_IMPORT.md`.
+- `docs/` — human-authored docs with actionable examples: `DATABASE_IMPORT.md`.
 
 Project-specific patterns and rules (do not invent alternatives):
 
-- Products from Shopify: `shopify_id` is used as the primary identifier (not the auto-increment ID). See `SHOPIFY_ADAPTER.md` and `app/Models/Product.php`.
 - Several DB columns store JSON (e.g., `tags`, `images`, `variants`, `metafields`). Preserve JSON shape and use Laravel casting when modifying models.
 - Slugs are generated with `Str::slug()` and rely on `title` when present. Avoid changing slug logic without checking existing `slug` usages.
-- Adapter classes (e.g., `ShopifyProductAdapter`) expose methods like: `validateShopifyData`, `mapToProduct`, `createOrUpdateProduct`. Follow this signature style for new adapters.
 - Artisan commands are the primary batch/CLI entry points for imports and background jobs — prefer adding a command over ad-hoc scripts for repeatable operations.
 
 Integration & infra notes (do not change lightly):
@@ -41,15 +37,14 @@ Integration & infra notes (do not change lightly):
 
 Testing & verification tips:
 
-- To run only the Shopify adapter tests: `php artisan test --filter ShopifyProductAdapterTest` (see `docs/SHOPIFY_ADAPTER.md`).
 - To verify imported data exists after `db-import`: run `docker compose exec mysql mysql -u root -p${DB_PASSWORD} -e "SELECT COUNT(*) FROM products;" ${DB_DATABASE}`.
 
 Important conventions to preserve:
 
-- Preserve `shopify_id` semantics and JSON column structure when editing product import or migrations.
+- Preserve JSON column structure when editing product migrations.
 - Use `auth:sanctum` for API authentication; admin-only routes are grouped with `admin` middleware defined in `app/Http/Kernel.php` (may need registration).
 - Use Artisan commands for repeatable maintenance tasks and data imports; avoid direct ad-hoc DB edits in code patches.
 
-If unsure about a change, consult these docs first: `docs/SHOPIFY_ADAPTER.md`, `docs/DATABASE_IMPORT.md`, and `routes/api.php` — they capture intended behavior and operational commands.
+If unsure about a change, consult these docs first: `docs/DATABASE_IMPORT.md` and `routes/api.php` — they capture intended behavior and operational commands.
 
 If you need more context or want this tailored to a specific task (e.g., adding a new adapter, updating product mapping, or changing DB schema), say what you want to change and I will update these instructions with precise file-level guidance.

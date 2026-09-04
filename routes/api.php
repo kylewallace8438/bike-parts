@@ -3,13 +3,11 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BikeController;
 use App\Http\Controllers\Api\ProductController;
-use App\Http\Controllers\Api\WebhookController;
 use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\MaintenanceHistoryController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\PlateController;
-use App\Http\Controllers\ShopifyProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,8 +47,5 @@ Route::prefix('products')->group(function () {
 Route::get('search/{brand_id}', [BikeController::class, 'showBrandCategory']);
 Route::get('search/{brand}/{category_id}', [BikeController::class, 'handleSearchKTM']);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('wehbooks/products-update', [ProductController::class, 'listenProductUpdate']);
-
-
 
 Route::post('plate/lookup', [PlateController::class, 'lookupPlate']);

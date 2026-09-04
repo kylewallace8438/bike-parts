@@ -545,7 +545,7 @@
         @php
             $last_view_products = Session::get('last_viewed_products') ?? [];
             $last_view_products = Arr::reject($last_view_products, function ($item) use ($product) {
-                return $item['shopify_id'] == $product->shopify_id;
+                return $item['id'] == $product->id;
             });
         @endphp
         @if (count($last_view_products) > 0)

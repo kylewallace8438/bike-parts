@@ -76,7 +76,6 @@ services:
   # MySQL Service
   mysql:
     image: mysql:8.0
-    user: "1000:1000"
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}

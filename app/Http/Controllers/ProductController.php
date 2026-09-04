@@ -26,7 +26,7 @@ class ProductController extends Controller
         }
         $last_viewed_products_session = Session::get('last_viewed_products', []);
         $last_viewed_products = collect($last_viewed_products_session)->push($product)->unique(function ($item) {
-            return $item['shopify_id'];
+            return $item['id'];
         })->toArray();
         Session::put('last_viewed_products', $last_viewed_products);
         return view('product', [

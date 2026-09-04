@@ -3,25 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\BikeModel;
 use App\Models\BikePart;
 use App\Models\Brand;
 use App\Models\BikePartCategory;
-use App\Shopify\Interfaces\ApiClientInterface;
 use Illuminate\Http\Request;
-use Shopify\Clients\Graphql;
-use Shopify\Clients\Rest;
-use Shopify\Context;
 
 class BikeController extends Controller
 {
-    protected ApiClientInterface $apiClient;
-
-    public function __construct(ApiClientInterface $apiClient)
-    {
-        $this->apiClient = $apiClient;
-    }
-
     public function showBrandCategory(Request $request, $brand_id)
     {
         $brand = Brand::where('id', $brand_id)->first();

@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $table = 'products';
-    protected $primaryKey = 'shopify_id';
+
     public $fillable = [
-        'shopify_id',
         'slug',
         'title',
         'tags',
@@ -25,7 +24,6 @@ class Product extends Model
         'images',
         'variants',
         'metafields',
-        'shopify_updated_at'
     ];
 
     protected $casts = [
@@ -33,13 +31,12 @@ class Product extends Model
         'images' => 'array',
         'variants' => 'array',
         'metafields' => 'array',
-        'shopify_updated_at' => 'datetime',
         'min_price' => 'decimal:2',
         'max_price' => 'decimal:2',
     ];
 
     public function product_categories()
     {
-        return $this->belongsToMany(ProductCategory::class, 'product_category_product', 'product_id', 'category_id', 'shopify_id', 'id');
+        return $this->belongsToMany(ProductCategory::class, 'product_category_product', 'product_id', 'product_category_id', 'id', 'id');
     }
 }
