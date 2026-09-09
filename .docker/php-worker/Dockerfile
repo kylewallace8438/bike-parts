@@ -27,6 +27,14 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+# Create host-matching user (UID=1000 matches host "kyle").
+# Supervisord master runs as root; queue workers drop to this user
+# via the `user=` directive in supervisord.conf.
+ARG PUID=1000
+ARG PGID=1000
+RUN groupadd -g ${PGID} laravel || true && \
+    useradd -u ${PUID} -g laravel -M -s /bin/bash laravel || true
+
 # Set working directory
 WORKDIR /var/www
 

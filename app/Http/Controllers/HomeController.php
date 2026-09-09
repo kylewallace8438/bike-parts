@@ -6,7 +6,6 @@ use App\Http\Resources\ProductCategoryResource;
 use App\Models\BlogPost;
 use App\Models\Product;
 use App\Models\ProductCategory;
-use BinshopsBlog\Models\BinshopsBlogPost;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,21 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $top_products = Product::select([
-            "id",
-            "slug",
-            "title",
-            "min_price",
-            "max_price",
-            "currency_code",
-        ])
-            ->orderBy("created_at", "desc")
-            ->take(5)
-            ->get();
-        $blogs = BlogPost::isPublished()
-            ->orderBy("posted_at", "desc")
-            ->take(5)
-            ->get();
+        $top_products = [];
+        $blogs = [];
 
         return view("home", [
             "top_products" => $top_products,

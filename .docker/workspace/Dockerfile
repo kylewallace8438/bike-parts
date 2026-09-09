@@ -46,3 +46,17 @@ WORKDIR /var/www
 RUN pear config-set php_ini /usr/local/etc/php/php.ini && \
     pecl channel-update pecl.php.net && \
     echo "" | pecl install redis
+
+# Create host-matching user (UID=1000 matches host "kyle") so files
+# written inside the container are owned by the host user.
+ARG PUID=1000
+ARG PGID=1000
+RUN groupadd -g ${PGID} laravel || true && \
+    useradd -u ${PUID} -g laravel -m -s /bin/bash laravel || true
+
+# Ensure /var/www is owned by the laravel user on first build
+# (bind mounts will override ownership at runtime, which is fine).
+RUN chown -R ${PUID}:${PGID} /var/www
+
+# Run subsequent commands and interactive shells as the non-root user.
+USER ${PUID}:${PGID}
