@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('rental_bikes', function (Blueprint $table) {
-            $table->dropUnique(['qr_code']);
-            $table->dropColumn('qr_code');
-        });
+        if (Schema::hasTable('rental_bikes') && Schema::hasColumn('rental_bikes', 'qr_code')) {
+            Schema::table('rental_bikes', function (Blueprint $table) {
+                $table->dropUnique(['qr_code']);
+                $table->dropColumn('qr_code');
+            });
+        }
     }
 
     /**

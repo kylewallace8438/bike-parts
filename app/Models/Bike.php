@@ -24,4 +24,9 @@ class Bike extends Model
     {
         return $this->belongsTo(Brand::class);
     }
+
+    public function components()
+    {
+        return $this->hasMany(BikeComponent::class);
+    }
 }

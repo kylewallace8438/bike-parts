@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\BikeController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\MaintenanceHistoryController;
+use App\Http\Controllers\Api\BikeComponentController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\PlateController;
@@ -32,6 +33,15 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/{id}', [MaintenanceHistoryController::class, 'show']);
         Route::put('/{id}', [MaintenanceHistoryController::class, 'update']);
         Route::delete('/{id}', [MaintenanceHistoryController::class, 'destroy']);
+    });
+
+    // Bike component lifecycle routes
+    Route::group(['prefix' => 'bikes/{bikeId}/components'], function () {
+        Route::get('/', [BikeComponentController::class, 'index']);
+        Route::post('/apply-template', [BikeComponentController::class, 'applyTemplate']);
+        Route::post('/', [BikeComponentController::class, 'store']);
+        Route::post('/{id}/replace', [BikeComponentController::class, 'replace']);
+        Route::put('/{id}', [BikeComponentController::class, 'update']);
     });
 
     Route::get('/brands', [BrandController::class, 'index']);

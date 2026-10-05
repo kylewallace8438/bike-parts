@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             // KTMBikeSeed::class,
             GarageSeeder::class,
             UserSeeder::class,
+            ComponentTemplateSeeder::class,
         ]);
     }
 }

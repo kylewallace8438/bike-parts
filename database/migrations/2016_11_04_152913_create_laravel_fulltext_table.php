@@ -26,8 +26,10 @@ class CreateLaravelFulltextTable extends Migration
             $table->timestamps();
         });
 
-        DB::connection(config('laravel-fulltext.db_connection'))->statement('ALTER TABLE laravel_fulltext ADD FULLTEXT fulltext_title(indexed_title)');
-        DB::connection(config('laravel-fulltext.db_connection'))->statement('ALTER TABLE laravel_fulltext ADD FULLTEXT fulltext_title_content(indexed_title, indexed_content)');
+        if (DB::connection(config('laravel-fulltext.db_connection'))->getDriverName() === 'mysql') {
+            DB::connection(config('laravel-fulltext.db_connection'))->statement('ALTER TABLE laravel_fulltext ADD FULLTEXT fulltext_title(indexed_title)');
+            DB::connection(config('laravel-fulltext.db_connection'))->statement('ALTER TABLE laravel_fulltext ADD FULLTEXT fulltext_title_content(indexed_title, indexed_content)');
+        }
     }
 
     /**
